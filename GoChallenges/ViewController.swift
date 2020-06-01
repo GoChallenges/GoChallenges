@@ -1,7 +1,6 @@
-//
 //  ViewController.swift
 //  GoChallenges
-//
+
 
 
 import UIKit
