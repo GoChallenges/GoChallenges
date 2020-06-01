@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>23900298992-q0h5tiocn5lg8asvuea0t9gn2s37c7mk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.23900298992-q0h5tiocn5lg8asvuea0t9gn2s37c7mk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDq7EagW0_7ZyGPzkYuPSpSm_sV6TMHSzA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>23900298992</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.han.GoChallenges</string>
+	<key>PROJECT_ID</key>
+	<string>gochallenges-d85e4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gochallenges-d85e4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:23900298992:ios:8ec1bd804947205b6dac35</string>
+	<key>DATABASE_URL</key>
+	<string>https://gochallenges-d85e4.firebaseio.com</string>
+</dict>
+</plist>

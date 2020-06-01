@@ -3,19 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FC3B009248534F9001FF13D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3B008248534F9001FF13D /* GoogleService-Info.plist */; };
+		2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B00E24853924001FF13D /* MainViewController.swift */; };
+		2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B0102485394E001FF13D /* SigninViewController.swift */; };
+		2FC3B01324853C3F001FF13D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B01224853C3F001FF13D /* RegisterViewController.swift */; };
 		2FF9753224849B1A0079ADE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9753124849B1A0079ADE0 /* AppDelegate.swift */; };
 		2FF9753424849B1A0079ADE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9753324849B1A0079ADE0 /* SceneDelegate.swift */; };
-		2FF9753624849B1A0079ADE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9753524849B1A0079ADE0 /* ViewController.swift */; };
 		2FF9753924849B1A0079ADE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF9753724849B1A0079ADE0 /* Main.storyboard */; };
 		2FF9753B24849B1E0079ADE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FF9753A24849B1E0079ADE0 /* Assets.xcassets */; };
 		2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF9753C24849B1E0079ADE0 /* LaunchScreen.storyboard */; };
 		2FF9754924849B1E0079ADE0 /* GoChallengesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9754824849B1E0079ADE0 /* GoChallengesTests.swift */; };
 		2FF9755424849B1E0079ADE0 /* GoChallengesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9755324849B1E0079ADE0 /* GoChallengesUITests.swift */; };
 		2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF975612484B5EF0079ADE0 /* Constants.swift */; };
+		884C3EF31878B9CD08FA0031 /* Pods_GoChallengesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */; };
+		BFA07D2AC6285B0A43346E57 /* Pods_GoChallenges_GoChallengesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABEFFC5DDA52DBFF05B5429 /* Pods_GoChallenges_GoChallengesUITests.framework */; };
+		CF5F513707B64F8B8CB5F0CC /* Pods_GoChallenges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1041532924544549248AD273 /* Pods-GoChallenges-GoChallengesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges-GoChallengesUITests.release.xcconfig"; path = "Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallenges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FC3B008248534F9001FF13D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2FC3B00E24853924001FF13D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2FC3B0102485394E001FF13D /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		2FC3B01224853C3F001FF13D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2FF9752E24849B1A0079ADE0 /* GoChallenges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoChallenges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF9753124849B1A0079ADE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FF9753324849B1A0079ADE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2FF9753524849B1A0079ADE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FF9753824849B1A0079ADE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FF9753A24849B1E0079ADE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FF9753D24849B1E0079ADE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +62,13 @@
 		2FF9755324849B1E0079ADE0 /* GoChallengesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoChallengesUITests.swift; sourceTree = "<group>"; };
 		2FF9755524849B1E0079ADE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF975612484B5EF0079ADE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3D57E5FBAF30426FD5B4E597 /* Pods-GoChallenges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges.release.xcconfig"; path = "Target Support Files/Pods-GoChallenges/Pods-GoChallenges.release.xcconfig"; sourceTree = "<group>"; };
+		74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallengesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE094B32AC9D0DD43066D770 /* Pods-GoChallengesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallengesTests.debug.xcconfig"; path = "Target Support Files/Pods-GoChallengesTests/Pods-GoChallengesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD8324DFA298D42B5F13E024 /* Pods-GoChallenges-GoChallengesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges-GoChallengesUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C439593E0192FFF2B81591D5 /* Pods-GoChallengesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallengesTests.release.xcconfig"; path = "Target Support Files/Pods-GoChallengesTests/Pods-GoChallengesTests.release.xcconfig"; sourceTree = "<group>"; };
+		DABEFFC5DDA52DBFF05B5429 /* Pods_GoChallenges_GoChallengesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallenges_GoChallengesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4AF5ABC11F798AC1029EACE /* Pods-GoChallenges.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges.debug.xcconfig"; path = "Target Support Files/Pods-GoChallenges/Pods-GoChallenges.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5F513707B64F8B8CB5F0CC /* Pods_GoChallenges.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884C3EF31878B9CD08FA0031 /* Pods_GoChallengesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +92,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA07D2AC6285B0A43346E57 /* Pods_GoChallenges_GoChallengesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FC3B00A24853848001FF13D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FC3B00B24853854001FF13D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FF9753724849B1A0079ADE0 /* Main.storyboard */,
+				2FF9753C24849B1E0079ADE0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FC3B00D24853869001FF13D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FC3B00E24853924001FF13D /* MainViewController.swift */,
+				2FC3B0102485394E001FF13D /* SigninViewController.swift */,
+				2FC3B01224853C3F001FF13D /* RegisterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		2FF9752524849B1A0079ADE0 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +132,8 @@
 				2FF9754724849B1E0079ADE0 /* GoChallengesTests */,
 				2FF9755224849B1E0079ADE0 /* GoChallengesUITests */,
 				2FF9752F24849B1A0079ADE0 /* Products */,
+				D4B8BD5E2CE8ADB37E865B2B /* Pods */,
+				501AE601F7D65CCA0F404ED1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +150,15 @@
 		2FF9753024849B1A0079ADE0 /* GoChallenges */ = {
 			isa = PBXGroup;
 			children = (
+				2FC3B00D24853869001FF13D /* Controller */,
+				2FC3B00B24853854001FF13D /* View */,
+				2FC3B00A24853848001FF13D /* Model */,
 				2FF9753124849B1A0079ADE0 /* AppDelegate.swift */,
 				2FF9753324849B1A0079ADE0 /* SceneDelegate.swift */,
-				2FF9753524849B1A0079ADE0 /* ViewController.swift */,
-				2FF9753724849B1A0079ADE0 /* Main.storyboard */,
 				2FF9753A24849B1E0079ADE0 /* Assets.xcassets */,
-				2FF9753C24849B1E0079ADE0 /* LaunchScreen.storyboard */,
 				2FF9753F24849B1E0079ADE0 /* Info.plist */,
 				2FF975612484B5EF0079ADE0 /* Constants.swift */,
+				2FC3B008248534F9001FF13D /* GoogleService-Info.plist */,
 			);
 			path = GoChallenges;
 			sourceTree = "<group>";
@@ -131,6 +181,29 @@
 			path = GoChallengesUITests;
 			sourceTree = "<group>";
 		};
+		501AE601F7D65CCA0F404ED1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */,
+				DABEFFC5DDA52DBFF05B5429 /* Pods_GoChallenges_GoChallengesUITests.framework */,
+				74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4B8BD5E2CE8ADB37E865B2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4AF5ABC11F798AC1029EACE /* Pods-GoChallenges.debug.xcconfig */,
+				3D57E5FBAF30426FD5B4E597 /* Pods-GoChallenges.release.xcconfig */,
+				BD8324DFA298D42B5F13E024 /* Pods-GoChallenges-GoChallengesUITests.debug.xcconfig */,
+				1041532924544549248AD273 /* Pods-GoChallenges-GoChallengesUITests.release.xcconfig */,
+				AE094B32AC9D0DD43066D770 /* Pods-GoChallengesTests.debug.xcconfig */,
+				C439593E0192FFF2B81591D5 /* Pods-GoChallengesTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FF9755824849B1E0079ADE0 /* Build configuration list for PBXNativeTarget "GoChallenges" */;
 			buildPhases = (
+				ADE721698528472C09017259 /* [CP] Check Pods Manifest.lock */,
 				2FF9752A24849B1A0079ADE0 /* Sources */,
 				2FF9752B24849B1A0079ADE0 /* Frameworks */,
 				2FF9752C24849B1A0079ADE0 /* Resources */,
+				E8351C5BA9B2E2FCA71E0332 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FF9755B24849B1E0079ADE0 /* Build configuration list for PBXNativeTarget "GoChallengesTests" */;
 			buildPhases = (
+				C5F83A8FA3BED99FB9C203A7 /* [CP] Check Pods Manifest.lock */,
 				2FF9754024849B1E0079ADE0 /* Sources */,
 				2FF9754124849B1E0079ADE0 /* Frameworks */,
 				2FF9754224849B1E0079ADE0 /* Resources */,
@@ -173,9 +249,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FF9755E24849B1E0079ADE0 /* Build configuration list for PBXNativeTarget "GoChallengesUITests" */;
 			buildPhases = (
+				7D30C11DCFE26E3A984B85D9 /* [CP] Check Pods Manifest.lock */,
 				2FF9754B24849B1E0079ADE0 /* Sources */,
 				2FF9754C24849B1E0079ADE0 /* Frameworks */,
 				2FF9754D24849B1E0079ADE0 /* Resources */,
+				4C85F044311E0DBAA2552CDA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */,
+				2FC3B009248534F9001FF13D /* GoogleService-Info.plist in Resources */,
 				2FF9753B24849B1E0079ADE0 /* Assets.xcassets in Resources */,
 				2FF9753924849B1A0079ADE0 /* Main.storyboard in Resources */,
 			);
@@ -257,15 +336,120 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4C85F044311E0DBAA2552CDA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D30C11DCFE26E3A984B85D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoChallenges-GoChallengesUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADE721698528472C09017259 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoChallenges-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5F83A8FA3BED99FB9C203A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoChallengesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8351C5BA9B2E2FCA71E0332 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2FF9752A24849B1A0079ADE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FF9753624849B1A0079ADE0 /* ViewController.swift in Sources */,
 				2FF9753224849B1A0079ADE0 /* AppDelegate.swift in Sources */,
+				2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */,
 				2FF9753424849B1A0079ADE0 /* SceneDelegate.swift in Sources */,
+				2FC3B01324853C3F001FF13D /* RegisterViewController.swift in Sources */,
 				2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */,
+				2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +620,7 @@
 		};
 		2FF9755924849B1E0079ADE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4AF5ABC11F798AC1029EACE /* Pods-GoChallenges.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +638,7 @@
 		};
 		2FF9755A24849B1E0079ADE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D57E5FBAF30426FD5B4E597 /* Pods-GoChallenges.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +656,7 @@
 		};
 		2FF9755C24849B1E0079ADE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE094B32AC9D0DD43066D770 /* Pods-GoChallengesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +678,7 @@
 		};
 		2FF9755D24849B1E0079ADE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C439593E0192FFF2B81591D5 /* Pods-GoChallengesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +700,7 @@
 		};
 		2FF9755F24849B1E0079ADE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD8324DFA298D42B5F13E024 /* Pods-GoChallenges-GoChallengesUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -531,6 +720,7 @@
 		};
 		2FF9756024849B1E0079ADE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1041532924544549248AD273 /* Pods-GoChallenges-GoChallengesUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
