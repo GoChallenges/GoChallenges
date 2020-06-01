@@ -64,7 +64,7 @@
                                 <rect key="frame" x="57" y="393" width="301" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOb-tZ-Kft">
                                 <rect key="frame" x="144" y="479" width="107" height="48"/>
@@ -167,19 +167,26 @@
                                 <rect key="frame" x="67" y="346" width="301" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLZ-pR-Bs8">
                                 <rect key="frame" x="163" y="432" width="88" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signIn:" destination="eC6-Mn-e63" eventType="touchUpInside" id="JcD-fH-fTv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="yIU-it-VJr"/>
                     </view>
                     <navigationItem key="navigationItem" id="tAA-TA-8jR"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="5U9-Fn-Jyb" id="hkE-bh-GkX"/>
+                        <outlet property="passwordTextField" destination="nNo-8W-iJf" id="2Wu-3A-VOL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0B-5d-fKf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

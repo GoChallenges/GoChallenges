@@ -26,7 +26,8 @@ class RegisterViewController: UIViewController {
                 if let error = error {
                     print("Fail to register: \(error)")
                 } else {
-                    print(authResult)
+                    print("Register successful.")
+                    //print(authResult)
                     //perform segue to main feed screen
                 }
             }
