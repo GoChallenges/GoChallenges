@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB91577248601130095627E /* ChallengesFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB91576248601130095627E /* ChallengesFeed.swift */; };
+		2FB915792486013F0095627E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB915782486013F0095627E /* Profile.swift */; };
+		2FB9157B248601570095627E /* NewChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9157A248601570095627E /* NewChallenge.swift */; };
+		2FB9157D248601780095627E /* MyChallenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9157C248601780095627E /* MyChallenges.swift */; };
+		2FB9157F248604500095627E /* ChallengeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9157E248604500095627E /* ChallengeDetail.swift */; };
+		2FB91581248604A80095627E /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB91580248604A80095627E /* FriendList.swift */; };
 		2FC3B009248534F9001FF13D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3B008248534F9001FF13D /* GoogleService-Info.plist */; };
 		2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B00E24853924001FF13D /* MainViewController.swift */; };
 		2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B0102485394E001FF13D /* SigninViewController.swift */; };
@@ -44,6 +50,12 @@
 /* Begin PBXFileReference section */
 		1041532924544549248AD273 /* Pods-GoChallenges-GoChallengesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges-GoChallengesUITests.release.xcconfig"; path = "Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallenges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB91576248601130095627E /* ChallengesFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesFeed.swift; sourceTree = "<group>"; };
+		2FB915782486013F0095627E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		2FB9157A248601570095627E /* NewChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallenge.swift; sourceTree = "<group>"; };
+		2FB9157C248601780095627E /* MyChallenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChallenges.swift; sourceTree = "<group>"; };
+		2FB9157E248604500095627E /* ChallengeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetail.swift; sourceTree = "<group>"; };
+		2FB91580248604A80095627E /* FriendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
 		2FC3B008248534F9001FF13D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FC3B00E24853924001FF13D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2FC3B0102485394E001FF13D /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +133,12 @@
 				2FC3B00E24853924001FF13D /* MainViewController.swift */,
 				2FC3B0102485394E001FF13D /* SigninViewController.swift */,
 				2FC3B01224853C3F001FF13D /* RegisterViewController.swift */,
+				2FB91576248601130095627E /* ChallengesFeed.swift */,
+				2FB9157A248601570095627E /* NewChallenge.swift */,
+				2FB9157C248601780095627E /* MyChallenges.swift */,
+				2FB915782486013F0095627E /* Profile.swift */,
+				2FB9157E248604500095627E /* ChallengeDetail.swift */,
+				2FB91580248604A80095627E /* FriendList.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -445,11 +463,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FF9753224849B1A0079ADE0 /* AppDelegate.swift in Sources */,
+				2FB9157F248604500095627E /* ChallengeDetail.swift in Sources */,
+				2FB915792486013F0095627E /* Profile.swift in Sources */,
+				2FB91577248601130095627E /* ChallengesFeed.swift in Sources */,
 				2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */,
+				2FB9157B248601570095627E /* NewChallenge.swift in Sources */,
 				2FF9753424849B1A0079ADE0 /* SceneDelegate.swift in Sources */,
 				2FC3B01324853C3F001FF13D /* RegisterViewController.swift in Sources */,
 				2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */,
 				2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */,
+				2FB9157D248601780095627E /* MyChallenges.swift in Sources */,
+				2FB91581248604A80095627E /* FriendList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

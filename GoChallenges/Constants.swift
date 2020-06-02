@@ -9,6 +9,11 @@
 import Foundation
 
 struct K {
+    
+    // Segue identifiers
     static let toRegister = "toRegister"
     static let toSignin = "toSignin"
+    static let feedToDetail = "feedToDetail"
+    static let createToFeed = "createToFeed"
+
 }
