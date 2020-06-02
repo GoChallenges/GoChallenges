@@ -83,7 +83,7 @@
                     <connections>
                         <outlet property="emailTextfield" destination="qSG-HC-jyv" id="rkO-vA-3OQ"/>
                         <outlet property="passwordTextfield" destination="opu-oU-hpl" id="4qG-Cc-hht"/>
-                        <segue destination="CI3-Li-A5j" kind="show" id="ofC-9k-95d"/>
+                        <segue destination="CI3-Li-A5j" kind="presentation" identifier="registerToFeed" animates="NO" modalPresentationStyle="fullScreen" id="ofC-9k-95d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Odl-n0-rpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -95,14 +95,14 @@
             <objects>
                 <viewController id="OM2-gt-5AT" customClass="MyChallenges" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6v-cR-DLb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hdy-1h-oYE"/>
                     </view>
                     <navigationItem key="navigationItem" id="L9W-Wx-rrF"/>
                     <connections>
-                        <segue destination="MCI-cC-RiN" kind="show" id="oFt-ET-90Q"/>
+                        <segue destination="MCI-cC-RiN" kind="show" identifier="currentToDetail" id="oFt-ET-90Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bu-bB-BZI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -114,14 +114,14 @@
             <objects>
                 <viewController id="aU0-eT-gJ8" customClass="Profile" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wzI-JU-SKu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3fZ-dL-O1L"/>
                     </view>
                     <navigationItem key="navigationItem" id="Sgs-2z-UWd"/>
                     <connections>
-                        <segue destination="7sv-Ca-7aG" kind="show" id="FeI-LU-Vja"/>
+                        <segue destination="7sv-Ca-7aG" kind="show" identifier="profileToFriendList" id="FeI-LU-Vja"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKN-IE-Mmw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -133,7 +133,7 @@
             <objects>
                 <viewController id="7sv-Ca-7aG" customClass="FriendList" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oav-8j-Pb9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="qRA-ey-Qy7"/>
@@ -181,7 +181,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="5U9-Fn-Jyb" id="hkE-bh-GkX"/>
                         <outlet property="passwordTextField" destination="nNo-8W-iJf" id="2Wu-3A-VOL"/>
-                        <segue destination="CI3-Li-A5j" kind="show" id="Kbv-Vv-dcT"/>
+                        <segue destination="CI3-Li-A5j" kind="presentation" identifier="signinToFeed" modalPresentationStyle="fullScreen" id="Kbv-Vv-dcT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0B-5d-fKf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -193,7 +193,7 @@
             <objects>
                 <viewController id="MCI-cC-RiN" customClass="ChallengeDetail" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Yw-CP-BMI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="q5w-oF-e3Y"/>
@@ -209,7 +209,7 @@
             <objects>
                 <viewController id="sB4-8X-YzZ" customClass="NewChallenge" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iky-Qh-QXM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Q-tX-Vwl">
@@ -224,7 +224,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="plus" catalog="system" id="I5m-j3-HNw"/>
                     <connections>
-                        <segue destination="Pqg-aD-q2r" kind="show" id="mr6-ap-C3O"/>
+                        <segue destination="Pqg-aD-q2r" kind="show" identifier="createToFeed" id="mr6-ap-C3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOK-Qa-Adb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,7 +243,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yx3-Aq-nRS"/>
                     <connections>
-                        <segue destination="MCI-cC-RiN" kind="show" id="moj-q5-Yx9"/>
+                        <segue destination="MCI-cC-RiN" kind="show" identifier="feedToDetail" id="moj-q5-Yx9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FY-AT-fNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -298,7 +298,7 @@
                     <tabBarItem key="tabBarItem" title="" image="list.bullet" catalog="system" id="Enr-fS-WiA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ybp-wZ-gSI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -317,7 +317,7 @@
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="xLT-iy-C9z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Ng-cR-33G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

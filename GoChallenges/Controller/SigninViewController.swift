@@ -24,7 +24,10 @@ class SigninViewController: UIViewController {
                     self!.present(alert, animated: true, completion: nil)
                 }else{
                     print("Log In successful")
+                    
                     //perform segue here
+                    self?.performSegue(withIdentifier: K.signinToFeed, sender: self)
+                    
                 }
             }
         }

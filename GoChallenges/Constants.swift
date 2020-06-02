@@ -13,7 +13,13 @@ struct K {
     // Segue identifiers
     static let toRegister = "toRegister"
     static let toSignin = "toSignin"
+    
+    
+    static let signinToFeed = "signinToFeed"
+    static let registerToFeed = "registerToFeed"
+    
     static let feedToDetail = "feedToDetail"
     static let createToFeed = "createToFeed"
-
+    static let currentToDetail = "currentToDetail"
+    static let profileToFriendList = "profileToFriendList"
 }

@@ -29,6 +29,7 @@ class RegisterViewController: UIViewController {
                     print("Register successful.")
                     //print(authResult)
                     //perform segue to main feed screen
+                    self.performSegue(withIdentifier: K.registerToFeed, sender: self)
                 }
             }
         }
