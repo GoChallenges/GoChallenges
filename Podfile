@@ -7,7 +7,6 @@ target 'GoChallenges' do
   
   # Pods for GoChallenges
 	pod 'Firebase/Auth'
-    pod 'RealmSwift'
 
   target 'GoChallengesTests' do
     inherit! :search_paths
