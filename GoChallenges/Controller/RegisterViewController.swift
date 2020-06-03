@@ -16,18 +16,25 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.emailTextfield.delegate = self
+        self.passwordTextfield.delegate = self
+        
+        emailTextfield.becomeFirstResponder()
     }
     
     @IBAction func register(_ sender: Any) {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
-                    print("Fail to register: \(error)")
+                    //pop up error message
+                    let alert = UIAlertController(title: "Error!", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 } else {
                     print("Register successful.")
-                    //print(authResult)
+                    
                     //perform segue to main feed screen
                     self.performSegue(withIdentifier: K.registerToFeed, sender: self)
                 }
@@ -45,4 +52,13 @@ class RegisterViewController: UIViewController {
     }
     */
 
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        register(self)
+        
+        return true
+    }
 }
