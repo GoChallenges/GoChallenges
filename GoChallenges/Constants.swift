@@ -25,7 +25,7 @@ struct K {
     
     // Cell indentifiers
     static let myChallengeCell = "myChallengeCell"
-    
+    static let newChallengeCell = "newChallengeCell"
     // Cell nib names
     static let myChallengeCellNib = "MyChallengeCell"
 }

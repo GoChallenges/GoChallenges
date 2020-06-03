@@ -10,6 +10,8 @@ import UIKit
 
 class ChallengesFeed: UIViewController {
 
+    @IBOutlet weak var challengeTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
