@@ -25,6 +25,7 @@
 		2FF9754924849B1E0079ADE0 /* GoChallengesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9754824849B1E0079ADE0 /* GoChallengesTests.swift */; };
 		2FF9755424849B1E0079ADE0 /* GoChallengesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9755324849B1E0079ADE0 /* GoChallengesUITests.swift */; };
 		2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF975612484B5EF0079ADE0 /* Constants.swift */; };
+		374D65FF2486A89A00322101 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D65FE2486A89A00322101 /* Data.swift */; };
 		884C3EF31878B9CD08FA0031 /* Pods_GoChallengesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */; };
 		BFA07D2AC6285B0A43346E57 /* Pods_GoChallenges_GoChallengesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABEFFC5DDA52DBFF05B5429 /* Pods_GoChallenges_GoChallengesUITests.framework */; };
 		CF5F513707B64F8B8CB5F0CC /* Pods_GoChallenges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */; };
@@ -74,6 +75,7 @@
 		2FF9755324849B1E0079ADE0 /* GoChallengesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoChallengesUITests.swift; sourceTree = "<group>"; };
 		2FF9755524849B1E0079ADE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF975612484B5EF0079ADE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		374D65FE2486A89A00322101 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		3D57E5FBAF30426FD5B4E597 /* Pods-GoChallenges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges.release.xcconfig"; path = "Target Support Files/Pods-GoChallenges/Pods-GoChallenges.release.xcconfig"; sourceTree = "<group>"; };
 		74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallengesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE094B32AC9D0DD43066D770 /* Pods-GoChallengesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallengesTests.debug.xcconfig"; path = "Target Support Files/Pods-GoChallengesTests/Pods-GoChallengesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				2FC3B00B24853854001FF13D /* View */,
 				2FC3B00A24853848001FF13D /* Model */,
 				2FF9753124849B1A0079ADE0 /* AppDelegate.swift */,
+				374D65FE2486A89A00322101 /* Data.swift */,
 				2FF9753324849B1A0079ADE0 /* SceneDelegate.swift */,
 				2FF9753A24849B1E0079ADE0 /* Assets.xcassets */,
 				2FF9753F24849B1E0079ADE0 /* Info.plist */,
@@ -470,6 +473,7 @@
 				2FB9157B248601570095627E /* NewChallenge.swift in Sources */,
 				2FF9753424849B1A0079ADE0 /* SceneDelegate.swift in Sources */,
 				2FC3B01324853C3F001FF13D /* RegisterViewController.swift in Sources */,
+				374D65FF2486A89A00322101 /* Data.swift in Sources */,
 				2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */,
 				2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */,
 				2FB9157D248601780095627E /* MyChallenges.swift in Sources */,

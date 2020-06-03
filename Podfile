@@ -4,9 +4,10 @@
 target 'GoChallenges' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for GoChallenges
 	pod 'Firebase/Auth'
+    pod 'RealmSwift'
 
   target 'GoChallengesTests' do
     inherit! :search_paths
@@ -16,5 +17,6 @@ target 'GoChallenges' do
   target 'GoChallengesUITests' do
     # Pods for testing
   end
-
 end
+
+
