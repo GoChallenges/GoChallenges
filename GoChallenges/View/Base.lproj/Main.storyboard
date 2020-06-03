@@ -97,17 +97,25 @@
                     <view key="view" contentMode="scaleToFill" id="R6v-cR-DLb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-pX-L0j">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hdy-1h-oYE"/>
                     </view>
                     <navigationItem key="navigationItem" id="L9W-Wx-rrF"/>
                     <connections>
+                        <outlet property="challengesTableView" destination="ceP-pX-L0j" id="HZG-aQ-DsI"/>
                         <segue destination="MCI-cC-RiN" kind="show" identifier="currentToDetail" id="oFt-ET-90Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bu-bB-BZI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4505.7971014492759" y="539.73214285714278"/>
+            <point key="canvasLocation" x="4505.7971014492759" y="539.0625"/>
         </scene>
         <!--Profile-->
         <scene sceneID="LOr-OU-Y1k">
@@ -193,7 +201,7 @@
             <objects>
                 <viewController id="MCI-cC-RiN" customClass="ChallengeDetail" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Yw-CP-BMI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="q5w-oF-e3Y"/>
@@ -372,8 +380,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mr6-ap-C3O"/>
-        <segue reference="Kbv-Vv-dcT"/>
-        <segue reference="moj-q5-Yx9"/>
+        <segue reference="ofC-9k-95d"/>
+        <segue reference="oFt-ET-90Q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>

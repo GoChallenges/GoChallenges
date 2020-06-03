@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2C19EC24878B02005DA4F9 /* MyChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */; };
+		2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */; };
 		2FB91577248601130095627E /* ChallengesFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB91576248601130095627E /* ChallengesFeed.swift */; };
 		2FB915792486013F0095627E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB915782486013F0095627E /* Profile.swift */; };
 		2FB9157B248601570095627E /* NewChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9157A248601570095627E /* NewChallenge.swift */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		1041532924544549248AD273 /* Pods-GoChallenges-GoChallengesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges-GoChallengesUITests.release.xcconfig"; path = "Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallenges.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChallengeCell.swift; sourceTree = "<group>"; };
+		2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyChallengeCell.xib; sourceTree = "<group>"; };
 		2FB91576248601130095627E /* ChallengesFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesFeed.swift; sourceTree = "<group>"; };
 		2FB915782486013F0095627E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2FB9157A248601570095627E /* NewChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallenge.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				2FF9753724849B1A0079ADE0 /* Main.storyboard */,
 				2FF9753C24849B1E0079ADE0 /* LaunchScreen.storyboard */,
+				2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				2FB915782486013F0095627E /* Profile.swift */,
 				2FB9157E248604500095627E /* ChallengeDetail.swift */,
 				2FB91580248604A80095627E /* FriendList.swift */,
+				2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */,
 				2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */,
 				2FC3B009248534F9001FF13D /* GoogleService-Info.plist in Resources */,
 				2FF9753B24849B1E0079ADE0 /* Assets.xcassets in Resources */,
@@ -478,6 +485,7 @@
 				2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */,
 				2FB9157D248601780095627E /* MyChallenges.swift in Sources */,
 				2FB91581248604A80095627E /* FriendList.swift in Sources */,
+				2F2C19EC24878B02005DA4F9 /* MyChallengeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
