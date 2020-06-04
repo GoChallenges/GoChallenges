@@ -56,6 +56,7 @@ class NewChallenge: UIViewController {
         }
     }
     
+    //this function shows pop up message
     func popUpMessage (text : String){
         let alert = UIAlertController(title: "Error!", message: text, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Try Again.", style: UIAlertAction.Style.default, handler: { (action) in
