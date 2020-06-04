@@ -8,12 +8,15 @@ class NewChallenge: UIViewController {
     @IBOutlet weak var challengeNameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var goalTextField: UITextField!
     
     let db = Firestore.firestore()
     var challengeArray = [Data]()
     
     private let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
+    private var message : String = ""
     private var categorySelected : String = ""
+    private var goalNum : Float?
     var categoryPickerView  = UIPickerView()
     
     override func viewDidLoad() {
@@ -25,21 +28,42 @@ class NewChallenge: UIViewController {
     }
     
     @IBAction func createButton(_ sender: UIButton) {
-        if let name = challengeNameTextField.text, let description = descriptionTextView.text, let userName = Auth.auth().currentUser?.email{
-            let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: description, timeStamp: Date(), isComplete: false)
+        if let name = challengeNameTextField.text, let description = descriptionTextView.text, let userName = Auth.auth().currentUser?.email, let target = goalTextField.text{
             
-            var dataRef : DocumentReference? = nil
-            
-            dataRef = db.collection(categorySelected).addDocument(data: newChallenge.dictionary){
-                error in
-                if let e = error {
-                    print("Error adding document to database: \(e.localizedDescription)")
-                }else{
-                    print("Document added with ID: \(dataRef!.documentID)")
-                }
+            if name.isEmpty || description.isEmpty || userName.isEmpty || target.isEmpty{
+                message = "At least one of your inputs is empty. Please try again."
+                popUpMessage(text: message)
             }
+            
+            
+            if let goalNum = Float(target){
+                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: description, goal: goalNum, timeStamp: Date(), isComplete: false)
+                
+                var dataRef : DocumentReference? = nil
+                
+                dataRef = db.collection(categorySelected).addDocument(data: newChallenge.dictionary){
+                    error in
+                    if let e = error {
+                        print("Error adding document to database: \(e.localizedDescription)")
+                    }else{
+                        print("Document added with ID: \(dataRef!.documentID)")
+                    }
+                }
+            } else{
+                //Pop up warning
+                message = "Your goal is not a number! Please try again."
+                popUpMessage(text: message)
+            }
+            
         }
+    }
     
+    func popUpMessage(text : String){
+        let alert = UIAlertController(title: "Error!", message: text, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
         
     }
     
