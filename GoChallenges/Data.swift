@@ -10,6 +10,7 @@ struct Data{
     var creator : String
     var challengeName : String
     var challengeDescription : String
+    var goal : Float
     var timeStamp : Date
     var isComplete : Bool = false
     
@@ -18,6 +19,7 @@ struct Data{
             "Creator" : creator,
             "Challenge Name" : challengeName,
             "Challenge Description" : challengeDescription,
+            "Goal" : goal,
             "timeStamp" : timeStamp,
             "Completion" : isComplete
         ]
