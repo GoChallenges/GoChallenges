@@ -7,25 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class MyChallenges: UIViewController, UITableViewDataSource {
     
-    class Challenge {
-        var name: String
-        var description: String
-        var progress: Float
-        init(name: String, description: String, progress: Float) {
-            self.name = name
-            self.description = description
-            self.progress = progress
-        }
-    }
-
-    let challenges =
-        [Challenge(name: "Water", description: "2L", progress: 0.56),
-         Challenge(name: "WO", description: "30 min", progress: 0.9),
-         Challenge(name: "Dance", description: "1 hour", progress: 0.25)
-    ]
+    let db = Firestore.firestore()
+    var challenges = [QueryDocumentSnapshot]()
+    
+    let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
 
     @IBOutlet weak var challengesTableView: UITableView!
     
@@ -37,9 +26,26 @@ class MyChallenges: UIViewController, UITableViewDataSource {
         
         challengesTableView.register(UINib(nibName: K.myChallengeCellNib, bundle: nil), forCellReuseIdentifier: K.myChallengeCell)
         challengesTableView.rowHeight = 150
+        
+        loadChallenges()
     }
     
-
+    func loadChallenges() {
+        let challengesRef  = db.collection("Food")
+        let query = challengesRef.whereField("Completion", isEqualTo: false)
+        query.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                for doc in querySnapshot!.documents {
+                    print(doc.data())
+                }
+                self.challenges = querySnapshot!.documents
+                self.challengesTableView.reloadData()
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -61,9 +67,9 @@ extension MyChallenges: UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myChallengeCell", for: indexPath) as! MyChallengeCell
         let challenge = challenges[indexPath.row]
         
-        cell.challengeName.text = challenge.name
-        cell.challengeDes.text = challenge.description
-        cell.progressView.progress = challenge.progress
+        cell.challengeName.text = challenge["Challenge Name"] as! String
+        cell.challengeDes.text = challenge["Challenge Description"] as! String
+        cell.progressView.progress = 0.4
         
         return cell
     }

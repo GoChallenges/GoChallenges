@@ -201,7 +201,7 @@
             <objects>
                 <viewController id="MCI-cC-RiN" customClass="ChallengeDetail" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Yw-CP-BMI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="q5w-oF-e3Y"/>
@@ -424,8 +424,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mr6-ap-C3O"/>
-        <segue reference="Kbv-Vv-dcT"/>
-        <segue reference="moj-q5-Yx9"/>
+        <segue reference="ofC-9k-95d"/>
+        <segue reference="oFt-ET-90Q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>
