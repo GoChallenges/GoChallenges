@@ -14,7 +14,7 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     let db = Firestore.firestore()
     var challenges = [QueryDocumentSnapshot]()
     
-    let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
+    //let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
 
     @IBOutlet weak var challengesTableView: UITableView!
     

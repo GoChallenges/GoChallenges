@@ -1,32 +1,50 @@
-//
 //  ChallengesFeed.swift
 //  GoChallenges
-//
-//  Created by nguyen thy on 6/1/20.
-//  Copyright © 2020 Han Nguyen. All rights reserved.
-//
 
 import UIKit
+import Firebase
 
 class ChallengesFeed: UIViewController {
 
     @IBOutlet weak var challengeTableView: UITableView!
+
     
+    let db = Firestore.firestore()
+    
+    var categoryFilter : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //challengeTableView.dataSource = self
+        //challengeTableView.delegate = self
+        checkForUpdates()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadData(){
+        //db.collection(newChallenge.categorySelected)
     }
-    */
+    
+    func checkForUpdates(){
+ 
+    }
+
 
 }
+/*
+//MARK: - Table View Data Source
+extension  ChallengesFeed : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+    }
+
+}
+
+//MARK: - Table View Delegate
+extension ChallengesFeed : UITableViewDelegate{
+    
+}
+*/

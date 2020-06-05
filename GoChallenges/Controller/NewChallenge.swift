@@ -9,15 +9,27 @@ class NewChallenge: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var goalTextField: UITextField!
+    @IBOutlet weak var startTextField: UITextField!
+    @IBOutlet weak var endTextField: UITextField!
+    @IBOutlet weak var unitTextField: UITextField!
+    
+    let challengeFeed = ChallengesFeed()
     
     let db = Firestore.firestore()
     var challengeArray = [Data]()
     
-    private let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
-    private var categorySelected : String = ""
+    let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
+    var categorySelected : String = ""
     private var message : String = ""
-    private var goalNum : Float = 0.0
+    var goalNum : Float = 0.0
+    
     var categoryPickerView  = UIPickerView()
+    
+    //Picking date variables
+    let datePicker = UIDatePicker()
+    let currentDate = Date()
+    var startDate = Date()
+    var endDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +37,25 @@ class NewChallenge: UIViewController {
         categoryPickerView.dataSource = self
         categoryTextField.inputView = categoryPickerView
         categoryTextField.textAlignment = .center
+        
+        //"Placeholder" for description text view
+        descriptionTextView.textColor = .lightGray
+        descriptionTextView.text = "Type your description here..."
+        descriptionTextView.delegate = self
+        
+        createDatePicker()
     }
     
     @IBAction func createButton(_ sender: UIButton) {
-        if let name = challengeNameTextField.text, let descriptionText = descriptionTextView.text, let userName = Auth.auth().currentUser?.email, let target = goalTextField.text{
+        if let name = challengeNameTextField.text, let descriptionText = descriptionTextView.text, let userName = Auth.auth().currentUser?.email, let target = goalTextField.text, let firstDay = startTextField.text, let lastDay = endTextField.text, let goalUnit = unitTextField.text{
             
-            if name.isEmpty || descriptionText.isEmpty || userName.isEmpty{
+            if name.isEmpty || descriptionText.isEmpty || userName.isEmpty || firstDay.isEmpty || lastDay.isEmpty || goalUnit.isEmpty{
                 message = "At least one of your inputs is empty. Please try again!"
                 popUpMessage(text: message)
             }
             
             if let goalNum = Float(target) {
-                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: description, goal: goalNum, timeStamp: Date(), isComplete: false)
+                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeStamp: Date(), isComplete: false)
                 
                 var dataRef : DocumentReference? = nil
                 
@@ -52,7 +71,16 @@ class NewChallenge: UIViewController {
                 message = "Your input is not a number. Please enter a valid number!"
                 popUpMessage(text: message)
             }
-            
+            self.performSegue(withIdentifier: K.createToFeed, sender: self)
+        }
+    }
+    
+    //This function will be called by the view controller just before a segue is performed. Use this to pass data to the next screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.createToFeed {
+            let nav = segue.destination as! UINavigationController //parent screeen
+            let feedVC = nav.topViewController as! ChallengesFeed  //child screen
+            feedVC.categoryFilter = categorySelected
         }
     }
     
@@ -65,6 +93,42 @@ class NewChallenge: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    //create the content inside of the date picker view
+    func createDatePicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: true)
+        
+        startTextField.inputAccessoryView = toolbar
+        endTextField.inputAccessoryView = toolbar
+        
+        // set the minimum of the date picker to be the current date
+        datePicker.minimumDate = currentDate
+        
+        startTextField.inputView = datePicker
+        endTextField.inputView = datePicker
+        
+        datePicker.datePickerMode = .date //date style
+    }
+    
+    
+    @objc func donePressed() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        if startTextField.isFirstResponder{
+            startDate = datePicker.date
+            startTextField.text = formatter.string(from: startDate)
+        } else {
+            endDate = datePicker.date
+            endTextField.text = formatter.string(from: endDate)
+        }
+        
+        self.view.endEditing(true) //dismiss the keyboard
+    }
 
 }
 
@@ -92,5 +156,23 @@ extension NewChallenge: UIPickerViewDelegate{
         categoryTextField.resignFirstResponder()
         
     }
+}
 
+//MARK: - Description Text View Delegate
+extension NewChallenge: UITextViewDelegate{
+    //when the user begins edit the text view
+    func textViewDidBeginEditing (_ textView : UITextView) {
+        if textView.textColor == UIColor.lightGray && textView.isFirstResponder {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    //when the user finishes editing the text view
+    func textViewDidEndEditing(_ textView : UITextView){
+        if textView.text.isEmpty{
+            textView.text = "Type your description here..."
+            textView.textColor = .lightGray
+        }
+    }
 }
