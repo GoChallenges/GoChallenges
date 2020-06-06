@@ -54,6 +54,7 @@ class NewChallenge: UIViewController {
                 popUpMessage(text: message)
             }
             
+            // when the goal value is can be convert into a number
             if let goalNum = Float(target) {
                 let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeStamp: Date(), isComplete: false)
                 
@@ -71,6 +72,8 @@ class NewChallenge: UIViewController {
                 message = "Your input is not a number. Please enter a valid number!"
                 popUpMessage(text: message)
             }
+            
+            //move to next screen
             self.performSegue(withIdentifier: K.createToFeed, sender: self)
         }
     }
@@ -81,6 +84,7 @@ class NewChallenge: UIViewController {
             let nav = segue.destination as! UINavigationController //parent screeen
             let feedVC = nav.topViewController as! ChallengesFeed  //child screen
             feedVC.categoryFilter = categorySelected
+            feedVC.challengeList = challengeArray
         }
     }
     

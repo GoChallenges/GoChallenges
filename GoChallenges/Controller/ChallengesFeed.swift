@@ -9,42 +9,82 @@ class ChallengesFeed: UIViewController {
     @IBOutlet weak var challengeTableView: UITableView!
 
     
-    let db = Firestore.firestore()
     
+    let db = Firestore.firestore()
     var categoryFilter : String = ""
+    var challengeList = [Data]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //challengeTableView.dataSource = self
-        //challengeTableView.delegate = self
+        challengeTableView.dataSource = self
+
+        loadData()
         checkForUpdates()
         
     }
     
     func loadData(){
-        //db.collection(newChallenge.categorySelected)
+        db.collection("Food").getDocuments(){
+            querySnapshot, error in
+            if let e = error{
+                print("\(e.localizedDescription)")
+            }else{
+                self.challengeList = querySnapshot!.documents.flatMap({Data(dictionary: $0.data())}) //update the challenge array or list
+                DispatchQueue.main.async {
+                    self.challengeTableView.reloadData() //reload the table view
+                }
+            }
+        }
     }
     
+    //realtime update here
+    //Update when having a new challenge created
     func checkForUpdates(){
- 
+        //only querying what happpened after this function runs for the first time
+        db.collection("Food").whereField("timeStamp", isGreaterThan: Date())
+            // this will listen for the changes to the challengeList
+            .addSnapshotListener {
+                querySnapshot, error in
+                
+                guard let snapshot = querySnapshot else {return}
+                
+                snapshot.documentChanges.forEach {
+                    diff in
+                    
+                    //everytime new thing being added
+                    if diff.type == .added{
+                        self.challengeList.append((Data(dictionary: diff.document.data()))!)
+                        DispatchQueue.main.async {
+                            self.challengeTableView.reloadData()
+                        }
+                    }
+                }
+        }
+        
+        
     }
 
 
 }
-/*
+
 //MARK: - Table View Data Source
 extension  ChallengesFeed : UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return challengeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.challengeCell, for: indexPath)
         
+        let challenge = challengeList[indexPath.row]
+        
+        cell.textLabel?.text = challenge.challengeName
+        cell.detailTextLabel?.text = "\(challenge.timeStamp)"
+        
+        return cell
     }
 
 }
-
-//MARK: - Table View Delegate
-extension ChallengesFeed : UITableViewDelegate{
-    
-}
-*/
