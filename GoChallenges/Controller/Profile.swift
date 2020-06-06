@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class Profile: UIViewController {
 
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var joinedDate: UILabel!
+    @IBOutlet weak var currentChalLabel: UILabel!
+    @IBOutlet weak var completeChalLabel: UILabel!
+    @IBOutlet weak var friendsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    func loadUser() {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

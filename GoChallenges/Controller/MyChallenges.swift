@@ -62,6 +62,9 @@ class MyChallenges: UIViewController, UITableViewDataSource {
         
 }
 
+//MARK: - DEQUEUE CELLS AND QUERY ATTENDED CHALLENGES
+
+
 extension MyChallenges: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return challenges.count
