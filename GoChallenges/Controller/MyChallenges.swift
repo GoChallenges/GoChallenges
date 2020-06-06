@@ -31,8 +31,12 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     }
     
     func loadChallenges() {
-        let challengesRef  = db.collection("Food")
-        let query = challengesRef.whereField("Completion", isEqualTo: false)
+        let challengesRef  = db.collection("Lifestyle")
+        let fp = FieldPath(["Lifestyle"])
+        let query = challengesRef
+            .order(by: "End Date")
+        
+        
         query.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -68,7 +72,31 @@ extension MyChallenges: UITableViewDelegate {
         let challenge = challenges[indexPath.row]
         
         cell.challengeName.text = challenge["Challenge Name"] as! String
-        cell.challengeDes.text = challenge["Challenge Description"] as! String
+        
+        let time = challenge["End Date"] as! Timestamp
+        let endDate = time.dateValue()
+        
+        let now = Date.init()
+        
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: now)
+        let date2 = calendar.startOfDay(for: endDate)
+        
+        let components = calendar.dateComponents([.day, .hour, .second], from: date1, to: date2)
+        let daysLeft = components.day!
+        let hoursLeft = components.hour!
+        let secsLeft = components.second!
+        
+        if daysLeft < 1 {
+            if hoursLeft < 1 {
+                cell.timeLeft.text = "\(secsLeft) sec(s) left"
+            } else {
+                cell.timeLeft.text = "\(hoursLeft) hour(s) left"
+            }
+        } else {
+            cell.timeLeft.text = "\(daysLeft) day(s) left"
+        }
+        
         cell.progressView.progress = 0.4
         
         return cell

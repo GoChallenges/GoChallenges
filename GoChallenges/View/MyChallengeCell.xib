@@ -16,31 +16,42 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Challenge Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9V-HC-k7d">
-                        <rect key="frame" x="16" y="8" width="144" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9V-HC-k7d">
+                        <rect key="frame" x="16" y="8" width="288" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="90Z-GT-pYS">
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="90Z-GT-pYS">
                         <rect key="frame" x="16" y="71" width="288" height="2"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-b7-iNL">
-                        <rect key="frame" x="16" y="40" width="79" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-b7-iNL">
+                        <rect key="frame" x="16" y="40" width="288" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="P0C-b7-iNL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DRZ-Fb-Z0p"/>
+                    <constraint firstItem="j9V-HC-k7d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Gx4-Dz-XKR"/>
+                    <constraint firstItem="P0C-b7-iNL" firstAttribute="top" secondItem="j9V-HC-k7d" secondAttribute="bottom" constant="8" id="K7x-sC-EUn"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="90Z-GT-pYS" secondAttribute="bottom" constant="7" id="QhG-SM-NvW"/>
+                    <constraint firstItem="90Z-GT-pYS" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Rel-E9-awS"/>
+                    <constraint firstItem="90Z-GT-pYS" firstAttribute="top" secondItem="P0C-b7-iNL" secondAttribute="bottom" constant="13" id="SbX-2j-BBC"/>
+                    <constraint firstAttribute="trailing" secondItem="P0C-b7-iNL" secondAttribute="trailing" constant="16" id="VQn-QM-eOp"/>
+                    <constraint firstItem="90Z-GT-pYS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="eVa-iA-dgr"/>
+                    <constraint firstItem="j9V-HC-k7d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fH4-7b-Vb1"/>
+                    <constraint firstItem="P0C-b7-iNL" firstAttribute="top" secondItem="j9V-HC-k7d" secondAttribute="bottom" constant="8" id="hPY-ae-Vkh"/>
+                    <constraint firstAttribute="trailing" secondItem="j9V-HC-k7d" secondAttribute="trailing" constant="16" id="j6n-jh-aGZ"/>
+                    <constraint firstItem="90Z-GT-pYS" firstAttribute="top" secondItem="P0C-b7-iNL" secondAttribute="bottom" constant="13" id="wal-Mz-AU9"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="challengeDes" destination="P0C-b7-iNL" id="WBj-TJ-zAB"/>
                 <outlet property="challengeName" destination="j9V-HC-k7d" id="aZP-zj-uJw"/>
                 <outlet property="progressView" destination="90Z-GT-pYS" id="T5V-Hc-sBY"/>
+                <outlet property="timeLeft" destination="P0C-b7-iNL" id="WBj-TJ-zAB"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="99.441964285714278"/>
         </tableViewCell>

@@ -11,7 +11,7 @@ import UIKit
 class MyChallengeCell: UITableViewCell {
 
     @IBOutlet weak var challengeName: UILabel!
-    @IBOutlet weak var challengeDes: UILabel!
+    @IBOutlet weak var timeLeft: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
     override func awakeFromNib() {
