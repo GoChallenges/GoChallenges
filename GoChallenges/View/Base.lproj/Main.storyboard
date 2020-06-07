@@ -415,7 +415,7 @@
             </objects>
             <point key="canvasLocation" x="3595.652173913044" y="-137.27678571428569"/>
         </scene>
-        <!--Challenges Feed-->
+        <!--Food-->
         <scene sceneID="e7u-rO-j0e">
             <objects>
                 <viewController id="1Rs-ao-cUb" customClass="ChallengesFeed" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
@@ -463,7 +463,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tXz-gr-Msg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yx3-Aq-nRS"/>
+                    <navigationItem key="navigationItem" title="Food" id="yx3-Aq-nRS"/>
                     <connections>
                         <outlet property="challengeTableView" destination="SQf-bt-La4" id="1v0-gF-zEb"/>
                         <segue destination="MCI-cC-RiN" kind="show" identifier="feedToDetail" id="moj-q5-Yx9"/>

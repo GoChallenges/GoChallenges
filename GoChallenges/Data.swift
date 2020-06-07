@@ -17,7 +17,7 @@ struct Data{
     var unit : String
     var start : Date
     var end : Date
-    var timeStamp : Date
+    var timeCreated : String
     var isComplete : Bool = false
     
     var dictionary : [String:Any]{
@@ -29,12 +29,12 @@ struct Data{
             "Unit" : unit,
             "Start Date" : start,
             "End Date" : end,
-            "timeStamp" : timeStamp,
+            "time" : timeCreated,
             "Completion" : isComplete
         ]
     }
 }
-
+/*
 extension Data : DocumentSerializsble{
     init?(dictionary: [String:Any]){
         guard let creator = dictionary["Creator"] as? String,
@@ -49,4 +49,4 @@ extension Data : DocumentSerializsble{
         self.init(creator: creator, challengeName: challengeName, challengeDescription: challengeDescription, goal: goal, unit: unit, start: start, end: end, timeStamp: timeStamp, isComplete: isComplete)
     }
 }
-
+*/

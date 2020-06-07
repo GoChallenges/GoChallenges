@@ -49,14 +49,21 @@ class NewChallenge: UIViewController {
     @IBAction func createButton(_ sender: UIButton) {
         if let name = challengeNameTextField.text, let descriptionText = descriptionTextView.text, let userName = Auth.auth().currentUser?.email, let target = goalTextField.text, let firstDay = startTextField.text, let lastDay = endTextField.text, let goalUnit = unitTextField.text{
             
-            if name.isEmpty || descriptionText.isEmpty || userName.isEmpty || firstDay.isEmpty || lastDay.isEmpty || goalUnit.isEmpty{
+            if name.isEmpty || descriptionText.isEmpty || userName.isEmpty || firstDay.isEmpty || lastDay.isEmpty{
                 message = "At least one of your inputs is empty. Please try again!"
                 popUpMessage(text: message)
             }
             
             // when the goal value is can be convert into a number
             if let goalNum = Float(target) {
-                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeStamp: Date(), isComplete: false)
+                
+                // Get the time the user created the challenge
+                let formatter = DateFormatter()
+                formatter.timeStyle = .short
+                formatter.dateStyle = .none
+                let timeString = formatter.string(from: currentDate)
+                
+                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, isComplete: false)
                 
                 var dataRef : DocumentReference? = nil
                 
@@ -77,17 +84,16 @@ class NewChallenge: UIViewController {
             self.performSegue(withIdentifier: K.createToFeed, sender: self)
         }
     }
-    
+    /*
     //This function will be called by the view controller just before a segue is performed. Use this to pass data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.createToFeed {
             let nav = segue.destination as! UINavigationController //parent screeen
             let feedVC = nav.topViewController as! ChallengesFeed  //child screen
             feedVC.categoryFilter = categorySelected
-            feedVC.challengeList = challengeArray
         }
     }
-    
+    */
     //this function shows pop up message
     func popUpMessage (text : String){
         let alert = UIAlertController(title: "Error!", message: text, preferredStyle: UIAlertController.Style.alert)

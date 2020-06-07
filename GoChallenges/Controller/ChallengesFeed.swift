@@ -12,32 +12,33 @@ class ChallengesFeed: UIViewController {
     
     let db = Firestore.firestore()
     var categoryFilter : String = ""
-    var challengeList = [Data]()
+    var challengeDict = [QueryDocumentSnapshot]()
+    //var challengeList = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         challengeTableView.dataSource = self
 
         loadData()
-        checkForUpdates()
+        //checkForUpdates()
         
     }
     
     func loadData(){
-        db.collection("Food").getDocuments(){
-            querySnapshot, error in
-            if let e = error{
-                print("\(e.localizedDescription)")
+        db.collection("Food").getDocuments { (querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
             }else{
-                self.challengeList = querySnapshot!.documents.flatMap({Data(dictionary: $0.data())}) //update the challenge array or list
-                DispatchQueue.main.async {
-                    self.challengeTableView.reloadData() //reload the table view
-                }
+                self.challengeDict = querySnapshot!.documents
+                self.challengeTableView.reloadData()
+                
             }
         }
     }
     
     //realtime update here
     //Update when having a new challenge created
+    /*
     func checkForUpdates(){
         //only querying what happpened after this function runs for the first time
         db.collection("Food").whereField("timeStamp", isGreaterThan: Date())
@@ -62,7 +63,7 @@ class ChallengesFeed: UIViewController {
         
         
     }
-
+    */
 
 }
 
@@ -73,16 +74,16 @@ extension  ChallengesFeed : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challengeList.count
+        return challengeDict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.challengeCell, for: indexPath)
         
-        let challenge = challengeList[indexPath.row]
+        let challenge = challengeDict[indexPath.row]
         
-        cell.textLabel?.text = challenge.challengeName
-        cell.detailTextLabel?.text = "\(challenge.timeStamp)"
+        cell.textLabel?.text = challenge["Challenge Name"] as! String
+        cell.detailTextLabel?.text = "\(challenge["time"] ?? "none")"
         
         return cell
     }
