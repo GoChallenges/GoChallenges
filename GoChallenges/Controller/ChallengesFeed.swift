@@ -18,7 +18,6 @@ class ChallengesFeed: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         challengeTableView.dataSource = self
-
         loadData()
         //checkForUpdates()
         
