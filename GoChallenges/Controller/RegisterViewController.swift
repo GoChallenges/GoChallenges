@@ -29,18 +29,19 @@ class RegisterViewController: UIViewController {
         if let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text{
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
-                    //pop up error message
-                    let alert = UIAlertController(title: "Error!", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (action) in
-                        alert.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    self.displayErrorAlert(error: error)
                 } else {
-                    
                     // Update display name
-//                    let currentUser = Auth.auth().currentUser
-//                    currentUser.update
-
+                    let currentUser = Auth.auth().currentUser
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = name
+                    changeRequest?.commitChanges { (error) in
+                        if let error = error {
+                            self.displayErrorAlert(error: error)
+                        }
+                    }
+                    
+                    
                     // Create a Profile object
                     var ref: DocumentReference? = nil
                     let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], createdChallenges: [],
@@ -49,7 +50,7 @@ class RegisterViewController: UIViewController {
                     ref = self.db.collection("Profiles").addDocument(data: profile.array) {
                         err in
                         if let err = err {
-                            print("Error adding document: \(err)")
+                            self.displayErrorAlert(error: err)
                         } else {
                             print("Document added with ID: \(ref!.documentID)")
                             
@@ -73,6 +74,8 @@ class RegisterViewController: UIViewController {
     */
 
 }
+
+
 
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

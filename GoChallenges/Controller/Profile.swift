@@ -47,6 +47,11 @@ class Profile: UIViewController {
                 self.friendsLabel.text = "\(friends.count)"
             }
         }
+        
+        if let user = currentUser {
+            let displayName = user.displayName as! String
+            print(displayName)
+        }
     }
     
 //    func loadProfile() {
