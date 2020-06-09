@@ -13,6 +13,9 @@ class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var nameTextfield: UITextField!
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
+        if let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text{
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     //pop up error message
@@ -33,10 +36,22 @@ class RegisterViewController: UIViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    print("Register successful.")
+
+                    // Create a Profile object
+                    var ref: DocumentReference? = nil
+                    let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], friends: [])
                     
-                    //perform segue to main feed screen
-                    self.performSegue(withIdentifier: K.registerToFeed, sender: self)
+                    ref = self.db.collection("Profiles").addDocument(data: profile.array) {
+                        err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+                            
+                            //perform segue to main feed screen
+                            self.performSegue(withIdentifier: K.registerToFeed, sender: self)
+                        }
+                    }
                 }
             }
         }
