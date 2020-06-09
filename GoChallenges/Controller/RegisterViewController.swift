@@ -36,10 +36,15 @@ class RegisterViewController: UIViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    
+                    // Update display name
+//                    let currentUser = Auth.auth().currentUser
+//                    currentUser.update
 
                     // Create a Profile object
                     var ref: DocumentReference? = nil
-                    let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], friends: [])
+                    let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], createdChallenges: [],
+                                              friends: [])
                     
                     ref = self.db.collection("Profiles").addDocument(data: profile.array) {
                         err in

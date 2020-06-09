@@ -28,4 +28,17 @@ struct K {
     static let challengeCell = "challengeCell"
     // Cell nib names
     static let myChallengeCellNib = "MyChallengeCell"
+    
+    // Collection names
+    static let profiles = "Profiles"
+    
+    // Collection keys
+    struct profile {
+        static let email = "email"
+        static let name = "name"
+        static let date = "joinedDate"
+        static let current = "currentChallenges"
+        static let finished = "finishedChallenges"
+        static let friends = "friends"
+    }
 }

@@ -15,6 +15,7 @@ class ProfileData {
     var joinedDate: Date
     var currentChallenges: NSDictionary
     var finishedChallenges: NSDictionary
+    var createdChallenges: NSArray
     var friends: [User]
     
     var array: [String:Any] {
@@ -24,16 +25,18 @@ class ProfileData {
             "joinedDate": self.joinedDate,
             "currentChallenges": self.currentChallenges,
             "finishedChallenges": self.finishedChallenges,
+            "createdChallenges": self.createdChallenges,
             "friends": self.friends
         ]
     }
     
-    init(username: String, email: String, joinedDate: Date, currentChallenges:NSDictionary, finishedChallenges: NSDictionary, friends: [User]) {
+    init(username: String, email: String, joinedDate: Date, currentChallenges:NSDictionary, finishedChallenges: NSDictionary, createdChallenges: NSArray, friends: [User]) {
         self.username = username
         self.email = email
         self.joinedDate = joinedDate
         self.currentChallenges = currentChallenges
         self.finishedChallenges = finishedChallenges
+        self.createdChallenges = createdChallenges
         self.friends = friends
         
     }
