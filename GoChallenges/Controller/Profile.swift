@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class Profile: UIViewController {
@@ -18,10 +19,13 @@ class Profile: UIViewController {
     @IBOutlet weak var completeChalLabel: UILabel!
     @IBOutlet weak var friendsLabel: UILabel!
     
+    let user = Auth.auth().currentUser
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        loadUser()
     }
     
     func loadUser() {
