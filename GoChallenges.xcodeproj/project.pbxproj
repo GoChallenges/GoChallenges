@@ -21,6 +21,7 @@
 		2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B00E24853924001FF13D /* MainViewController.swift */; };
 		2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B0102485394E001FF13D /* SigninViewController.swift */; };
 		2FC3B01324853C3F001FF13D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B01224853C3F001FF13D /* RegisterViewController.swift */; };
+		2FF8AA0824927F2C004E3AF8 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF8AA0724927F2C004E3AF8 /* CameraViewController.swift */; };
 		2FF9753224849B1A0079ADE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9753124849B1A0079ADE0 /* AppDelegate.swift */; };
 		2FF9753424849B1A0079ADE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9753324849B1A0079ADE0 /* SceneDelegate.swift */; };
 		2FF9753924849B1A0079ADE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF9753724849B1A0079ADE0 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		2FC3B00E24853924001FF13D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2FC3B0102485394E001FF13D /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		2FC3B01224853C3F001FF13D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2FF8AA0724927F2C004E3AF8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		2FF9752E24849B1A0079ADE0 /* GoChallenges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoChallenges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF9753124849B1A0079ADE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FF9753324849B1A0079ADE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				2FB9157E248604500095627E /* ChallengeDetail.swift */,
 				2FB91580248604A80095627E /* FriendList.swift */,
 				2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */,
+				2FF8AA0724927F2C004E3AF8 /* CameraViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,7 +251,7 @@
 				2FF9752A24849B1A0079ADE0 /* Sources */,
 				2FF9752B24849B1A0079ADE0 /* Frameworks */,
 				2FF9752C24849B1A0079ADE0 /* Resources */,
-				E8351C5BA9B2E2FCA71E0332 /* [CP] Embed Pods Frameworks */,
+				07F934A91876748078E287CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,7 +289,7 @@
 				2FF9754B24849B1E0079ADE0 /* Sources */,
 				2FF9754C24849B1E0079ADE0 /* Frameworks */,
 				2FF9754D24849B1E0079ADE0 /* Resources */,
-				4C85F044311E0DBAA2552CDA /* [CP] Embed Pods Frameworks */,
+				61DF568F7A566A4C70CF2D76 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -371,7 +374,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C85F044311E0DBAA2552CDA /* [CP] Embed Pods Frameworks */ = {
+		07F934A91876748078E287CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61DF568F7A566A4C70CF2D76 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,23 +474,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E8351C5BA9B2E2FCA71E0332 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -481,6 +484,7 @@
 				2FF9753224849B1A0079ADE0 /* AppDelegate.swift in Sources */,
 				2FB9157F248604500095627E /* ChallengeDetail.swift in Sources */,
 				2FB915792486013F0095627E /* Profile.swift in Sources */,
+				2FF8AA0824927F2C004E3AF8 /* CameraViewController.swift in Sources */,
 				2FB91577248601130095627E /* ChallengesFeed.swift in Sources */,
 				2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */,
 				2FB9157B248601570095627E /* NewChallenge.swift in Sources */,

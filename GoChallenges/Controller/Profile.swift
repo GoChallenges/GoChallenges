@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import AlamofireImage
 
 class Profile: UIViewController {
 
@@ -41,7 +42,7 @@ class Profile: UIViewController {
                 let completeChallenges = profile[K.profile.finished] as! NSDictionary
                 let friends = profile[K.profile.friends] as! NSArray
                 
-                self.username.text = username as! String
+                self.username.text = username 
                 self.currentChalLabel.text = "\(currentChallenges.count)"
                 self.completeChalLabel.text = "\(completeChallenges.count)"
                 self.friendsLabel.text = "\(friends.count)"
@@ -49,7 +50,12 @@ class Profile: UIViewController {
         }
         
         if let user = currentUser {
-            let displayName = user.displayName as! String
+            let displayName = user.displayName!
+            if let imageUrl = user.photoURL {
+                profileImageView.af_setImage(withURL: imageUrl)
+            }
+            
+            
             print(displayName)
         }
     }
@@ -84,7 +90,7 @@ class Profile: UIViewController {
 //        }
 //    }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -92,6 +98,12 @@ class Profile: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
+    
+    //MARK: - Add Profile Image
 
+    @IBAction func addProfileImage(_ sender: Any) {
+        performSegue(withIdentifier: "profileToCamera", sender: sender)
+    }
 }
+
