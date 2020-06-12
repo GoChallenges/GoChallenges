@@ -18,6 +18,7 @@ class ChallengesFeed: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         challengeTableView.dataSource = self
+        challengeTableView.delegate = self
         loadData()
         //checkForUpdates()
         
@@ -66,7 +67,7 @@ class ChallengesFeed: UIViewController {
 
 }
 
-//MARK: - Table View Data Source
+//MARK: - Table View Data Source and Delegate
 extension  ChallengesFeed : UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -86,5 +87,12 @@ extension  ChallengesFeed : UITableViewDataSource{
         
         return cell
     }
+    
+}
 
+extension ChallengesFeed : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.feedToDetail, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true) //stop highlight the cell after select
+    }
 }
