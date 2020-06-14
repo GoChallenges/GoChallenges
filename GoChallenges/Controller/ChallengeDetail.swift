@@ -7,16 +7,35 @@
 //
 
 import UIKit
-
+import Firebase
 class ChallengeDetail: UIViewController {
-
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var nameLabel: UILabel!
+    let db = Firestore.firestore()
+    //var challengeDict = [QueryDocumentSnapshot]()
+    
+    //Data got from last screen
+    var descriptionText: String = ""
+    var nameText : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameLabel.text = nameText
+        descriptionTextView.text = descriptionText
+        //loadData()
     }
-    
-
+    /*
+    func loadData(){
+        db.collection("Food").getDocuments { (querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+            }else{
+                self.challengeDict = querySnapshot!.documents
+                descriptionTextView.text = challengeDict.chall
+            }
+        }
+    }
+ */
     /*
     // MARK: - Navigation
 

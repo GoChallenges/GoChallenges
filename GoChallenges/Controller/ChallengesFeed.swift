@@ -13,6 +13,10 @@ class ChallengesFeed: UIViewController {
     let db = Firestore.firestore()
     var categoryFilter : String = ""
     var challengeDict = [QueryDocumentSnapshot]()
+    
+    //variables to pass to the next view controller file
+    var passDescrip : String = "" //description
+    var passName : String = "" //name
     //var challengeList = []
     
     override func viewDidLoad() {
@@ -36,6 +40,13 @@ class ChallengesFeed: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.feedToDetail{
+            let detailVC = segue.destination as! ChallengeDetail
+            detailVC.descriptionText = passDescrip
+            detailVC.nameText = passName
+        }
+    }
     //realtime update here
     //Update when having a new challenge created
     /*
@@ -84,7 +95,8 @@ extension  ChallengesFeed : UITableViewDataSource{
         
         cell.textLabel?.text = challenge["Challenge Name"] as! String
         cell.detailTextLabel?.text = "\(challenge["time"] ?? "none")"
-        
+        passDescrip = challenge["Challenge Description"] as! String
+        passName = challenge["Challenge Name"] as! String
         return cell
     }
     
