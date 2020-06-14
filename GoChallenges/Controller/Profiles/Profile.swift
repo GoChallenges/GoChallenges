@@ -21,7 +21,6 @@ class Profile: UIViewController {
     @IBOutlet weak var friendsLabel: UILabel!
     
     let currentUser = Auth.auth().currentUser
-    var otherUser : User!
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -52,44 +51,12 @@ class Profile: UIViewController {
         if let user = currentUser {
             let displayName = user.displayName!
             if let imageUrl = user.photoURL {
-                profileImageView.af_setImage(withURL: imageUrl)
+                print(imageUrl)
+                profileImageView.af.setImage(withURL: imageUrl)
             }
-            
-            
             print(displayName)
         }
     }
-    
-//    func loadProfile() {
-//        // Current user profile
-//        if currentUser == otherUser {
-//            let profileRef = db.collection(K.profiles)
-//            let email = currentUser?.email
-//            let query = profileRef.whereField("email", isEqualTo: email!)
-//
-//            query.getDocuments { (querySnapshots, error) in
-//                if let error = error {
-//                    print("Error: \(error)")
-//                } else {
-//                    let profile = querySnapshots!.documents[0]
-//                    let username = profile[K.profile.name] as! String
-//                    let currentChallenges = profile[K.profile.current] as! NSArray
-//                    let completeChallenges = profile[K.profile.finished] as! NSArray
-//                    let friends = profile[K.profile.friends] as! NSArray
-//
-//                    self.username.text = username as! String
-//                    self.currentChalLabel.text = "\(currentChallenges.count)"
-//                    self.completeChalLabel.text = "\(completeChallenges.count)"
-//                    self.friendsLabel.text = "\(friends.count)"
-//                }
-//            }
-//        } else {
-//
-//        // Other's profile
-//
-//        }
-//    }
-    
     
     // MARK: - Navigation
 

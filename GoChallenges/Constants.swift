@@ -24,6 +24,8 @@ struct K {
     static let profileToFriendList = "profileToFriendList"
     static let profileToCamera = "profileToCamera"
     
+    static let cameraToProfile = "cameraToProfile"
+    
     // Cell indentifiers
     static let myChallengeCell = "myChallengeCell"
     static let challengeCell = "challengeCell"

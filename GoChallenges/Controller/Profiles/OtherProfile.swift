@@ -1,14 +1,14 @@
 //
-//  CameraViewController.swift
+//  OtherProfile.swift
 //  GoChallenges
 //
-//  Created by nguyen thy on 6/11/20.
+//  Created by nguyen thy on 6/14/20.
 //  Copyright © 2020 Han Nguyen. All rights reserved.
 //
 
 import UIKit
 
-class CameraViewController: UIViewController {
+class OtherProfile: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
