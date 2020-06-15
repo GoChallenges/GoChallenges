@@ -13,7 +13,7 @@ class NewChallenge: UIViewController {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var unitTextField: UITextField!
     
-    let challengeFeed = ChallengesFeed()
+    //let challengeFeed = ChallengesFeed()
     
     let db = Firestore.firestore()
     var challengeArray = [Data]()
@@ -50,21 +50,23 @@ class NewChallenge: UIViewController {
         if let name = challengeNameTextField.text, let descriptionText = descriptionTextView.text, let userName = Auth.auth().currentUser?.email, let target = goalTextField.text, let firstDay = startTextField.text, let lastDay = endTextField.text, let goalUnit = unitTextField.text{
             
             if name.isEmpty || descriptionText.isEmpty || userName.isEmpty || firstDay.isEmpty || lastDay.isEmpty{
-                message = "At least one of your inputs is empty. Please try again!"
-                popUpMessage(text: message)
+                popUpMessage(text: "At least one of your inputs is empty. Please try again!")
             }
             
             // when the goal value is can be convert into a number
             if let goalNum = Float(target) {
                 
                 // Get the time the user created the challenge
+                //Convert Date to String
                 let formatter = DateFormatter()
                 formatter.timeStyle = .short
                 formatter.dateStyle = .none
                 let timeString = formatter.string(from: currentDate)
                 
+                //Data object
                 let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, isComplete: false)
                 
+                //Add data to database
                 var dataRef : DocumentReference? = nil
                 
                 dataRef = db.collection(categorySelected).addDocument(data: newChallenge.dictionary){
@@ -76,21 +78,23 @@ class NewChallenge: UIViewController {
                     }
                 }
             } else {
-                message = "Your input is not a number. Please enter a valid number!"
-                popUpMessage(text: message)
+                popUpMessage(text: "Your input is not a number. Please enter a valid number!")
             }
             
             //move to next screen
             self.performSegue(withIdentifier: K.createToFeed, sender: self)
         }
     }
+    
     /*
     //This function will be called by the view controller just before a segue is performed. Use this to pass data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.createToFeed {
             let nav = segue.destination as! UINavigationController //parent screeen
             let feedVC = nav.topViewController as! ChallengesFeed  //child screen
-            feedVC.categoryFilter = categorySelected
+            //feedVC.categoryFilter = categorySelected
+            feedVC.startDay = startDate
+            feedVC.endDay = endDate
         }
     }
     */

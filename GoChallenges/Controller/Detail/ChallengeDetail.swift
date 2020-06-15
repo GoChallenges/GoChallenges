@@ -9,20 +9,29 @@
 import UIKit
 import Firebase
 class ChallengeDetail: UIViewController {
+    
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var remaingLabel: UILabel!
+    
     let db = Firestore.firestore()
     //var challengeDict = [QueryDocumentSnapshot]()
     
     //Data got from last screen
     var descriptionText: String = ""
     var nameText : String = ""
-    
+    var startDate : String = ""
+    var endDate : String = ""
+    var daysLeft : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = nameText
         descriptionTextView.text = descriptionText
-        //loadData()
+        startLabel.text = startDate
+        endLabel.text = endDate
+        remaingLabel.text = daysLeft
     }
     /*
     func loadData(){
