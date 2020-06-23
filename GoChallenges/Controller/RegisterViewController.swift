@@ -15,14 +15,25 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var nameTextfield: UITextField!
     
+    @IBOutlet weak var emailView: UIImageView!
+    @IBOutlet weak var passwordView: UIImageView!
+    
+    @IBOutlet weak var registerButton: UIButton!
+    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nameTextfield.delegate = self
         self.emailTextfield.delegate = self
         self.passwordTextfield.delegate = self
         
-        emailTextfield.becomeFirstResponder()
+        updateUI()
+        
+        nameTextfield.becomeFirstResponder()
+       
+        
     }
     
     @IBAction func register(_ sender: Any) {
@@ -84,4 +95,17 @@ extension RegisterViewController: UITextFieldDelegate {
         
         return true
     }
+    
 }
+
+
+//MARK: - UI Adjustment
+
+extension RegisterViewController {
+    func updateUI() {
+        emailView.layer.cornerRadius = 20
+        passwordView.layer.cornerRadius = 20
+        registerButton.layer.cornerRadius = 20
+    }
+}
+
