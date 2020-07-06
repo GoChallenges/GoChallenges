@@ -12,10 +12,14 @@ import Firebase
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        signinButton.layer.cornerRadius = 10
+        registerButton.layer.cornerRadius = 10
     }
     
 
