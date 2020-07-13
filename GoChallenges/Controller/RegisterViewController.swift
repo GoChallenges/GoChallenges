@@ -37,27 +37,19 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
-        if let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text{
+        if let email = emailTextfield.text, let password = passwordTextfield.text, let username = nameTextfield.text{
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     self.displayErrorAlert(error: error)
                 } else {
-                    // Update display name
-                    let currentUser = Auth.auth().currentUser
-                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                    changeRequest?.displayName = name
-                    changeRequest?.commitChanges { (error) in
-                        if let error = error {
-                            self.displayErrorAlert(error: error)
-                        }
-                    }
-                    
-                    
+    
                     // Create a Profile object
                     var ref: DocumentReference? = nil
-                    let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], createdChallenges: [],
-                                              friends: [])
                     
+//                    let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], createdChallenges: [],
+//                                              friends: [])
+                    
+                    let profile = ProfileData(username: username, email: email, joinedDate: Date.init())
                     ref = self.db.collection("Profiles").addDocument(data: profile.array) {
                         err in
                         if let err = err {
@@ -105,7 +97,7 @@ extension RegisterViewController {
     func updateUI() {
         emailView.layer.cornerRadius = 20
         passwordView.layer.cornerRadius = 20
-        registerButton.layer.cornerRadius = 20
+        registerButton.layer.cornerRadius = 10
     }
 }
 

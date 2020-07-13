@@ -43,5 +43,6 @@ struct K {
         static let current = "currentChallenges"
         static let finished = "finishedChallenges"
         static let friends = "friends"
+        static let image = "profileImageURL"
     }
 }

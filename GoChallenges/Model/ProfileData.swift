@@ -30,14 +30,14 @@ class ProfileData {
         ]
     }
     
-    init(username: String, email: String, joinedDate: Date, currentChallenges:NSDictionary, finishedChallenges: NSDictionary, createdChallenges: NSArray, friends: [User]) {
+    init(username: String, email: String, joinedDate: Date) {
         self.username = username
         self.email = email
         self.joinedDate = joinedDate
-        self.currentChallenges = currentChallenges
-        self.finishedChallenges = finishedChallenges
-        self.createdChallenges = createdChallenges
-        self.friends = friends
+        self.currentChallenges = [:]
+        self.finishedChallenges = [:]
+        self.createdChallenges = []
+        self.friends = []
         
     }
 }

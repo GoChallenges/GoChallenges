@@ -11,16 +11,22 @@ import Firebase
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var url: URL?
-    
     @IBOutlet weak var pickedImageView: UIImageView!
+    
+    var userID: String!
+    var imageURLString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func onDismiss(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    //MARK: - Pick an Image and Display to VC
+
     @IBAction func onCameraButton(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -43,40 +49,54 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        print(info)
-        
         // Get the image captured by the UIImagePickerController
         let editedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
-
-        // Do something with the images (based on your use case)
         pickedImageView.image = editedImage
         
-        // Get the URL of the image
-        
-        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL{
-            let imgName = imgUrl.lastPathComponent
-            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-            let localPath = documentDirectory?.appending(imgName)
-
-//            url = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
-            url = URL(fileURLWithPath: localPath!)
-
-        }
-
-        // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
+        
+        
     }
     
+    //MARK: - Upload the image file to Firebase Storage
     @IBAction func completeProfile(_ sender: Any) {
-        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.photoURL = url!
-        changeRequest?.commitChanges { (error) in
-            if let error = error {
-                self.displayErrorAlert(error: error)
-            } else {
-                print("Successfull update image")
-                self.performSegue(withIdentifier: "cameraToProfile", sender: sender)
+        let imageName = NSUUID().uuidString
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child("profile_image.png").child("\(imageName).png")
+        
+        if let updateData = pickedImageView.image!.pngData() {
+            storageRef.putData(updateData, metadata: nil) { (metadata, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
+                } else {
+                    print("Upload profile successfully")
+                    
+                    // Update profile image url in Database
+                    
+                    // Get the URL String
+                    storageRef.downloadURL { (url, error) in
+                        if let error = error {
+                            print("Error: \(error.localizedDescription)")
+                        } else {
+                            self.imageURLString = url?.absoluteString
+                            print(self.imageURLString)
+                            
+                            // Update Profiles object wit URL String
+                            let db = Firestore.firestore()
+                            let profileRef = db.collection("Profiles").document(self.userID)
+                            profileRef.updateData(["profileImageURL" : self.imageURLString]) { (error) in
+                                if let error = error {
+                                    print("Error: \(error)")
+                                } else {
+                                    print("Add image url to database successfully")
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

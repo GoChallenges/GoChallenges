@@ -6,10 +6,11 @@ target 'GoChallenges' do
   use_frameworks!
   
   # Pods for GoChallenges
-	pod 'Firebase/Auth'
-  	pod 'Firebase/Core'
-  	pod 'Firebase/Firestore'
-  	pod "AlamofireImage"
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod "AlamofireImage"
 
   target 'GoChallengesTests' do
     inherit! :search_paths
