@@ -106,6 +106,6 @@ extension MyChallenges: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: K.currentToDetail, sender: self)
+        performSegue(withIdentifier: K.segue.currentToDetail, sender: self)
     }
 }

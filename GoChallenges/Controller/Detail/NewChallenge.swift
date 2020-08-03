@@ -82,14 +82,14 @@ class NewChallenge: UIViewController {
             }
             
             //move to next screen
-            self.performSegue(withIdentifier: K.createToFeed, sender: self)
+            self.performSegue(withIdentifier: K.segue.createToFeed, sender: self)
         }
     }
     
     /*
     //This function will be called by the view controller just before a segue is performed. Use this to pass data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.createToFeed {
+        if segue.identifier == K.segue.createToFeed {
             let nav = segue.destination as! UINavigationController //parent screeen
             let feedVC = nav.topViewController as! ChallengesFeed  //child screen
             //feedVC.categoryFilter = categorySelected

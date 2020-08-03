@@ -55,7 +55,7 @@ class SigninViewController: UIViewController {
                     print("Log In successful")
                     
                     //perform segue here
-                    self?.performSegue(withIdentifier: K.signinToFeed, sender: self)
+                    self?.performSegue(withIdentifier: K.segue.signinToFeed, sender: self)
                     
                 }
             }

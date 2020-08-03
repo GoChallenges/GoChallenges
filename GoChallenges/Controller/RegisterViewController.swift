@@ -55,7 +55,7 @@ class RegisterViewController: UIViewController {
                             print("Document added with ID: \(ref!.documentID)")
                             
                             //perform segue to main feed screen
-                            self.performSegue(withIdentifier: K.registerToFeed, sender: self)
+                            self.performSegue(withIdentifier: K.segue.registerToFeed, sender: self)
                         }
                     }
                 }

@@ -354,9 +354,10 @@
                     <navigationItem key="navigationItem" id="Sgs-2z-UWd"/>
                     <connections>
                         <outlet property="addFriendButton" destination="xpO-nZ-qXw" id="4Vo-4R-MUX"/>
+                        <outlet property="challengeTableView" destination="0ex-oq-i0b" id="e1S-nb-dOl"/>
                         <outlet property="changeProfileButton" destination="HT1-fn-tq0" id="v5G-aw-TF7"/>
                         <outlet property="completedChallengeButton" destination="xos-ar-HCe" id="Hma-gZ-wqF"/>
-                        <outlet property="currentChallengeButton" destination="ts1-jk-Q8i" id="vbg-ZP-wqk"/>
+                        <outlet property="createdChallengeButton" destination="ts1-jk-Q8i" id="vbg-ZP-wqk"/>
                         <outlet property="friendButton" destination="YvR-zt-uy6" id="TFn-ec-uQR"/>
                         <outlet property="profileImageView" destination="IrQ-04-rQg" id="g9R-hI-60F"/>
                         <outlet property="username" destination="7Xg-3u-5eM" id="fgN-qZ-GtT"/>

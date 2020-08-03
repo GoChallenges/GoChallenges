@@ -10,22 +10,6 @@ import Foundation
 
 struct K {
     
-    // Segue identifiers
-    static let toRegister = "toRegister"
-    static let toSignin = "toSignin"
-    
-    
-    static let signinToFeed = "signinToFeed"
-    static let registerToFeed = "registerToFeed"
-    
-    static let feedToDetail = "feedToDetail"
-    static let createToFeed = "createToFeed"
-    static let currentToDetail = "currentToDetail"
-    static let profileToFriendList = "profileToFriendList"
-    static let profileToCamera = "profileToCamera"
-    
-    static let cameraToProfile = "cameraToProfile"
-    
     // Cell indentifiers
     static let myChallengeCell = "myChallengeCell"
     static let challengeCell = "challengeCell"
@@ -44,11 +28,27 @@ struct K {
         static let date = "joinedDate"
         static let current = "currentChallenges"
         static let finished = "finishedChallenges"
+        static let created = "createdChallenges"
         static let friends = "friends"
         static let image = "profileImageURL"
     }
     
     struct segue {
+        static let toRegister = "toRegister"
+        static let toSignin = "toSignin"
+        
+        
+        static let signinToFeed = "signinToFeed"
+        static let registerToFeed = "registerToFeed"
+        
+        static let feedToDetail = "feedToDetail"
+        static let createToFeed = "createToFeed"
+        static let currentToDetail = "currentToDetail"
+        static let profileToFriendList = "profileToFriendList"
+        static let profileToCamera = "profileToCamera"
+        
+        static let cameraToProfile = "cameraToProfile"
+        
         static let profileToTB = "profileToTableView"
     }
 }

@@ -24,11 +24,11 @@ class MainViewController: UIViewController {
     
 
     @IBAction func toSignin(_ sender: Any) {
-        performSegue(withIdentifier: K.toSignin, sender: sender)
+        performSegue(withIdentifier: K.segue.toSignin, sender: sender)
     }
     
     @IBAction func toRegister(_ sender: Any) {
-        performSegue(withIdentifier: K.toRegister, sender: sender)
+        performSegue(withIdentifier: K.segue.toRegister, sender: sender)
     }
     
     // MARK: - Navigation

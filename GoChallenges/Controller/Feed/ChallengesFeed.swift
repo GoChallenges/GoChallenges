@@ -8,8 +8,6 @@ class ChallengesFeed: UIViewController {
 
     @IBOutlet weak var challengeTableView: UITableView!
 
-    
-    
     let db = Firestore.firestore()
     var categoryFilter : String = ""
     var challengeDict = [QueryDocumentSnapshot]()
@@ -47,36 +45,6 @@ class ChallengesFeed: UIViewController {
             }
         }
     }
-    
-    //realtime update here
-    //Update when having a new challenge created
-    /*
-    func checkForUpdates(){
-        //only querying what happpened after this function runs for the first time
-        db.collection("Food").whereField("timeStamp", isGreaterThan: Date())
-            // this will listen for the changes to the challengeList
-            .addSnapshotListener {
-                querySnapshot, error in
-                
-                guard let snapshot = querySnapshot else {return}
-                
-                snapshot.documentChanges.forEach {
-                    diff in
-                    
-                    //everytime new thing being added
-                    if diff.type == .added{
-                        self.challengeList.append((Data(dictionary: diff.document.data()))!)
-                        DispatchQueue.main.async {
-                            self.challengeTableView.reloadData()
-                        }
-                    }
-                }
-        }
-        
-        
-    }
-    */
-
 }
 
 //MARK: - Table View Data Source and Delegate

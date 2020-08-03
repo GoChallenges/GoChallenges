@@ -18,6 +18,7 @@ class ProfileData {
     var createdChallenges: [QueryDocumentSnapshot]
     var friends : [QueryDocumentSnapshot]
     
+    
     var array: [String:Any] {
         return [
             "email": self.email,

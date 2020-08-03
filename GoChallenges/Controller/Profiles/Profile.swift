@@ -11,16 +11,16 @@ import Firebase
 import FirebaseAuth
 import AlamofireImage
 
-class Profile: UIViewController {
-
+class Profile: UIViewController, UITableViewDelegate {
+    
+    @IBOutlet weak var challengeTableView: UITableView!
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var username: UILabel!
     
-    
-    @IBOutlet weak var currentChallengeButton: UIButton!
+    @IBOutlet weak var createdChallengeButton: UIButton!
     @IBOutlet weak var completedChallengeButton: UIButton!
     @IBOutlet weak var friendButton: UIButton!
-    
     
     @IBOutlet weak var changeProfileButton: UIButton!
     @IBOutlet weak var addFriendButton: UIButton!
@@ -30,17 +30,22 @@ class Profile: UIViewController {
     let currentUser = Auth.auth().currentUser as! User
     var profile : QueryDocumentSnapshot!
     var friends : [QueryDocumentSnapshot]!
+    var currentChallenges = [QueryDocumentSnapshot:Float]()
 
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        challengeTableView.delegate = self
+        challengeTableView.dataSource = self
+        
+        challengeTableView.register(UINib(nibName: K.myChallengeCellNib, bundle: nil), forCellReuseIdentifier: K.myChallengeCell)
+        challengeTableView.rowHeight = 150
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         loadProfile()
-        //hideFeatures()
     }
     
     // Load the current user profile
@@ -58,21 +63,25 @@ class Profile: UIViewController {
                 self.userID = self.profile.documentID
                 
                 let username = self.profile[K.profile.name] as! String
-                let currentChallenges = self.profile[K.profile.current] as! NSDictionary
-                let completeChallenges = self.profile[K.profile.finished] as! NSArray
+                let createdChallenges = self.profile[K.profile.created] as! [QueryDocumentSnapshot]
+                let completedChallenges = self.profile[K.profile.finished] as! [QueryDocumentSnapshot]
+                
+                self.currentChallenges = self.profile[K.profile.current] as! [QueryDocumentSnapshot:Float]
+                
                 self.friends = self.profile[K.profile.friends] as! [QueryDocumentSnapshot]
                 
                 self.username.text = username
-                self.currentChallengeButton.setTitle("\(currentChallenges.count)", for: .normal)
-                self.completedChallengeButton.setTitle("\(completeChallenges.count)", for: .normal)
+                self.createdChallengeButton.setTitle("\(createdChallenges.count)", for: .normal)
+                self.completedChallengeButton.setTitle("\(completedChallenges.count)", for: .normal)
                 self.friendButton.setTitle("\(self.friends!.count)", for: .normal)
                 
                 if let imageURLString = self.profile[K.profile.image] {
                     let imageURL = URL(string: imageURLString as! String)
                     self.profileImageView.af.setImage(withURL: imageURL!)
                     
-                self.hideFeatures()
+                    self.hideFeatures()
                 }
+                self.challengeTableView.reloadData()
             }
         }
     }
@@ -100,7 +109,7 @@ class Profile: UIViewController {
         }
     }
     
-    //MARK: - Add Friend
+    // Add Friend
     @IBAction func addFriend(_ sender: Any) {
         do {
             try friends!.append(profile)
@@ -120,24 +129,21 @@ class Profile: UIViewController {
         }
     }
     
-    //MARK: - Add Profile Image
-
+    // Add Profile Image
     @IBAction func addProfileImage(_ sender: Any) {
-        performSegue(withIdentifier: K.profileToCamera, sender: sender)
+        performSegue(withIdentifier: K.segue.profileToCamera, sender: sender)
     }
     
-
-    //MARK: - Perform Segue to Table View
+//MARK: - Segue
     @IBAction func toTableView(_ sender: Any) {
         performSegue(withIdentifier: K.segue.profileToTB, sender: sender)
     }
 }
 
-//MARK: - Prepare for segues
-
+// Prepare for segue
 extension Profile {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.profileToCamera {
+        if segue.identifier == K.segue.profileToCamera {
             let navigationVC = segue.destination as! UINavigationController
             let vc = navigationVC.topViewController as! CameraViewController
             
@@ -146,3 +152,26 @@ extension Profile {
     }
 }
 
+// Display tableview of current challenges
+extension Profile: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return (profile[K.profile.current] as! NSDictionary).count // Number of items in the currentChallenges array
+        return currentChallenges.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.myChallengeCell, for: indexPath) as! MyChallengeCell
+    
+        //let currentChallenges = profile[K.profile.current] as! NSDictionary
+        let challengesArray = currentChallenges.keys as! [QueryDocumentSnapshot]
+
+        let challenge = challengesArray[indexPath.row]
+
+        cell.challengeName.text = challenge["name"] as! String
+        cell.progressView.progress = currentChallenges[challenge] as! Float
+        cell.timeLeft.text = "0 days"
+
+
+        return cell
+    }
+}
