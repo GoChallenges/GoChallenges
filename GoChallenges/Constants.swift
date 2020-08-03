@@ -29,6 +29,8 @@ struct K {
     // Cell indentifiers
     static let myChallengeCell = "myChallengeCell"
     static let challengeCell = "challengeCell"
+    static let friendCell = "friendCell"
+    
     // Cell nib names
     static let myChallengeCellNib = "MyChallengeCell"
     
@@ -44,5 +46,9 @@ struct K {
         static let finished = "finishedChallenges"
         static let friends = "friends"
         static let image = "profileImageURL"
+    }
+    
+    struct segue {
+        static let profileToTB = "profileToTableView"
     }
 }

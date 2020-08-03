@@ -46,9 +46,6 @@ class RegisterViewController: UIViewController {
                     // Create a Profile object
                     var ref: DocumentReference? = nil
                     
-//                    let profile = ProfileData(username: name, email: email, joinedDate: Date.init(), currentChallenges: [:], finishedChallenges: [:], createdChallenges: [],
-//                                              friends: [])
-                    
                     let profile = ProfileData(username: username, email: email, joinedDate: Date.init())
                     ref = self.db.collection("Profiles").addDocument(data: profile.array) {
                         err in

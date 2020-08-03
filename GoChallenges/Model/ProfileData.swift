@@ -13,10 +13,10 @@ class ProfileData {
     var username: String
     var email: String
     var joinedDate: Date
-    var currentChallenges: NSDictionary
-    var finishedChallenges: NSDictionary
-    var createdChallenges: NSArray
-    var friends: [User]
+    var currentChallenges: [QueryDocumentSnapshot:Float]
+    var finishedChallenges: [QueryDocumentSnapshot]
+    var createdChallenges: [QueryDocumentSnapshot]
+    var friends : [QueryDocumentSnapshot]
     
     var array: [String:Any] {
         return [
@@ -34,10 +34,10 @@ class ProfileData {
         self.username = username
         self.email = email
         self.joinedDate = joinedDate
-        self.currentChallenges = [:]
-        self.finishedChallenges = [:]
-        self.createdChallenges = []
-        self.friends = []
+        self.currentChallenges = [QueryDocumentSnapshot:Float]()
+        self.finishedChallenges = [QueryDocumentSnapshot]()
+        self.createdChallenges = [QueryDocumentSnapshot]()
+        self.friends = [QueryDocumentSnapshot]()
         
     }
 }
