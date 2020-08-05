@@ -22,6 +22,8 @@ class RegisterViewController: UIViewController {
     
     let db = Firestore.firestore()
     
+    var profileID : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +39,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
-        if let email = emailTextfield.text, let password = passwordTextfield.text, let username = nameTextfield.text{
+        if let email = emailTextfield.text, let password = passwordTextfield.text, let displayname = nameTextfield.text{
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     self.displayErrorAlert(error: error)
@@ -46,13 +48,14 @@ class RegisterViewController: UIViewController {
                     // Create a Profile object
                     var ref: DocumentReference? = nil
                     
-                    let profile = ProfileData(username: username, email: email, joinedDate: Date.init())
-                    ref = self.db.collection("Profiles").addDocument(data: profile.array) {
+                    let profile = ProfileData(displayname: displayname, email: email, joinedDate: Date.init())
+                    ref = self.db.collection("Profiles").addDocument(data: profile.dictionary) {
                         err in
                         if let err = err {
                             self.displayErrorAlert(error: err)
                         } else {
-                            print("Document added with ID: \(ref!.documentID)")
+                            print("Registered with ID: \(ref!.documentID)")
+                            self.profileID = ref!.documentID
                             
                             //perform segue to main feed screen
                             self.performSegue(withIdentifier: K.segue.registerToFeed, sender: self)
@@ -63,15 +66,17 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let tabVC = segue.destination as! UITabBarController
+        let createVC = tabVC.viewControllers![1] as! NewChallenge
+        createVC.profileID = self.profileID
+        print(profileID!)
     }
-    */
+    
 
 }
 

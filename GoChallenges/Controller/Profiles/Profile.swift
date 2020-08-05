@@ -13,6 +13,7 @@ import AlamofireImage
 
 class Profile: UIViewController, UITableViewDelegate {
     
+    // UI Element Outlets
     @IBOutlet weak var challengeTableView: UITableView!
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -30,7 +31,7 @@ class Profile: UIViewController, UITableViewDelegate {
     let currentUser = Auth.auth().currentUser as! User
     var profile : QueryDocumentSnapshot!
     var friends : [QueryDocumentSnapshot]!
-    var currentChallenges = [QueryDocumentSnapshot:Float]()
+    var currentChallenges = [QueryDocumentSnapshot]()
 
     let db = Firestore.firestore()
     
@@ -66,7 +67,7 @@ class Profile: UIViewController, UITableViewDelegate {
                 let createdChallenges = self.profile[K.profile.created] as! [QueryDocumentSnapshot]
                 let completedChallenges = self.profile[K.profile.finished] as! [QueryDocumentSnapshot]
                 
-                self.currentChallenges = self.profile[K.profile.current] as! [QueryDocumentSnapshot:Float]
+                self.currentChallenges = self.profile[K.profile.current] as! [QueryDocumentSnapshot]
                 
                 self.friends = self.profile[K.profile.friends] as! [QueryDocumentSnapshot]
                 
@@ -155,22 +156,17 @@ extension Profile {
 // Display tableview of current challenges
 extension Profile: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return (profile[K.profile.current] as! NSDictionary).count // Number of items in the currentChallenges array
         return currentChallenges.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.myChallengeCell, for: indexPath) as! MyChallengeCell
-    
-        //let currentChallenges = profile[K.profile.current] as! NSDictionary
-        let challengesArray = currentChallenges.keys as! [QueryDocumentSnapshot]
 
-        let challenge = challengesArray[indexPath.row]
+        let challenge = currentChallenges[indexPath.row]
 
         cell.challengeName.text = challenge["name"] as! String
-        cell.progressView.progress = currentChallenges[challenge] as! Float
+        cell.progressView.progress = 0.78
         cell.timeLeft.text = "0 days"
-
 
         return cell
     }

@@ -9,20 +9,36 @@
 import Foundation
 import Firebase
 
-class ProfileData {
-    var username: String
+protocol UserProfile {
+    var displayname: String {get}
+    var email: String {get}
+    var joinedDate: Date {get}
+    var currentChallenges: Array<DocumentReference> {get}
+    var finishedChallenges: Array<DocumentReference> {get}
+    var createdChallenges: Array<DocumentReference> {get}
+    var friends: Array<QueryDocumentSnapshot> {get}
+}
+
+class ProfileData : UserProfile{
+    var displayname: String
+    
     var email: String
+    
     var joinedDate: Date
-    var currentChallenges: [QueryDocumentSnapshot:Float]
-    var finishedChallenges: [QueryDocumentSnapshot]
-    var createdChallenges: [QueryDocumentSnapshot]
-    var friends : [QueryDocumentSnapshot]
     
+    var currentChallenges: Array<DocumentReference>
     
-    var array: [String:Any] {
+    var finishedChallenges: Array<DocumentReference>
+    
+    var createdChallenges: Array<DocumentReference>
+    
+    var friends: Array<QueryDocumentSnapshot>
+    
+        
+    var dictionary: [String:Any] {
         return [
             "email": self.email,
-            "name": self.username,
+            "name": self.displayname,
             "joinedDate": self.joinedDate,
             "currentChallenges": self.currentChallenges,
             "finishedChallenges": self.finishedChallenges,
@@ -31,13 +47,19 @@ class ProfileData {
         ]
     }
     
-    init(username: String, email: String, joinedDate: Date) {
-        self.username = username
+    init(displayname: String, email: String, joinedDate: Date) {
+        self.displayname = displayname
         self.email = email
         self.joinedDate = joinedDate
-        self.currentChallenges = [QueryDocumentSnapshot:Float]()
-        self.finishedChallenges = [QueryDocumentSnapshot]()
-        self.createdChallenges = [QueryDocumentSnapshot]()
+        
+//        self.currentChallenges = [QueryDocumentSnapshot]()
+//        self.finishedChallenges = [QueryDocumentSnapshot]()
+//        self.createdChallenges = [QueryDocumentSnapshot]()
+        
+        self.currentChallenges = [DocumentReference]()
+        self.finishedChallenges = [DocumentReference]()
+        self.createdChallenges = [DocumentReference]()
+        
         self.friends = [QueryDocumentSnapshot]()
         
     }

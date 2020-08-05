@@ -13,6 +13,10 @@ class NewChallenge: UIViewController {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var unitTextField: UITextField!
     
+    var profileID : String! // ID of current user profile document
+    var challengeID: String? // ID of the newly created challenge
+    
+    let currentUser = Auth.auth().currentUser as! User
     //let challengeFeed = ChallengesFeed()
     
     let db = Firestore.firestore()
@@ -64,19 +68,46 @@ class NewChallenge: UIViewController {
                 let timeString = formatter.string(from: currentDate)
                 
                 //Data object
-                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, isComplete: false)
+                //                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, isComplete: false)
+                
+                // Create a new participant, the current user
+                let participant = Participant(user: currentUser, progress: 0.00)
+                
+                // Create a new challenge
+                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, category: categorySelected, participants: [currentUser.email!], progress: [currentUser.email!:0.00])
+                
+                
+                //                dataRef = db.collection(categorySelected).addDocument(data: newChallenge.dictionary){
+                //                    error in
+                //                    if let e = error {
+                //                        print("Error adding document to database: \(e.localizedDescription)")
+                //                    }else{
+                //                        print("Document added with ID: \(dataRef!.documentID)")
+                //                    }
+                //                }
                 
                 //Add data to database
                 var dataRef : DocumentReference? = nil
                 
-                dataRef = db.collection(categorySelected).addDocument(data: newChallenge.dictionary){
-                    error in
+                dataRef = db.collection("Challenges").addDocument(data: newChallenge.dictionary) { (error) in
                     if let e = error {
                         print("Error adding document to database: \(e.localizedDescription)")
-                    }else{
+                    } else {
                         print("Document added with ID: \(dataRef!.documentID)")
+                        
+                        // Add the challenge's id to current and created arrays
+                        let profileRef = self.db.collection("Profiles").document(self.profileID)
+                        profileRef.updateData([
+                            K.profile.current: FieldValue.arrayUnion([dataRef]),
+                            K.profile.created: FieldValue.arrayUnion([dataRef])
+                        ]) { (error) in
+                            if let error = error {
+                                print("Error adding new challenges to profile document: \(error.localizedDescription)")
+                            }
+                        }
                     }
                 }
+                
             } else {
                 popUpMessage(text: "Your input is not a number. Please enter a valid number!")
             }
@@ -87,17 +118,17 @@ class NewChallenge: UIViewController {
     }
     
     /*
-    //This function will be called by the view controller just before a segue is performed. Use this to pass data to the next screen
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.segue.createToFeed {
-            let nav = segue.destination as! UINavigationController //parent screeen
-            let feedVC = nav.topViewController as! ChallengesFeed  //child screen
-            //feedVC.categoryFilter = categorySelected
-            feedVC.startDay = startDate
-            feedVC.endDay = endDate
-        }
-    }
-    */
+     //This function will be called by the view controller just before a segue is performed. Use this to pass data to the next screen
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     if segue.identifier == K.segue.createToFeed {
+     let nav = segue.destination as! UINavigationController //parent screeen
+     let feedVC = nav.topViewController as! ChallengesFeed  //child screen
+     //feedVC.categoryFilter = categorySelected
+     feedVC.startDay = startDate
+     feedVC.endDay = endDate
+     }
+     }
+     */
     //this function shows pop up message
     func popUpMessage (text : String){
         let alert = UIAlertController(title: "Error!", message: text, preferredStyle: UIAlertController.Style.alert)
@@ -143,7 +174,7 @@ class NewChallenge: UIViewController {
         
         self.view.endEditing(true) //dismiss the keyboard
     }
-
+    
 }
 
 //MARK: - Category Picker View Data Source
