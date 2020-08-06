@@ -10,6 +10,8 @@
 		2F1F82F124D6ED9300292AFE /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F82F024D6ED9300292AFE /* ListTableView.swift */; };
 		2F2C19EC24878B02005DA4F9 /* MyChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */; };
 		2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */; };
+		2F405E2624DAE84200A6B815 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F405E2424DAE84200A6B815 /* FriendCell.swift */; };
+		2F405E2724DAE84200A6B815 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F405E2524DAE84200A6B815 /* FriendCell.xib */; };
 		2F52CBBC248FC68C00CAD438 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52CBBB248FC68C00CAD438 /* GeneralFunctions.swift */; };
 		2F881D4A248BC60400B39C73 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F881D49248BC60400B39C73 /* ProfileData.swift */; };
 		2FB91577248601130095627E /* ChallengesFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB91576248601130095627E /* ChallengesFeed.swift */; };
@@ -59,6 +61,8 @@
 		2F1F82F024D6ED9300292AFE /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
 		2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChallengeCell.swift; sourceTree = "<group>"; };
 		2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyChallengeCell.xib; sourceTree = "<group>"; };
+		2F405E2424DAE84200A6B815 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		2F405E2524DAE84200A6B815 /* FriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 		2F52CBBB248FC68C00CAD438 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
 		2F881D49248BC60400B39C73 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		2FB91576248601130095627E /* ChallengesFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesFeed.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				2FB915782486013F0095627E /* Profile.swift */,
 				2FF8AA0724927F2C004E3AF8 /* CameraViewController.swift */,
 				2F1F82F024D6ED9300292AFE /* ListTableView.swift */,
+				2F405E2424DAE84200A6B815 /* FriendCell.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				2FF9753724849B1A0079ADE0 /* Main.storyboard */,
 				2FF9753C24849B1E0079ADE0 /* LaunchScreen.storyboard */,
 				2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */,
+				2F405E2524DAE84200A6B815 /* FriendCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */,
+				2F405E2724DAE84200A6B815 /* FriendCell.xib in Resources */,
 				2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */,
 				2FC3B009248534F9001FF13D /* GoogleService-Info.plist in Resources */,
 				2FF9753B24849B1E0079ADE0 /* Assets.xcassets in Resources */,
@@ -518,6 +525,7 @@
 				2F52CBBC248FC68C00CAD438 /* GeneralFunctions.swift in Sources */,
 				2F881D4A248BC60400B39C73 /* ProfileData.swift in Sources */,
 				2FC3B01324853C3F001FF13D /* RegisterViewController.swift in Sources */,
+				2F405E2624DAE84200A6B815 /* FriendCell.swift in Sources */,
 				2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */,
 				2FC3B00F24853924001FF13D /* MainViewController.swift in Sources */,
 				2FB9157D248601780095627E /* MyChallenges.swift in Sources */,

@@ -17,6 +17,7 @@ struct K {
     
     // Cell nib names
     static let myChallengeCellNib = "MyChallengeCell"
+    static let friendCellNib = "FriendCell"
     
     // Collection names
     static let profiles = "Profiles"
@@ -50,5 +51,8 @@ struct K {
         static let cameraToProfile = "cameraToProfile"
         
         static let profileToTB = "profileToTableView"
+        
+        static let TBToProfile = "tableViewToProfile"
+        static let TBToChallengeDetail = "tableViewToChallengeDetail"
     }
 }

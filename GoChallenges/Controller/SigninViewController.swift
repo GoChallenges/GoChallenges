@@ -15,8 +15,6 @@ class SigninViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
 
-       
-
     }
     @IBOutlet var heightConstraint : NSLayoutConstraint!
        

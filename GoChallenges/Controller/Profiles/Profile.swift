@@ -26,14 +26,19 @@ class Profile: UIViewController, UITableViewDelegate {
     @IBOutlet weak var changeProfileButton: UIButton!
     @IBOutlet weak var addFriendButton: UIButton!
     
-    internal var userID : String!
+    let db = Firestore.firestore()
     
     let currentUser = Auth.auth().currentUser as! User
+    
+    // Profile id and related profile objects
+    internal var userID : String!
     var profile : QueryDocumentSnapshot!
     var friends : [QueryDocumentSnapshot]!
-    var currentChallenges = [QueryDocumentSnapshot]()
-
-    let db = Firestore.firestore()
+    var currentChallenges = [DocumentReference]()
+    
+    // Dictionary of tags and cell identifers of list table view
+    let cellIdentifers : [Int:String] = [
+        0: K.challengeCell, 1: K.challengeCell, 2 : K.friendCell    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +47,10 @@ class Profile: UIViewController, UITableViewDelegate {
         
         challengeTableView.register(UINib(nibName: K.myChallengeCellNib, bundle: nil), forCellReuseIdentifier: K.myChallengeCell)
         challengeTableView.rowHeight = 150
+        
+        createdChallengeButton.tag = 0
+        completedChallengeButton.tag = 1
+        friendButton.tag = 2
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,10 +73,10 @@ class Profile: UIViewController, UITableViewDelegate {
                 self.userID = self.profile.documentID
                 
                 let username = self.profile[K.profile.name] as! String
-                let createdChallenges = self.profile[K.profile.created] as! [QueryDocumentSnapshot]
-                let completedChallenges = self.profile[K.profile.finished] as! [QueryDocumentSnapshot]
+                let createdChallenges = self.profile[K.profile.created] as! [DocumentReference]
+                let completedChallenges = self.profile[K.profile.finished] as! [DocumentReference]
                 
-                self.currentChallenges = self.profile[K.profile.current] as! [QueryDocumentSnapshot]
+                self.currentChallenges = self.profile[K.profile.current] as! [DocumentReference]
                 
                 self.friends = self.profile[K.profile.friends] as! [QueryDocumentSnapshot]
                 
@@ -103,7 +112,7 @@ class Profile: UIViewController, UITableViewDelegate {
             } else {
                 addFriendButton.isHidden = false
             }
-
+            
         } else {
             changeProfileButton.isHidden = false
             addFriendButton.isHidden = true
@@ -117,7 +126,7 @@ class Profile: UIViewController, UITableViewDelegate {
         } catch {
             friends = [profile]
         }
-
+        
         // Update the friends array of Profile object
         let db = Firestore.firestore()
         let profileRef = db.collection("Profiles").document(self.userID)
@@ -135,7 +144,7 @@ class Profile: UIViewController, UITableViewDelegate {
         performSegue(withIdentifier: K.segue.profileToCamera, sender: sender)
     }
     
-//MARK: - Segue
+    //MARK: - Segue
     @IBAction func toTableView(_ sender: Any) {
         performSegue(withIdentifier: K.segue.profileToTB, sender: sender)
     }
@@ -149,6 +158,11 @@ extension Profile {
             let vc = navigationVC.topViewController as! CameraViewController
             
             vc.userID = userID
+        } else if segue.identifier == K.segue.profileToTB {
+            let navigationVC = segue.destination as! UINavigationController
+            let vc = navigationVC.topViewController as! ListTableView
+            let button = sender as! UIButton
+            vc.cellIdentifer = cellIdentifers[button.tag]!
         }
     }
 }
@@ -161,13 +175,19 @@ extension Profile: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.myChallengeCell, for: indexPath) as! MyChallengeCell
-
-        let challenge = currentChallenges[indexPath.row]
-
-        cell.challengeName.text = challenge["name"] as! String
-        cell.progressView.progress = 0.78
-        cell.timeLeft.text = "0 days"
-
+        
+        // Retrieve the challenge from the challenge reference
+        let challengeRef = currentChallenges[indexPath.row]
+        challengeRef.getDocument { (document, error) in
+            if let e = error {
+                print("Error loading current challenges : \(e.localizedDescription)")
+            } else if let challenge = document {
+                cell.challengeName.text = challenge["Challenge Name"] as! String
+                let progressDict = challenge["Progress"] as! [String:Float]
+                cell.progressView.progress = progressDict[self.currentUser.email!]!
+                cell.timeLeft.text = "0 days"
+            }
+        }
         return cell
     }
 }

@@ -376,10 +376,32 @@
                     <view key="view" contentMode="scaleToFill" id="gUL-CI-grS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bed-UN-KYN">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uBm-Em-Aya" firstAttribute="trailing" secondItem="bed-UN-KYN" secondAttribute="trailing" id="8RO-Pg-Mj8"/>
+                            <constraint firstItem="bed-UN-KYN" firstAttribute="top" secondItem="uBm-Em-Aya" secondAttribute="top" id="Q5n-JD-oha"/>
+                            <constraint firstItem="bed-UN-KYN" firstAttribute="leading" secondItem="uBm-Em-Aya" secondAttribute="leading" id="RxZ-A6-Tvp"/>
+                            <constraint firstItem="uBm-Em-Aya" firstAttribute="bottom" secondItem="bed-UN-KYN" secondAttribute="bottom" id="StW-zR-qVY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uBm-Em-Aya"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Nxk-e2-Gaw"/>
+                    <navigationItem key="navigationItem" id="Nxk-e2-Gaw">
+                        <barButtonItem key="leftBarButtonItem" image="return" catalog="system" id="Rfr-zg-Zck">
+                            <connections>
+                                <action selector="dismiss:" destination="UYG-mP-qYj" id="2jc-mq-NGB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listTableView" destination="bed-UN-KYN" id="kFI-Mz-tIK"/>
+                        <segue destination="J3x-M0-gHW" kind="presentation" id="7uF-3u-6QN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aly-sZ-Sg5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -951,7 +973,119 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXt-Z6-evz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5598.5507246376819" y="1320.5357142857142"/>
+            <point key="canvasLocation" x="5538" y="1321"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="EoJ-2h-HV0">
+            <objects>
+                <viewController id="J3x-M0-gHW" customClass="Profile" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hUs-j2-6qO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYI-Do-PFB">
+                                <rect key="frame" x="145" y="112" width="125" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.96470588239999999" green="0.84313725490000002" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXn-1D-PHd">
+                                <rect key="frame" x="165" y="385" width="85" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx8-Qd-5FX">
+                                <rect key="frame" x="313" y="385" width="57" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3d-yJ-93Z">
+                                <rect key="frame" x="36" y="385" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D2h-Mj-rry">
+                                <rect key="frame" x="0.0" y="430" width="414" height="383"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-Ex-xCM">
+                                <rect key="frame" x="278" y="209" width="38" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.84313725490000002" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="addProfileImage:" destination="J3x-M0-gHW" eventType="touchUpInside" id="atc-kN-rNI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Josh Nguyen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7s1-Mq-Gs7">
+                                <rect key="frame" x="136" y="248" width="142" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U2-Qh-hd6">
+                                <rect key="frame" x="162" y="285" width="91" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add friend"/>
+                                <connections>
+                                    <action selector="addFriend:" destination="J3x-M0-gHW" eventType="touchUpInside" id="Spf-6w-j0s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fx-lv-F3x">
+                                <rect key="frame" x="65" y="351" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0"/>
+                                <connections>
+                                    <action selector="toTableView:" destination="J3x-M0-gHW" eventType="touchUpInside" id="50g-t4-0fj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0P-hn-gHF">
+                                <rect key="frame" x="192" y="351" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0"/>
+                                <connections>
+                                    <action selector="toTableView:" destination="J3x-M0-gHW" eventType="touchUpInside" id="Mx1-HW-gRB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwc-ju-S9u">
+                                <rect key="frame" x="326" y="351" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0"/>
+                                <connections>
+                                    <action selector="toTableView:" destination="J3x-M0-gHW" eventType="touchUpInside" id="cxP-Fe-IZ7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="e1O-WR-lQy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cpD-mR-GLP"/>
+                    <connections>
+                        <outlet property="addFriendButton" destination="6U2-Qh-hd6" id="GYG-XL-OMe"/>
+                        <outlet property="challengeTableView" destination="D2h-Mj-rry" id="PKg-IG-DWa"/>
+                        <outlet property="changeProfileButton" destination="e3g-Ex-xCM" id="plW-SI-nFu"/>
+                        <outlet property="completedChallengeButton" destination="f0P-hn-gHF" id="Nah-GI-wzE"/>
+                        <outlet property="createdChallengeButton" destination="3fx-lv-F3x" id="4ew-Gs-IXr"/>
+                        <outlet property="friendButton" destination="Nwc-ju-S9u" id="KM6-ij-7UW"/>
+                        <outlet property="profileImageView" destination="MYI-Do-PFB" id="8kk-Ai-HBU"/>
+                        <outlet property="username" destination="7s1-Mq-Gs7" id="bpO-Zr-wMd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KzD-fA-PfK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7546" y="1321"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -971,5 +1105,6 @@
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="return" catalog="system" width="128" height="101"/>
     </resources>
 </document>
