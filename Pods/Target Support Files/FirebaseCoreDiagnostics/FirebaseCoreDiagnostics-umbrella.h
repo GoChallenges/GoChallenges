@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "firebasecore.nanopb 3.h"
 #import "firebasecore.nanopb.h"
 #import "GoogleDataTransportInternal.h"
 #import "GULAppEnvironmentUtil.h"
@@ -18,7 +19,9 @@
 #import "GULKeychainUtils.h"
 #import "GULSecureCoding.h"
 #import "GULLogger.h"
+#import "FIRCoreDiagnosticsData 2.h"
 #import "FIRCoreDiagnosticsData.h"
+#import "FIRCoreDiagnosticsInterop 2.h"
 #import "FIRCoreDiagnosticsInterop.h"
 
 FOUNDATION_EXPORT double FirebaseCoreDiagnosticsVersionNumber;

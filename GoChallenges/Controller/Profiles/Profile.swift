@@ -45,8 +45,10 @@ class Profile: UIViewController, UITableViewDelegate {
         challengeTableView.delegate = self
         challengeTableView.dataSource = self
         
-        challengeTableView.register(UINib(nibName: K.myChallengeCellNib, bundle: nil), forCellReuseIdentifier: K.myChallengeCell)
+        challengeTableView.register(UINib(nibName: K.profileCellNib, bundle: nil), forCellReuseIdentifier: K.profileCell)
         challengeTableView.rowHeight = 150
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         
         createdChallengeButton.tag = 0
         completedChallengeButton.tag = 1
@@ -174,7 +176,7 @@ extension Profile: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.myChallengeCell, for: indexPath) as! MyChallengeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.profileCell, for: indexPath) as! ProfileChallengeCell
         
         // Retrieve the challenge from the challenge reference
         let challengeRef = currentChallenges[indexPath.row]
@@ -182,10 +184,10 @@ extension Profile: UITableViewDataSource {
             if let e = error {
                 print("Error loading current challenges : \(e.localizedDescription)")
             } else if let challenge = document {
-                cell.challengeName.text = challenge["Challenge Name"] as! String
-                let progressDict = challenge["Progress"] as! [String:Float]
-                cell.progressView.progress = progressDict[self.currentUser.email!]!
-                cell.timeLeft.text = "0 days"
+//                cell.challengeName.text = challenge["Challenge Name"] as! String
+//                let progressDict = challenge["Progress"] as! [String:Float]
+//                cell.progressView.progress = progressDict[self.currentUser.email!]!
+//                cell.timeLeft.text = "0 days"
             }
         }
         return cell

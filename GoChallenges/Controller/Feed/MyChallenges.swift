@@ -13,6 +13,7 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     
     let db = Firestore.firestore()
     var challenges = [QueryDocumentSnapshot]()
+    let currentUser = Auth.auth().currentUser as! User
     
     //let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
 
@@ -99,7 +100,9 @@ extension MyChallenges: UITableViewDelegate {
             cell.timeLeft.text = "\(daysLeft) day(s) left"
         }
         
-        cell.progressView.progress = 0.4
+        let progress = challenge["Progress"] as! NSDictionary
+        let email = currentUser.email as! String
+        cell.progressView.progress = 0.746
         
         return cell
     }
