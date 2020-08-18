@@ -19,23 +19,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sma-22-e59" customClass="CircleProgressView" customModule="CircleProgressView">
                         <rect key="frame" x="30" y="9" width="68" height="68"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ity-lQ-Mee">
-                                <rect key="frame" x="21.5" y="27" width="25.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-Ke-Jl0">
+                                <rect key="frame" x="24" y="25.5" width="20.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Ity-lQ-Mee" firstAttribute="centerX" secondItem="sma-22-e59" secondAttribute="centerX" id="QaG-l9-fIz"/>
+                            <constraint firstItem="dJG-Ke-Jl0" firstAttribute="centerY" secondItem="sma-22-e59" secondAttribute="centerY" id="1m4-Bg-brg"/>
+                            <constraint firstItem="dJG-Ke-Jl0" firstAttribute="centerX" secondItem="sma-22-e59" secondAttribute="centerX" id="PIb-2s-Pzg"/>
                             <constraint firstAttribute="width" constant="68" id="f9k-gc-WWW"/>
                             <constraint firstAttribute="height" constant="68" id="hMK-Af-goE"/>
-                            <constraint firstItem="Ity-lQ-Mee" firstAttribute="centerY" secondItem="sma-22-e59" secondAttribute="centerY" id="nWh-sA-S9J"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                <real key="value" value="0.75"/>
+                                <real key="value" value="0.59999999999999998"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCap" value="NO"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="trackBackgroundColor">
@@ -66,6 +66,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="challengeLabel" destination="iYm-Ev-bXg" id="Xjs-j0-6sN"/>
+                <outlet property="circleProgressView" destination="sma-22-e59" id="ABl-Qd-NXF"/>
+                <outlet property="percentLabel" destination="iYm-Ev-bXg" id="HsH-gh-maB"/>
+            </connections>
             <point key="canvasLocation" x="34.782608695652179" y="97.767857142857139"/>
         </tableViewCell>
     </objects>

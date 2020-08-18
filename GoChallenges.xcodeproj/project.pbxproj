@@ -63,6 +63,7 @@
 		2F17786E24EB7986005D3D90 /* ProfileChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChallengeCell.swift; sourceTree = "<group>"; };
 		2F17786F24EB7986005D3D90 /* ProfileChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileChallengeCell.xib; sourceTree = "<group>"; };
 		2F1F82F024D6ED9300292AFE /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
+		2F22E7A724EBF93700BE5EF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2F2C19EA24878B02005DA4F9 /* MyChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChallengeCell.swift; sourceTree = "<group>"; };
 		2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyChallengeCell.xib; sourceTree = "<group>"; };
 		2F405E2424DAE84200A6B815 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
@@ -256,6 +257,7 @@
 		501AE601F7D65CCA0F404ED1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F22E7A724EBF93700BE5EF5 /* QuartzCore.framework */,
 				1F1DD9256E09971C653BBE33 /* Pods_GoChallenges.framework */,
 				DABEFFC5DDA52DBFF05B5429 /* Pods_GoChallenges_GoChallengesUITests.framework */,
 				74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */,
@@ -287,7 +289,7 @@
 				2FF9752A24849B1A0079ADE0 /* Sources */,
 				2FF9752B24849B1A0079ADE0 /* Frameworks */,
 				2FF9752C24849B1A0079ADE0 /* Resources */,
-				96C55DE3E32CE819CF8218EF /* [CP] Embed Pods Frameworks */,
+				50A45C419EFFFD54F6B972E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -325,7 +327,7 @@
 				2FF9754B24849B1E0079ADE0 /* Sources */,
 				2FF9754C24849B1E0079ADE0 /* Frameworks */,
 				2FF9754D24849B1E0079ADE0 /* Resources */,
-				DD8C9B8044DB246F4506C835 /* [CP] Embed Pods Frameworks */,
+				BD8F5D0B7ADF2AAE4E02E7B6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -412,6 +414,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		50A45C419EFFFD54F6B972E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7D30C11DCFE26E3A984B85D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,23 +451,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		96C55DE3E32CE819CF8218EF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges/Pods-GoChallenges-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ADE721698528472C09017259 /* [CP] Check Pods Manifest.lock */ = {
@@ -473,6 +475,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BD8F5D0B7ADF2AAE4E02E7B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C5F83A8FA3BED99FB9C203A7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,23 +512,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD8C9B8044DB246F4506C835 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

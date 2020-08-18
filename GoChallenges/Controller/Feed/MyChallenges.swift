@@ -102,7 +102,9 @@ extension MyChallenges: UITableViewDelegate {
         
         let progress = challenge["Progress"] as! NSDictionary
         let email = currentUser.email as! String
-        cell.progressView.progress = 0.746
+        let progressNumber = progress[email] as! NSNumber
+        let progressFloat = Float(progressNumber)
+        cell.progressView.progress = progressFloat
         
         return cell
     }

@@ -48,7 +48,7 @@ class Profile: UIViewController, UITableViewDelegate {
         challengeTableView.register(UINib(nibName: K.profileCellNib, bundle: nil), forCellReuseIdentifier: K.profileCell)
         challengeTableView.rowHeight = 150
         
-        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2 // Radius of profile image
         
         createdChallengeButton.tag = 0
         completedChallengeButton.tag = 1
@@ -184,10 +184,13 @@ extension Profile: UITableViewDataSource {
             if let e = error {
                 print("Error loading current challenges : \(e.localizedDescription)")
             } else if let challenge = document {
-//                cell.challengeName.text = challenge["Challenge Name"] as! String
-//                let progressDict = challenge["Progress"] as! [String:Float]
-//                cell.progressView.progress = progressDict[self.currentUser.email!]!
-//                cell.timeLeft.text = "0 days"
+                let progress = challenge["Progress"] as! NSDictionary
+                let email = self.currentUser.email!
+                let progressNumber = progress[email] as! NSNumber
+                let progressDouble = Double(progressNumber)
+                
+                cell.challengeLabel.text = (challenge["Challenge Name"] as! String)
+                cell.circleProgressView.progress = progressDouble
             }
         }
         return cell

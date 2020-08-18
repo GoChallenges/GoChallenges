@@ -4,6 +4,10 @@
 import UIKit
 import Firebase
 
+/*
+ profileID: id of current profile, used to add reference of new challenge to created
+    and current challenges arrays
+ */
 class NewChallenge: UIViewController {
     @IBOutlet weak var challengeNameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -14,7 +18,6 @@ class NewChallenge: UIViewController {
     @IBOutlet weak var unitTextField: UITextField!
     
     var profileID : String! // ID of current user profile document
-    var challengeID: String? // ID of the newly created challenge
     
     let currentUser = Auth.auth().currentUser as! User
     //let challengeFeed = ChallengesFeed()
@@ -49,7 +52,7 @@ class NewChallenge: UIViewController {
         
         createDatePicker()
         
-        loadProfile() // Load the current user's profile
+        loadProfile() // Load the current user's profile so we can add new challenges to created and current arráy
     }
     
     @IBAction func createButton(_ sender: UIButton) {
@@ -68,26 +71,21 @@ class NewChallenge: UIViewController {
                 formatter.timeStyle = .short
                 formatter.dateStyle = .none
                 let timeString = formatter.string(from: currentDate)
-                
-                //Data object
-                //                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, isComplete: false)
-                
-                // Create a new participant, the current user
-                let participant = Participant(user: currentUser, progress: 0.00)
-                
+ 
                 // Create a new challenge
                 let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, category: categorySelected, participants: [currentUser.email!], progress: [currentUser.email!:0.00])
                 
                 //Add data to database
                 var dataRef : DocumentReference? = nil
                 
+                //Collection of challenges, with category field to distinguish
                 dataRef = db.collection("Challenges").addDocument(data: newChallenge.dictionary) { (error) in
                     if let e = error {
                         print("Error adding document to database: \(e.localizedDescription)")
                     } else {
                         print("Document added with ID: \(dataRef!.documentID)")
                         
-                        // Add the challenge's id to current and created arrays
+                        // Add the challenge's reference to current and created arrays
                         let profileRef = self.db.collection("Profiles").document(self.profileID)
                         profileRef.updateData([
                             K.profile.current: FieldValue.arrayUnion([dataRef]),
@@ -104,7 +102,7 @@ class NewChallenge: UIViewController {
                 popUpMessage(text: "Your input is not a number. Please enter a valid number!")
             }
             
-            //move to next screen
+            // Move to next screen
             self.performSegue(withIdentifier: K.segue.createToFeed, sender: self)
         }
     }
