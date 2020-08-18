@@ -34,6 +34,9 @@
 		2FF9754924849B1E0079ADE0 /* GoChallengesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9754824849B1E0079ADE0 /* GoChallengesTests.swift */; };
 		2FF9755424849B1E0079ADE0 /* GoChallengesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF9755324849B1E0079ADE0 /* GoChallengesUITests.swift */; };
 		2FF975622484B5EF0079ADE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF975612484B5EF0079ADE0 /* Constants.swift */; };
+		374C12BF24EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 374C12BE24EC528A00F73B5A /* ConcertOne-Regular.ttf */; };
+		374C12C024EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 374C12BE24EC528A00F73B5A /* ConcertOne-Regular.ttf */; };
+		374C12C124EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 374C12BE24EC528A00F73B5A /* ConcertOne-Regular.ttf */; };
 		374D66012488237700322101 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D66002488237700322101 /* Data.swift */; };
 		884C3EF31878B9CD08FA0031 /* Pods_GoChallengesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */; };
 		BFA07D2AC6285B0A43346E57 /* Pods_GoChallenges_GoChallengesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABEFFC5DDA52DBFF05B5429 /* Pods_GoChallenges_GoChallengesUITests.framework */; };
@@ -94,6 +97,7 @@
 		2FF9755324849B1E0079ADE0 /* GoChallengesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoChallengesUITests.swift; sourceTree = "<group>"; };
 		2FF9755524849B1E0079ADE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF975612484B5EF0079ADE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		374C12BE24EC528A00F73B5A /* ConcertOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ConcertOne-Regular.ttf"; sourceTree = "<group>"; };
 		374D66002488237700322101 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		3D57E5FBAF30426FD5B4E597 /* Pods-GoChallenges.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges.release.xcconfig"; path = "Target Support Files/Pods-GoChallenges/Pods-GoChallenges.release.xcconfig"; sourceTree = "<group>"; };
 		74A027B4D3FA587955FAB247 /* Pods_GoChallengesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallengesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF9753024849B1A0079ADE0 /* GoChallenges */,
+				374C12BD24EC522C00F73B5A /* Fonts */,
 				2FF9754724849B1E0079ADE0 /* GoChallengesTests */,
 				2FF9755224849B1E0079ADE0 /* GoChallengesUITests */,
 				2FF9752F24849B1A0079ADE0 /* Products */,
@@ -252,6 +257,14 @@
 				2FF9755524849B1E0079ADE0 /* Info.plist */,
 			);
 			path = GoChallengesUITests;
+			sourceTree = "<group>";
+		};
+		374C12BD24EC522C00F73B5A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				374C12BE24EC528A00F73B5A /* ConcertOne-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		501AE601F7D65CCA0F404ED1 /* Frameworks */ = {
@@ -388,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */,
+				374C12BF24EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */,
 				2F405E2724DAE84200A6B815 /* FriendCell.xib in Resources */,
 				2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */,
 				2F17787124EB7986005D3D90 /* ProfileChallengeCell.xib in Resources */,
@@ -401,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374C12C024EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374C12C124EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
