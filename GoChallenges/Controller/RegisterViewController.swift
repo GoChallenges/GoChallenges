@@ -70,12 +70,12 @@ class RegisterViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let tabVC = segue.destination as! UITabBarController
-        let createVC = tabVC.viewControllers![1] as! NewChallenge
-        createVC.profileID = self.profileID
-        print(profileID!)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let tabVC = segue.destination as! UITabBarController
+//        let createVC = tabVC.viewControllers![1] as! NewChallenge
+//        createVC.profileID = self.profileID
+//        print(profileID!)
+//    }
     
 
 }

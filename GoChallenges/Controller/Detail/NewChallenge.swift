@@ -48,6 +48,8 @@ class NewChallenge: UIViewController {
         descriptionTextView.delegate = self
         
         createDatePicker()
+        
+        loadProfile() // Load the current user's profile
     }
     
     @IBAction func createButton(_ sender: UIButton) {
@@ -75,16 +77,6 @@ class NewChallenge: UIViewController {
                 
                 // Create a new challenge
                 let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, category: categorySelected, participants: [currentUser.email!], progress: [currentUser.email!:0.00])
-                
-                
-                //                dataRef = db.collection(categorySelected).addDocument(data: newChallenge.dictionary){
-                //                    error in
-                //                    if let e = error {
-                //                        print("Error adding document to database: \(e.localizedDescription)")
-                //                    }else{
-                //                        print("Document added with ID: \(dataRef!.documentID)")
-                //                    }
-                //                }
                 
                 //Add data to database
                 var dataRef : DocumentReference? = nil
@@ -129,6 +121,7 @@ class NewChallenge: UIViewController {
      }
      }
      */
+    
     //this function shows pop up message
     func popUpMessage (text : String){
         let alert = UIAlertController(title: "Error!", message: text, preferredStyle: UIAlertController.Style.alert)
@@ -221,3 +214,21 @@ extension NewChallenge: UITextViewDelegate{
         }
     }
 }
+
+
+//MARK: - Load Current Profile
+extension NewChallenge {
+    func loadProfile() {
+        let dataRef = db.collection("Profiles")
+        let query = dataRef.whereField("email", isEqualTo: currentUser.email!)
+        query.getDocuments { (querySnapshots, error) in
+            if let e = error {
+                self.displayErrorAlert(error: e)
+            } else {
+                let profile = querySnapshots!.documents[0]
+                self.profileID = profile.documentID
+            }
+        }
+    }
+}
+

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -233,16 +234,23 @@
             <objects>
                 <viewController id="OM2-gt-5AT" customClass="MyChallenges" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R6v-cR-DLb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-pX-L0j">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-pX-L0j">
+                                <rect key="frame" x="0.0" y="79" width="414" height="734"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR1-wZ-iWL">
+                                <rect key="frame" x="20" y="20" width="175" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" name="OrangeChallenge"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="TextfieldBackground"/>
                         <viewLayoutGuide key="safeArea" id="Hdy-1h-oYE"/>
                     </view>
                     <navigationItem key="navigationItem" id="L9W-Wx-rrF"/>
@@ -263,11 +271,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IrQ-04-rQg">
-                                <rect key="frame" x="145" y="112" width="125" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.96470588239999999" green="0.84313725490000002" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkZ-dK-bHn">
                                 <rect key="frame" x="165" y="385" width="85" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -347,6 +350,11 @@
                                     <action selector="toTableView:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="4Ya-TZ-KAf"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="IrQ-04-rQg">
+                                <rect key="frame" x="145" y="112" width="125" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.96470588239999999" green="0.84313725490000002" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3fZ-dL-O1L"/>
@@ -415,45 +423,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="v7d-uW-HaX">
-                                <rect key="frame" x="20" y="112" width="374" height="374"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="v7d-uW-HaX">
+                                <rect key="frame" x="32" y="138" width="350" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="6Y9-24-Mfg"/>
+                                    <constraint firstAttribute="width" constant="350" id="a0o-Z2-Al1"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-zd-CgS">
-                                <rect key="frame" x="163" y="498" width="102" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Camera"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-zd-CgS">
+                                <rect key="frame" x="107" y="518" width="200" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="eCO-k2-lMc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Camera">
+                                    <color key="titleColor" name="OrangeChallenge"/>
+                                </state>
                                 <connections>
                                     <action selector="onCameraButton:" destination="aET-Nb-DXf" eventType="touchUpInside" id="jpK-Yz-VPJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSC-8o-WG0">
-                                <rect key="frame" x="127" y="554" width="172" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Photo Library"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSC-8o-WG0">
+                                <rect key="frame" x="107" y="586" width="200" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="mXU-FQ-zF2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Photo Library">
+                                    <color key="titleColor" name="OrangeChallenge"/>
+                                </state>
                                 <connections>
                                     <action selector="onLibraryButton:" destination="aET-Nb-DXf" eventType="touchUpInside" id="law-vY-A62"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RSC-8o-WG0" firstAttribute="top" secondItem="rJk-zd-CgS" secondAttribute="bottom" constant="20" id="OPy-Zs-aCV"/>
+                            <constraint firstItem="v7d-uW-HaX" firstAttribute="top" secondItem="Oyn-Qt-RLP" secondAttribute="top" constant="50" id="caD-Hw-eUF"/>
+                            <constraint firstItem="rJk-zd-CgS" firstAttribute="centerX" secondItem="3pC-P3-lYR" secondAttribute="centerX" id="e21-Ga-bjm"/>
+                            <constraint firstItem="v7d-uW-HaX" firstAttribute="centerX" secondItem="3pC-P3-lYR" secondAttribute="centerX" id="kZa-Cn-MWl"/>
+                            <constraint firstItem="RSC-8o-WG0" firstAttribute="centerX" secondItem="3pC-P3-lYR" secondAttribute="centerX" id="lHp-So-4zd"/>
+                            <constraint firstItem="rJk-zd-CgS" firstAttribute="top" secondItem="v7d-uW-HaX" secondAttribute="bottom" constant="30" id="xpD-vz-rD5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Oyn-Qt-RLP"/>
                     </view>
                     <navigationItem key="navigationItem" id="1b1-sg-oNs">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="TC3-4Y-LE9">
+                            <color key="tintColor" name="OrangeChallenge"/>
                             <connections>
                                 <action selector="onDismiss:" destination="aET-Nb-DXf" id="o7J-Os-ggF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="yNB-40-aUS">
+                            <color key="tintColor" name="OrangeChallenge"/>
                             <connections>
                                 <action selector="completeProfile:" destination="aET-Nb-DXf" id="OLF-YW-G9H"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cameraButton" destination="rJk-zd-CgS" id="KeS-V3-gWp"/>
+                        <outlet property="libraryButton" destination="RSC-8o-WG0" id="OZU-mD-tH7"/>
                         <outlet property="pickedImageView" destination="v7d-uW-HaX" id="fMz-f4-JAq"/>
                     </connections>
                 </viewController>
@@ -594,7 +625,7 @@
             <objects>
                 <viewController storyboardIdentifier="detailView" id="MCI-cC-RiN" customClass="ChallengeDetail" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Yw-CP-BMI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XlE-Op-oTJ">
@@ -907,7 +938,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Tt-Dp-2VC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="list.bullet" catalog="system" id="Enr-fS-WiA"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ybp-wZ-gSI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ybp-wZ-gSI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1091,9 +1122,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="mr6-ap-C3O"/>
         <segue reference="ofC-9k-95d"/>
-        <segue reference="moj-q5-Yx9"/>
+        <segue reference="oFt-ET-90Q"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Profile" width="478" height="474"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="icon 9" width="658" height="58"/>
         <image name="icons8-email-open-64 1" width="204" height="204"/>
@@ -1102,9 +1134,14 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="login-background" width="750" height="1624"/>
         <image name="logo" width="1125" height="1455"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="return" catalog="system" width="128" height="101"/>
+        <namedColor name="OrangeChallenge">
+            <color red="0.99057334659999996" green="0.3540314436" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextfieldBackground">
+            <color red="1" green="0.93725490196078431" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

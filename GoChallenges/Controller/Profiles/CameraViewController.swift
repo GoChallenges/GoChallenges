@@ -12,12 +12,16 @@ import Firebase
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var pickedImageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var libraryButton: UIButton!
     
     var userID: String!
     var imageURLString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonUI(button: cameraButton)
+        buttonUI(button: libraryButton)
     }
     
     @IBAction func onDismiss(_ sender: Any) {
@@ -26,7 +30,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     //MARK: - Pick an Image and Display to VC
-
+    
     @IBAction func onCameraButton(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -73,8 +77,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 } else {
                     print("Upload profile successfully")
                     
-                    // Update profile image url in Database
-                    
                     // Get the URL String
                     storageRef.downloadURL { (url, error) in
                         if let error = error {
@@ -101,15 +103,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func buttonUI(button: UIButton) {
+        button.layer.cornerRadius = 0.50
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 1, green: 0.4184975326, blue: 0, alpha: 1)
     }
-    */
-
 }

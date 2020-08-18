@@ -1,50 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="myChallengeCell" rowHeight="91" id="KGk-i7-Jjw" customClass="MyChallengeCell" customModule="GoChallenges" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="myChallengeCell" rowHeight="150" id="KGk-i7-Jjw" customClass="MyChallengeCell" customModule="GoChallenges" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="357" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+                <rect key="frame" x="0.0" y="0.0" width="357" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9V-HC-k7d">
-                        <rect key="frame" x="16" y="8" width="288" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Challenge Name" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9V-HC-k7d">
+                        <rect key="frame" x="16" y="8" width="325" height="36"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                        <color key="textColor" name="OrangeChallenge"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="90Z-GT-pYS">
-                        <rect key="frame" x="16" y="71" width="288" height="2"/>
+                        <rect key="frame" x="20" y="98" width="307" height="2"/>
+                        <color key="tintColor" red="1" green="0.4184975326" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-b7-iNL">
-                        <rect key="frame" x="16" y="40" width="288" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-b7-iNL">
+                        <rect key="frame" x="16" y="40" width="325" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                        <color key="textColor" name="YellowChallenge"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my-challenges-seperator" translatesAutoresizingMaskIntoConstraints="NO" id="8ty-Ji-Ow5">
+                        <rect key="frame" x="0.0" y="60" width="357" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="Qhf-sB-GGD"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
+                <color key="backgroundColor" name="TextfieldBackground"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="90Z-GT-pYS" secondAttribute="trailing" constant="30" id="1dO-jF-x5u"/>
                     <constraint firstItem="P0C-b7-iNL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DRZ-Fb-Z0p"/>
-                    <constraint firstItem="j9V-HC-k7d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Gx4-Dz-XKR"/>
-                    <constraint firstItem="P0C-b7-iNL" firstAttribute="top" secondItem="j9V-HC-k7d" secondAttribute="bottom" constant="8" id="K7x-sC-EUn"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="90Z-GT-pYS" secondAttribute="bottom" constant="7" id="QhG-SM-NvW"/>
-                    <constraint firstItem="90Z-GT-pYS" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Rel-E9-awS"/>
-                    <constraint firstItem="90Z-GT-pYS" firstAttribute="top" secondItem="P0C-b7-iNL" secondAttribute="bottom" constant="13" id="SbX-2j-BBC"/>
+                    <constraint firstAttribute="trailing" secondItem="8ty-Ji-Ow5" secondAttribute="trailing" id="GGG-aH-2Ej"/>
+                    <constraint firstItem="j9V-HC-k7d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Gx4-Dz-XKR"/>
+                    <constraint firstItem="P0C-b7-iNL" firstAttribute="top" secondItem="j9V-HC-k7d" secondAttribute="bottom" constant="11" id="K7x-sC-EUn"/>
+                    <constraint firstAttribute="bottom" secondItem="90Z-GT-pYS" secondAttribute="bottom" constant="50" id="QhG-SM-NvW"/>
                     <constraint firstAttribute="trailing" secondItem="P0C-b7-iNL" secondAttribute="trailing" constant="16" id="VQn-QM-eOp"/>
                     <constraint firstItem="90Z-GT-pYS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="eVa-iA-dgr"/>
+                    <constraint firstAttribute="bottom" secondItem="8ty-Ji-Ow5" secondAttribute="bottom" constant="10" id="epn-Cg-c09"/>
                     <constraint firstItem="j9V-HC-k7d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fH4-7b-Vb1"/>
-                    <constraint firstItem="P0C-b7-iNL" firstAttribute="top" secondItem="j9V-HC-k7d" secondAttribute="bottom" constant="8" id="hPY-ae-Vkh"/>
                     <constraint firstAttribute="trailing" secondItem="j9V-HC-k7d" secondAttribute="trailing" constant="16" id="j6n-jh-aGZ"/>
-                    <constraint firstItem="90Z-GT-pYS" firstAttribute="top" secondItem="P0C-b7-iNL" secondAttribute="bottom" constant="13" id="wal-Mz-AU9"/>
+                    <constraint firstItem="8ty-Ji-Ow5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wa8-9s-G4U"/>
+                    <constraint firstItem="90Z-GT-pYS" firstAttribute="top" secondItem="P0C-b7-iNL" secondAttribute="bottom" constant="8" id="wal-Mz-AU9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -53,7 +63,19 @@
                 <outlet property="progressView" destination="90Z-GT-pYS" id="T5V-Hc-sBY"/>
                 <outlet property="timeLeft" destination="P0C-b7-iNL" id="WBj-TJ-zAB"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="99.441964285714278"/>
+            <point key="canvasLocation" x="163.04347826086959" y="119.19642857142857"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="my-challenges-seperator" width="750" height="108"/>
+        <namedColor name="OrangeChallenge">
+            <color red="0.99099999666213989" green="0.35400000214576721" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextfieldBackground">
+            <color red="1" green="0.93699997663497925" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YellowChallenge">
+            <color red="1" green="0.86299997568130493" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

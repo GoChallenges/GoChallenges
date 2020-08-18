@@ -31,13 +31,12 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     }
     
     func loadChallenges() {
-        let challengesRef  = db.collection("Lifestyle")
+        let challengesRef  = db.collection("Challenges")
         let fp = FieldPath(["Lifestyle"])
-        let query = challengesRef
-            .order(by: "End Date")
+        let query = challengesRef.whereField("Category", isEqualTo: "Food")
         
         
-        query.getDocuments { (querySnapshot, error) in
+        challengesRef.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
