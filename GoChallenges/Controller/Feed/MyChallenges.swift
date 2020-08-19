@@ -15,6 +15,20 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     var challenges = [QueryDocumentSnapshot]()
     let currentUser = Auth.auth().currentUser as! User
     
+    //variables to pass to the next view controller file
+    var passDescrip : String = "" //description
+    var passName : String = "" //name
+    
+    //Variables to turn Firestore Timestamp to Date
+    var startTimestamp = Timestamp()
+    var endTimestamp = Timestamp()
+    
+    //Date variables
+    var startDay = Date()
+    var endDay = Date()
+    var currentDay = Date()
+    var remainingDays : String = ""
+    
     //let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
 
     @IBOutlet weak var challengesTableView: UITableView!
@@ -49,21 +63,10 @@ class MyChallenges: UIViewController, UITableViewDataSource {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
         
 }
 
 //MARK: - DEQUEUE CELLS AND QUERY ATTENDED CHALLENGES
-
 
 extension MyChallenges: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,6 +113,48 @@ extension MyChallenges: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: K.segue.currentToDetail, sender: self)
+        //Pass Data from the table view cell to the challenge details screen
+        
+        let challenge = challenges[indexPath.row]
+        passDescrip = challenge["Challenge Description"] as! String
+        passName = challenge["Challenge Name"] as! String
+        
+        //Convert Firestore Timestamp to Date or NSDate
+        startTimestamp = challenge["Start Date"] as! Timestamp
+        startDay = startTimestamp.dateValue()
+        endTimestamp = challenge["End Date"] as! Timestamp
+        endDay = endTimestamp.dateValue() //turn to Date
+        
+        //if statement to get the remaining days to complete the challenge
+        if currentDay > startDay && currentDay < endDay{
+            remainingDays = String(Calendar.current.dateComponents([.day], from: currentDay, to: endDay).day!)
+
+        }else if currentDay <= startDay{
+            remainingDays = String(Calendar.current.dateComponents([.day], from: startDay, to: endDay).day!)
+        }else if currentDay == endDay{
+            remainingDays = "0"
+        }else if currentDay > endDay{
+            remainingDays = "The challenge is expired"
+        }
+        // need to check when current day is greater than the endDay in the future
+        
+        //Transfer the challenge's data to the next view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateViewController(identifier: "detailView") as! ChallengeDetail
+        detailVC.descriptionText = passDescrip
+        detailVC.nameText = passName
+        
+        //Convert Date to String for start and end dates
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        detailVC.startDate = formatter.string(from: startDay)
+        detailVC.endDate = formatter.string(from: endDay)
+        detailVC.daysLeft = remainingDays
+        
+        //Move to the challenge detail screen
+        self.present(detailVC, animated: true, completion: nil)
+        //stop highlight the cell after select
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

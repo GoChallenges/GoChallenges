@@ -72,6 +72,7 @@ extension  ChallengesFeed : UITableViewDataSource{
 
 extension ChallengesFeed : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Pass data to the challenge detail screen
         let challenge = challengeDict[indexPath.row]
     
         passDescrip = challenge["Challenge Description"] as! String
@@ -110,6 +111,7 @@ extension ChallengesFeed : UITableViewDelegate{
         detailVC.endDate = formatter.string(from: endDay)
         detailVC.daysLeft = remainingDays
         
+        //Move to the challenge detail screen
         self.present(detailVC, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true) //stop highlight the cell after select
     }
