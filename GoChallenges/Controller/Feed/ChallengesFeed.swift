@@ -35,7 +35,7 @@ class ChallengesFeed: UIViewController {
     }
     
     func loadData(){
-        db.collection("Food").getDocuments { (querySnapshot, error) in
+        db.collection("Challenges").getDocuments { (querySnapshot, error) in
             if error != nil{
                 print(error?.localizedDescription as Any)
             }else{
