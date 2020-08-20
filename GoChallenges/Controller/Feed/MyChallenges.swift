@@ -152,6 +152,10 @@ extension MyChallenges: UITableViewDelegate {
         detailVC.endDate = formatter.string(from: endDay)
         detailVC.daysLeft = remainingDays
         
+        //Send the creator email to challenge detail screen
+        let creatorEmail = challenge["Creator"] as! String // Email (string) of the selected challenge
+        detailVC.creatorEmail = creatorEmail 
+        
         //Move to the challenge detail screen
         self.present(detailVC, animated: true, completion: nil)
         //stop highlight the cell after select
