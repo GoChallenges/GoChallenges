@@ -51,6 +51,8 @@ class RegisterViewController: UIViewController {
                         } else {
                             print("Registered with ID: \(ref!.documentID)")
                             self.profileID = ref!.documentID
+                            sessionData.currentUser = Auth.auth().currentUser!
+                            sessionData.profileID = ref?.documentID
                             
                             //perform segue to main feed screen
                             self.performSegue(withIdentifier: K.segue.registerToFeed, sender: self)
@@ -77,9 +79,7 @@ extension RegisterViewController: UITextFieldDelegate {
     
 }
 
-
 //MARK: - UI Adjustment
-
 extension RegisterViewController {
     func updateUI() {
         emailView.layer.cornerRadius = 20

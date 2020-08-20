@@ -12,6 +12,9 @@ class ChallengesFeed: UIViewController {
     var categoryFilter : String = ""
     var challengeDict = [QueryDocumentSnapshot]()
     
+    // Current User and store it to SessionDta class
+    let currentUser = Auth.auth().currentUser as! User
+    
     //variables to pass to the next view controller file
     var passDescrip : String = "" //description
     var passName : String = "" //name
@@ -31,6 +34,9 @@ class ChallengesFeed: UIViewController {
         challengeTableView.dataSource = self
         challengeTableView.delegate = self
         loadData()
+        
+        sessionData.currentUser = currentUser // Save currentUser to background
+        
         //checkForUpdates()
     }
     
@@ -111,8 +117,29 @@ extension ChallengesFeed : UITableViewDelegate{
         detailVC.endDate = formatter.string(from: endDay)
         detailVC.daysLeft = remainingDays
         
+        //Send the creator email to challenge detail screen
+        let creatorEmail = challenge["Creator"] as! String // Email (string) of the selected challenge
+        detailVC.creatorEmail = creatorEmail 
+        
         //Move to the challenge detail screen
         self.present(detailVC, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true) //stop highlight the cell after select
+    }
+}
+
+//MARK: - Load Current / Creator Profile
+extension ChallengesFeed {
+    func loadProfile() {
+        let dataRef = db.collection("Profiles") // Reference to Profiles collection
+        let query = dataRef.whereField("email", isEqualTo: currentUser.email!) // Query all documents with current user's email
+        query.getDocuments { (querySnapshots, error) in
+            if let e = error {
+                self.displayErrorAlert(error: e) // Display an error message
+            } else {
+                // querySnapshots has only 1 element
+                let profile = querySnapshots!.documents[0]
+                sessionData.profileID = profile.documentID // Save profile id to background
+            }
+        }
     }
 }

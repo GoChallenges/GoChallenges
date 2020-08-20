@@ -11,6 +11,8 @@ class SigninViewController: UIViewController {
     @IBOutlet weak var emailView: UIImageView!
     @IBOutlet weak var passwordView: UIImageView!
     
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -52,6 +54,9 @@ class SigninViewController: UIViewController {
                 }else{
                     print("Log In successful")
                     
+                    sessionData.currentUser = Auth.auth().currentUser! // Save current user to background
+                    self!.loadProfile() // Load current profile to get profile id
+                    
                     //perform segue here
                     self?.performSegue(withIdentifier: K.segue.signinToFeed, sender: self)
                     
@@ -75,3 +80,22 @@ extension SigninViewController {
         passwordView.layer.cornerRadius = 20
     }
 }
+
+//MARK: - Load current user's profile
+extension SigninViewController {
+    func loadProfile() {
+        let db = Firestore.firestore()
+        let dataRef = db.collection("Profiles") // Reference to Profiles collection
+        let query = dataRef.whereField("email", isEqualTo: sessionData.currentUser.email!) // Query all documents with current user's email
+        query.getDocuments { (querySnapshots, error) in
+            if let e = error {
+                self.displayErrorAlert(error: e) // Display an error message
+            } else {
+                // querySnapshots has only 1 element
+                let profile = querySnapshots!.documents[0]
+                sessionData.profileID = profile.documentID // Save profile id to background
+            }
+        }
+    }
+}
+

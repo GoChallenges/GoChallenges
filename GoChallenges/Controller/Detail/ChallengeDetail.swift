@@ -12,6 +12,7 @@ class ChallengeDetail: UIViewController {
     @IBOutlet weak var remaingLabel: UILabel!
     
     let db = Firestore.firestore()
+    var creatorEmail : String! // Email (string) of the creator of this challenge
     
     //Data got from last screen
     var descriptionText: String = ""
@@ -33,5 +34,12 @@ class ChallengeDetail: UIViewController {
     //View creator button
     @IBAction func creatorButton(_ sender: Any) {
         performSegue(withIdentifier: K.segue.viewCreatorSegue, sender: self)
+    }
+    
+    //Send data to the next vc
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! Profile // The destination vc as Profile
+        vc.email = creatorEmail
+        print(self.creatorEmail) // Send the creator email to Profile VC
     }
 }

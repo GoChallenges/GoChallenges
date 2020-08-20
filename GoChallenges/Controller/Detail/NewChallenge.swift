@@ -73,7 +73,17 @@ class NewChallenge: UIViewController {
                 let timeString = formatter.string(from: currentDate)
  
                 // Create a new challenge
-                let newChallenge = Data(creator: userName, challengeName: name, challengeDescription: descriptionText, goal: goalNum, unit: goalUnit,start: startDate, end: endDate,timeCreated: timeString, category: categorySelected, participants: [currentUser.email!], progress: [currentUser.email!:0.00])
+                let newChallenge = Data(creator: userName,
+                                        challengeName: name,
+                                        challengeDescription: descriptionText,
+                                        goal: goalNum,
+                                        unit: goalUnit,
+                                        start: startDate,
+                                        end: endDate,
+                                        timeCreated: timeString,
+                                        category: categorySelected,
+                                        participants: [currentUser.email!], // An array of all participants' emails
+                                        progress: [currentUser.email!:0.00]) // A dict of email - key (string) and progress - value (float)
                 
                 //Add data to database
                 var dataRef : DocumentReference? = nil
@@ -85,10 +95,12 @@ class NewChallenge: UIViewController {
                     } else {
                         print("Document added with ID: \(dataRef!.documentID)")
                         
-                        // Add the challenge's reference to current and created arrays
-                        let profileRef = self.db.collection("Profiles").document(self.profileID)
+                        // Add the newly created challenge's reference (DocumentReference)
+                        // to current user's current challenges and created challenges arrays
+                        let profileRef = self.db.collection("Profiles").document(self.profileID) // Reference to current user's Profile
+                        
                         profileRef.updateData([
-                            K.profile.current: FieldValue.arrayUnion([dataRef]),
+                            K.profile.current: FieldValue.arrayUnion([dataRef]), // Add this challenge to current chals array
                             K.profile.created: FieldValue.arrayUnion([dataRef])
                         ]) { (error) in
                             if let error = error {
@@ -127,6 +139,8 @@ class NewChallenge: UIViewController {
             alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
+        
+        // Message: there's a function called displayErrorAlert in GeneralFunctions to display error message
     }
     
     //create the content inside of the date picker view
@@ -214,15 +228,16 @@ extension NewChallenge: UITextViewDelegate{
 }
 
 
-//MARK: - Load Current Profile
+//MARK: - Load Current / Creator Profile
 extension NewChallenge {
     func loadProfile() {
-        let dataRef = db.collection("Profiles")
-        let query = dataRef.whereField("email", isEqualTo: currentUser.email!)
+        let dataRef = db.collection("Profiles") // Reference to Profiles collection
+        let query = dataRef.whereField("email", isEqualTo: currentUser.email!) // Query all documents with current user's email
         query.getDocuments { (querySnapshots, error) in
             if let e = error {
-                self.displayErrorAlert(error: e)
+                self.displayErrorAlert(error: e) // Display an error message
             } else {
+                // querySnapshots has only 1 element
                 let profile = querySnapshots!.documents[0]
                 self.profileID = profile.documentID
             }

@@ -6,6 +6,9 @@ import Firebase
 import FirebaseAuth
 import AlamofireImage
 
+/*
+ Receives the email of the previous vc and uses it to load the wanted profile
+ */
 class Profile: UIViewController, UITableViewDelegate {
     
     // UI Element Outlets
@@ -22,16 +25,18 @@ class Profile: UIViewController, UITableViewDelegate {
     @IBOutlet weak var addFriendButton: UIButton!
     
     let db = Firestore.firestore()
-    
-    let currentUser = Auth.auth().currentUser as! User
+    let currentUser = Auth.auth().currentUser!
     
     // Profile id and related profile objects
-    internal var userID : String!
-    var profile : QueryDocumentSnapshot!
-    var friends : [QueryDocumentSnapshot]!
-    var currentChallenges = [DocumentReference]()
+    // Initialized all variable to belong to current user and change by previous vc if needed
     
-    // Dictionary of tags and cell identifers of list table view
+    var profileID = String() // Id of the wanted profile
+    var email = String() // Email of wanted profile
+    var profile : QueryDocumentSnapshot! // The wanted profile either current user (from tab bar vc) or creator (challenge vc)
+    var friends : [QueryDocumentSnapshot]!
+    var currentChallenges = [DocumentReference]() // An array of challenges currently in, not finished, has DocumentReference to each of them
+    
+    // Dictionary of button tags and according cell identifers for ListTableView (vc)
     let cellIdentifers : [Int:String] = [
         0: K.challengeCell, 1: K.challengeCell, 2 : K.friendCell    ]
     
@@ -40,34 +45,44 @@ class Profile: UIViewController, UITableViewDelegate {
         challengeTableView.delegate = self
         challengeTableView.dataSource = self
         
+        // Register challenge tb cell nib
         challengeTableView.register(UINib(nibName: K.profileCellNib, bundle: nil), forCellReuseIdentifier: K.profileCell)
         challengeTableView.rowHeight = 150
         
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2 // Radius of profile image
         
+        // Assign tags to each button
         createdChallengeButton.tag = 0
         completedChallengeButton.tag = 1
         friendButton.tag = 2
+        
+        // No data passed to this vc, meaning it came from the tab bar vc
+        if email == "" {
+            sessionData.currentUser = currentUser
+            email = sessionData.currentUser.email!
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        
+        // Load the intended profile using an email
         loadProfile()
     }
     
     // Load the current user profile
     private func loadProfile() {
         let profileRef = db.collection(K.profiles)
-        let email = currentUser.email
-        let query = profileRef.whereField("email", isEqualTo: email!)
+        let query = profileRef.whereField("email", isEqualTo: email)
         
         query.getDocuments { (querySnapshots, error) in
             if let error = error {
                 print("Error: \(error)")
             } else {
+                print(querySnapshots!)
                 self.profile = querySnapshots!.documents[0]
                 
-                self.userID = self.profile.documentID
+                self.profileID = self.profile.documentID
                 
                 let username = self.profile[K.profile.name] as! String
                 let createdChallenges = self.profile[K.profile.created] as! [DocumentReference]
@@ -82,58 +97,23 @@ class Profile: UIViewController, UITableViewDelegate {
                 self.completedChallengeButton.setTitle("\(completedChallenges.count)", for: .normal)
                 self.friendButton.setTitle("\(self.friends!.count)", for: .normal)
                 
+                // Display profile image if there is one saved in the Profile
                 if let imageURLString = self.profile[K.profile.image] {
                     let imageURL = URL(string: imageURLString as! String)
                     self.profileImageView.af.setImage(withURL: imageURL!)
                     
                     self.hideFeatures()
                 }
+                
+                // Reload tableview
                 self.challengeTableView.reloadData()
             }
         }
     }
-    
-    // Hide the Add friend and Add Profile Image Features
-    func hideFeatures() {
         
-        // Not current user's profile
-        if profile["email"] as! String != currentUser.email {
-            
-            // Hide change profile picture button and show add friend button
-            changeProfileButton.isHidden = true
-            addFriendButton.isHidden = false
-            
-            // Check if added friend
-            if self.friends.isEmpty != false {
-                addFriendButton.isHidden = friends.contains(profile) ? true : false
-            } else {
-                addFriendButton.isHidden = false
-            }
-            
-        } else {
-            changeProfileButton.isHidden = false
-            addFriendButton.isHidden = true
-        }
-    }
-    
     // Add Friend
     @IBAction func addFriend(_ sender: Any) {
-        do {
-            try friends!.append(profile)
-        } catch {
-            friends = [profile]
-        }
-        
-        // Update the friends array of Profile object
-        let db = Firestore.firestore()
-        let profileRef = db.collection("Profiles").document(self.userID)
-        profileRef.updateData([K.profile.friends:friends]) { (error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else {
-                print("Added friend")
-            }
-        }
+        addFriend()
     }
     
     // Add Profile Image
@@ -147,23 +127,6 @@ class Profile: UIViewController, UITableViewDelegate {
     }
 }
 
-// Prepare for segue
-extension Profile {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.segue.profileToCamera {
-            let navigationVC = segue.destination as! UINavigationController
-            let vc = navigationVC.topViewController as! CameraViewController
-            
-            vc.userID = userID
-        } else if segue.identifier == K.segue.profileToTB {
-            let navigationVC = segue.destination as! UINavigationController
-            let vc = navigationVC.topViewController as! ListTableView
-            let button = sender as! UIButton
-            vc.cellIdentifer = cellIdentifers[button.tag]!
-        }
-    }
-}
-
 // Display tableview of current challenges
 extension Profile: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,14 +137,14 @@ extension Profile: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.profileCell, for: indexPath) as! ProfileChallengeCell
         
         // Retrieve the challenge from the challenge reference
+        
         let challengeRef = currentChallenges[indexPath.row]
         challengeRef.getDocument { (document, error) in
             if let e = error {
                 print("Error loading current challenges : \(e.localizedDescription)")
             } else if let challenge = document {
                 let progress = challenge["Progress"] as! NSDictionary
-                let email = self.currentUser.email!
-                let progressNumber = progress[email] as! NSNumber
+                let progressNumber = progress[self.email] as! NSNumber
                 let progressDouble = Double(progressNumber)
                 
                 cell.challengeLabel.text = (challenge["Challenge Name"] as! String)
@@ -189,5 +152,83 @@ extension Profile: UITableViewDataSource {
             }
         }
         return cell
+    }
+}
+
+// Function for the functionalities of the vc
+extension Profile {
+    
+    // Hide the Add friend and Add Profile Image Features
+    func hideFeatures() {
+        
+        // Not current user's profile
+        if email != currentUser.email! {
+            
+            // Hide change profile picture button and show add friend button
+            changeProfileButton.isHidden = true
+            addFriendButton.isHidden = false
+            
+            // Check if added friend
+            if self.friends.isEmpty != false {
+                addFriendButton.isHidden = friends.contains(profile) ? true : false
+            } else {
+                addFriendButton.isHidden = false
+            }
+            
+        } else { // Current user's profile
+            changeProfileButton.isHidden = false
+            addFriendButton.isHidden = true
+        }
+    }
+    
+    // Add friend the current profile
+    func addFriend() {
+        
+        // Update the Friends array of this Profile object and that array of current Profile
+        let db = Firestore.firestore()
+        let thisProfileRef = db.collection("Profiles").document(self.profileID) // Reference to this profile
+        let myProfileRef = db.collection("Profiles").document(sessionData.profileID) // Reference to current user profile
+        
+        print(thisProfileRef, myProfileRef)
+        
+        // Add current user's profile ref to this profile friends array
+        thisProfileRef.updateData([K.profile.friends: FieldValue.arrayUnion([myProfileRef])]) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Added friend")
+            }
+        }
+
+        // Add this user's profile id to current user friends array
+        myProfileRef.updateData([K.profile.friends: FieldValue.arrayUnion([thisProfileRef])]) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Added friend")
+            }
+        }
+    }
+    
+    // Prepare for segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Going to CameraViewController (vc)
+        if segue.identifier == K.segue.profileToCamera {
+            let navigationVC = segue.destination as! UINavigationController
+            let vc = navigationVC.topViewController as! CameraViewController
+            
+            // Send the userID of current user
+            vc.profileID = profileID
+            
+        // Going to ListTableView (vc)
+        } else if segue.identifier == K.segue.profileToTB {
+            let navigationVC = segue.destination as! UINavigationController
+            let vc = navigationVC.topViewController as! ListTableView
+            let button = sender as! UIButton
+            
+            // Send the appropriate cell indentifers depending on button pushed
+            vc.cellIdentifer = cellIdentifers[button.tag]!
+        }
     }
 }

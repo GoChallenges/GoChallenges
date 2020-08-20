@@ -15,7 +15,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
     
-    var userID: String!
+    var profileID: String!
     var imageURLString: String!
     
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                             
                             // Update Profiles object wit URL String
                             let db = Firestore.firestore()
-                            let profileRef = db.collection("Profiles").document(self.userID)
+                            let profileRef = db.collection("Profiles").document(self.profileID)
                             profileRef.updateData(["profileImageURL" : self.imageURLString]) { (error) in
                                 if let error = error {
                                     print("Error: \(error)")
