@@ -45,13 +45,12 @@ class MyChallenges: UIViewController, UITableViewDataSource {
         loadChallenges()
     }
     
+    // Load/Queue Challenges
     func loadChallenges() {
-        let challengesRef  = db.collection("Challenges")
-        let fp = FieldPath(["Lifestyle"])
-        let query = challengesRef.whereField("Category", isEqualTo: "Food")
+        let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+        let query = challengesRef.whereField("Category", isEqualTo: "Food") // Load challenges with category in "Food" (Category filter)
         
-        
-        challengesRef.getDocuments { (querySnapshot, error) in
+        query.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {

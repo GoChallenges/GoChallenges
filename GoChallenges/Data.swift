@@ -45,7 +45,7 @@ struct Data : Challenge {
             "Creator" : creator,
             "Challenge Name" : challengeName,
             "Challenge Description" : challengeDescription,
-            "Goal" : goal,
+            "Goal" : goal, 
             "Unit" : unit,
             "Start Date" : start,
             "End Date" : end,
@@ -53,6 +53,7 @@ struct Data : Challenge {
             "Category": category,
             "Participants": participants,
             "Progress": progress
+            
         ]
     }
     
