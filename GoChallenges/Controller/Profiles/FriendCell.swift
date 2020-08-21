@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FriendCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -14,7 +15,7 @@ class FriendCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization code)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -22,5 +23,5 @@ class FriendCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

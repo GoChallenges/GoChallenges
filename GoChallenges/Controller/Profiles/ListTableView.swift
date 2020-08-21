@@ -16,11 +16,12 @@ class ListTableView: UIViewController, UITableViewDelegate{
     ]
     
     var cellIdentifer : String!
-
     var segueIdentifer : String {
         return segueDict[cellIdentifer]!
     }
     
+    let db = Firestore.firestore()
+    let myProfileID = sessionData.profileID!
     var challenges = [DocumentReference]()
     var friends = [DocumentReference]()
     
@@ -40,6 +41,11 @@ class ListTableView: UIViewController, UITableViewDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loadFriends()
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -50,19 +56,47 @@ class ListTableView: UIViewController, UITableViewDelegate{
      }
      */
     
+    // Load friends array
+    func loadFriends() {
+        let profileRef = db.collection("Profiles").document(myProfileID)
+        profileRef.getDocument { (documentSnapshots, error) in
+            if let documentSnapshots = documentSnapshots {
+                let data = documentSnapshots.data()
+                self.friends = data!["friends"] as! [DocumentReference]
+                self.listTableView.reloadData()
+            } else {
+                self.displayErrorAlert(error: error!)
+            }
+        }
+    }
+    
 }
 
 extension ListTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if cellIdentifer == K.friendCell {
-            return 4
+            return friends.count
         } else {
             return challenges.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // FriendCell
         let cell = listTableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as! FriendCell
+        
+        let friendRef = friends[indexPath.row] // Ref to friend's profile
+        friendRef.getDocument { (documents, error) in
+            if let friend = documents {
+                cell.displayNameLabel.text = friend[K.profile.name] as! String // Profile's display name
+                
+                // Display profile image
+                if let imageURLString = friend[K.profile.image] {
+                    let imageURL = URL(string: imageURLString as! String)
+                    cell.profileImageView.af.setImage(withURL: imageURL!)
+                }
+            }
+        }
         return cell
     }
 }
