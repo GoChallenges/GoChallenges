@@ -7,7 +7,7 @@ import FirebaseAuth
 import AlamofireImage
 
 /*
- Receives the email of the previous vc and uses it to load the wanted profile
+ Receives the EMAIL of the previous vc and uses it to load the wanted profile
  */
 class Profile: UIViewController, UITableViewDelegate {
     
@@ -79,7 +79,6 @@ class Profile: UIViewController, UITableViewDelegate {
             if let error = error {
                 print("Error: \(error)")
             } else {
-                print(querySnapshots!)
                 self.profile = querySnapshots!.documents[0]
                 
                 self.profileID = self.profile.documentID
@@ -189,8 +188,6 @@ extension Profile {
         let thisProfileRef = db.collection("Profiles").document(self.profileID) // Reference to this profile
         let myProfileRef = db.collection("Profiles").document(sessionData.profileID) // Reference to current user profile
         
-        print(thisProfileRef, myProfileRef)
-        
         // Add current user's profile ref to this profile friends array
         thisProfileRef.updateData([K.profile.friends: FieldValue.arrayUnion([myProfileRef])]) { (error) in
             if let error = error {
@@ -229,6 +226,8 @@ extension Profile {
             
             // Send the appropriate cell indentifers depending on button pushed
             vc.cellIdentifer = cellIdentifers[button.tag]!
+            
+            vc.myProfileID = profileID // Send the profile being used id
         }
     }
 }

@@ -21,9 +21,12 @@ class ListTableView: UIViewController, UITableViewDelegate{
     }
     
     let db = Firestore.firestore()
-    let myProfileID = sessionData.profileID!
-    var challenges = [DocumentReference]()
-    var friends = [DocumentReference]()
+    var myProfileID = sessionData.profileID! // Profile ID of selected friend
+    var challenges = [DocumentReference]() // Array of created/finished challenges
+    var friends = [DocumentReference]() // Array of friends
+    var emails = [String]() // Array of friends' emails
+    
+    var selectedRow = 0
     
     @IBOutlet weak var listTableView: UITableView!
     
@@ -43,7 +46,12 @@ class ListTableView: UIViewController, UITableViewDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        loadFriends()
+        if cellIdentifer == K.friendCell {
+            loadFriends()
+        } else if cellIdentifer == K.myChallengeCell {
+            loadChallenges()
+        }
+
     }
     
     /*
@@ -62,12 +70,18 @@ class ListTableView: UIViewController, UITableViewDelegate{
         profileRef.getDocument { (documentSnapshots, error) in
             if let documentSnapshots = documentSnapshots {
                 let data = documentSnapshots.data()
-                self.friends = data!["friends"] as! [DocumentReference]
+                self.friends = data![K.profile.friends] as! [DocumentReference]
                 self.listTableView.reloadData()
+                
             } else {
                 self.displayErrorAlert(error: error!)
             }
         }
+    }
+    
+    // Load challenges array
+    
+    func loadChallenges() {
     }
     
 }
@@ -88,15 +102,36 @@ extension ListTableView: UITableViewDataSource {
         let friendRef = friends[indexPath.row] // Ref to friend's profile
         friendRef.getDocument { (documents, error) in
             if let friend = documents {
-                cell.displayNameLabel.text = friend[K.profile.name] as! String // Profile's display name
+                // Add email to emails array
+                let email = friend[K.profile.email] as! String
+                self.emails.append(email)
+                // Profile's display name
+                cell.displayNameLabel.text = friend[K.profile.name] as! String
                 
                 // Display profile image
                 if let imageURLString = friend[K.profile.image] {
                     let imageURL = URL(string: imageURLString as! String)
                     cell.profileImageView.af.setImage(withURL: imageURL!)
+                    
                 }
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
+        performSegue(withIdentifier: K.segue.TBToProfile, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! Profile
+        // Get the email of the profile at selected cell
+        
+        print(emails)
+        let email = emails[selectedRow]
+        print(email)
+        vc.email = email
+        
     }
 }
