@@ -50,9 +50,9 @@ class MyChallenges: UIViewController, UITableViewDataSource {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                for doc in querySnapshot!.documents {
-                    print(doc.data())
-                }
+//                for doc in querySnapshot!.documents {
+//                    print(doc.data())
+//                }
                 self.challenges = querySnapshot!.documents
                 self.challengesTableView.reloadData()
             }

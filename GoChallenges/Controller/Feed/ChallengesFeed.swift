@@ -37,7 +37,9 @@ class ChallengesFeed: UIViewController {
     }
     
     func loadData(){
-        db.collection("Challenges").getDocuments { (querySnapshot, error) in
+        let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+        let query = challengesRef.whereField("Category", isEqualTo: "Education") // Load challenges with category in "Food" (Category filter)
+        query.getDocuments { (querySnapshot, error) in
             if error != nil{
                 print(error?.localizedDescription as Any)
             }else{
