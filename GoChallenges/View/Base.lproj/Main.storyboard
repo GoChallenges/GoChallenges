@@ -777,8 +777,18 @@
                                     <action selector="creatorButton:" destination="MCI-cC-RiN" eventType="touchUpInside" id="3Er-dc-KmW"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aoz-0K-jN6">
+                                <rect key="frame" x="20" y="664" width="374" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-6L-Bcm">
+                                <rect key="frame" x="20" y="596" width="241" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="YellowChallenge"/>
                         <viewLayoutGuide key="safeArea" id="q5w-oF-e3Y"/>
                     </view>
                     <navigationItem key="navigationItem" id="4jb-EJ-DAJ"/>
@@ -927,7 +937,7 @@
             </objects>
             <point key="canvasLocation" x="3595.652173913044" y="-137.27678571428569"/>
         </scene>
-        <!--Food-->
+        <!--Challenges-->
         <scene sceneID="e7u-rO-j0e">
             <objects>
                 <viewController id="1Rs-ao-cUb" customClass="ChallengesFeed" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
@@ -975,7 +985,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tXz-gr-Msg"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Food" id="yx3-Aq-nRS"/>
+                    <navigationItem key="navigationItem" title="Challenges" id="yx3-Aq-nRS"/>
                     <connections>
                         <outlet property="challengeTableView" destination="SQf-bt-La4" id="1v0-gF-zEb"/>
                         <segue destination="MCI-cC-RiN" kind="show" identifier="feedToDetail" id="moj-q5-Yx9"/>
