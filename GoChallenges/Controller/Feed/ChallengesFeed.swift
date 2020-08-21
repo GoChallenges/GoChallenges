@@ -15,10 +15,6 @@ class ChallengesFeed: UIViewController {
     // Current User and store it to SessionDta class
     let currentUser = Auth.auth().currentUser as! User
     
-    //variables to pass to the next view controller file
-    var passDescrip : String = "" //description
-    var passName : String = "" //name
-    
     //Variables to turn Firestore Timestamp to Date
     var startTimestamp = Timestamp()
     var endTimestamp = Timestamp()
@@ -80,9 +76,11 @@ extension ChallengesFeed : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Pass data to the challenge detail screen
         let challenge = challengeDict[indexPath.row]
-    
-        passDescrip = challenge["Challenge Description"] as! String
-        passName = challenge["Challenge Name"] as! String
+
+        let passDescrip = challenge["Challenge Description"] as! String
+        let passName = challenge["Challenge Name"] as! String
+        let passGoal = challenge["Goal"] as! Double
+        let passUnit = challenge["Unit"] as! String
         
         //Convert Firestore Timestamp to Date or NSDate
         startTimestamp = challenge["Start Date"] as! Timestamp
@@ -116,6 +114,8 @@ extension ChallengesFeed : UITableViewDelegate{
         detailVC.startDate = formatter.string(from: startDay)
         detailVC.endDate = formatter.string(from: endDay)
         detailVC.daysLeft = remainingDays
+        detailVC.goal = passGoal
+        detailVC.unit = passUnit
         
         //Send the creator email to challenge detail screen
         let creatorEmail = challenge["Creator"] as! String // Email (string) of the selected challenge

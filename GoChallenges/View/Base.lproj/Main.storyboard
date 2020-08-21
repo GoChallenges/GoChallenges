@@ -777,14 +777,17 @@
                                     <action selector="creatorButton:" destination="MCI-cC-RiN" eventType="touchUpInside" id="3Er-dc-KmW"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aoz-0K-jN6">
-                                <rect key="frame" x="20" y="664" width="374" height="2"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qt-LC-wT9">
+                                <rect key="frame" x="0.0" y="627" width="414" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-6L-Bcm">
-                                <rect key="frame" x="20" y="596" width="241" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current progress..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-6L-Bcm">
+                                <rect key="frame" x="88" y="556" width="239" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -793,9 +796,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="4jb-EJ-DAJ"/>
                     <connections>
+                        <outlet property="currentProgress" destination="Imc-6L-Bcm" id="VEb-qV-PYv"/>
                         <outlet property="descriptionTextView" destination="XlE-Op-oTJ" id="IOa-x0-orn"/>
                         <outlet property="endLabel" destination="cRZ-xj-Q6i" id="ma5-D5-qMK"/>
                         <outlet property="nameLabel" destination="Wsg-Gs-KBR" id="Mr3-xf-mOO"/>
+                        <outlet property="progressLabel" destination="3qt-LC-wT9" id="e1N-cZ-nIM"/>
                         <outlet property="remaingLabel" destination="mX4-Bw-t1q" id="8Rk-9z-80c"/>
                         <outlet property="startLabel" destination="ZIX-BB-IQB" id="0iQ-XA-rb0"/>
                         <segue destination="aU0-eT-gJ8" kind="show" identifier="detailToProfile" id="3In-rY-c0M"/>

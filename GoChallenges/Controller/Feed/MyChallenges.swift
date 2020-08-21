@@ -15,10 +15,6 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     var challenges = [QueryDocumentSnapshot]()
     let currentUser = Auth.auth().currentUser as! User
     
-    //variables to pass to the next view controller file
-    var passDescrip : String = "" //description
-    var passName : String = "" //name
-    
     //Variables to turn Firestore Timestamp to Date
     var startTimestamp = Timestamp()
     var endTimestamp = Timestamp()
@@ -115,8 +111,10 @@ extension MyChallenges: UITableViewDelegate {
         //Pass Data from the table view cell to the challenge details screen
         
         let challenge = challenges[indexPath.row]
-        passDescrip = challenge["Challenge Description"] as! String
-        passName = challenge["Challenge Name"] as! String
+        let passDescrip = challenge["Challenge Description"] as! String
+        let passName = challenge["Challenge Name"] as! String
+        let passGoal = challenge["Goal"] as! Double
+        let passUnit = challenge["Unit"] as! String
         
         //Convert Firestore Timestamp to Date or NSDate
         startTimestamp = challenge["Start Date"] as! Timestamp
@@ -142,6 +140,8 @@ extension MyChallenges: UITableViewDelegate {
         let detailVC = storyboard.instantiateViewController(identifier: "detailView") as! ChallengeDetail
         detailVC.descriptionText = passDescrip
         detailVC.nameText = passName
+        detailVC.goal = passGoal
+        detailVC.unit = passUnit
         
         //Convert Date to String for start and end dates
         let formatter = DateFormatter()
