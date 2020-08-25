@@ -2,7 +2,6 @@
 //  CameraViewController.swift
 //  GoChallenges
 //
-//  Created by nguyen thy on 6/11/20.
 //  Copyright © 2020 Han Nguyen. All rights reserved.
 //
 
