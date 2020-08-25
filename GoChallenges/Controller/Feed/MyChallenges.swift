@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import iOSDropDown
 
 class MyChallenges: UIViewController, UITableViewDataSource {
     
@@ -28,36 +29,62 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     //let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
 
     @IBOutlet weak var challengesTableView: UITableView!
+    @IBOutlet weak var categoryMenu: DropDown!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //Drop down menu
+        categoryMenu.optionArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
+        categoryMenu.selectedRowColor = #colorLiteral(red: 0.9909999967, green: 0.3540000021, blue: 0, alpha: 1)
+        categoryMenu.rowBackgroundColor = #colorLiteral(red: 0.9999282956, green: 0.9373036027, blue: 0.7450124621, alpha: 1)
+        categoryMenu.checkMarkEnabled = false //check mark when selected
+        categoryMenu.isSearchEnable = false //No search function
+        
         challengesTableView.delegate = self
         challengesTableView.dataSource = self
         
         challengesTableView.register(UINib(nibName: K.myChallengeCellNib, bundle: nil), forCellReuseIdentifier: K.myChallengeCell)
         challengesTableView.rowHeight = 150
         
-        loadChallenges()
-    }
-    
-    // Load/Queue Challenges
-    func loadChallenges() {
-        let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
-        let query = challengesRef.whereField("Category", isEqualTo: "Food") // Load challenges with category in "Food" (Category filter)
-        
-        query.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-//                for doc in querySnapshot!.documents {
-//                    print(doc.data())
-//                }
-                self.challenges = querySnapshot!.documents
-                self.challengesTableView.reloadData()
-            }
+        //Occur when user select a category
+        categoryMenu.didSelect{(selectedText , index ,id) in
+            self.loadDataByCategory(selectedText)
         }
     }
+    
+     //Load all challenges when the screen first show
+   override func viewWillAppear(_ animated: Bool) {
+       loadDataByCategory("")
+   }
+   
+   //Load challenge based on the category the user selected
+   func loadDataByCategory(_ category: String){
+       //load all challenges if no category selected
+       if category == ""{
+           let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+           challengesRef.getDocuments { (querySnapshot, error) in
+               if error != nil{
+                   print(error?.localizedDescription as Any)
+               }else{
+                   self.challenges = querySnapshot!.documents
+                   self.challengesTableView.reloadData()
+                   
+               }
+           }
+       }else{
+           let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+           let query = challengesRef.whereField("Category", isEqualTo: category) // Load challenges with category
+           query.getDocuments { (querySnapshot, error) in
+               if error != nil{
+                   print(error?.localizedDescription as Any)
+               }else{
+                   self.challenges = querySnapshot!.documents
+                   self.challengesTableView.reloadData()
+                   
+               }
+           }
+       }
+   }
         
 }
 

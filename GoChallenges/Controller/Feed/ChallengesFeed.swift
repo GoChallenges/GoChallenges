@@ -31,6 +31,9 @@ class ChallengesFeed: UIViewController {
         super.viewDidLoad()
         //Drop down menu
         categoryMenu.optionArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
+        categoryMenu.selectedRowColor = #colorLiteral(red: 0.9909999967, green: 0.3540000021, blue: 0, alpha: 1)
+        categoryMenu.checkMarkEnabled = false //check mark when selected
+        categoryMenu.isSearchEnable = false //No search function
         
         challengeTableView.dataSource = self
         challengeTableView.delegate = self
