@@ -3,11 +3,13 @@
 
 import UIKit
 import Firebase
+import iOSDropDown
 
 class ChallengesFeed: UIViewController {
 
     @IBOutlet weak var challengeTableView: UITableView!
-
+    @IBOutlet weak var categoryMenu: DropDown!
+    
     let db = Firestore.firestore()
     var categoryFilter : String = ""
     var challengeDict = [QueryDocumentSnapshot]()
@@ -27,25 +29,50 @@ class ChallengesFeed: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Drop down menu
+        categoryMenu.optionArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
+        
         challengeTableView.dataSource = self
         challengeTableView.delegate = self
-        loadData()
         
         sessionData.currentUser = currentUser // Save currentUser to background
         
+        //Occur when user select a category
+        categoryMenu.didSelect{(selectedText , index ,id) in
+            self.loadDataByCategory(selectedText)
+        }
         //checkForUpdates()
     }
     
-    func loadData(){
-        let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
-        let query = challengesRef.whereField("Category", isEqualTo: "Education") // Load challenges with category in "Food" (Category filter)
-        query.getDocuments { (querySnapshot, error) in
-            if error != nil{
-                print(error?.localizedDescription as Any)
-            }else{
-                self.challengeDict = querySnapshot!.documents
-                self.challengeTableView.reloadData()
-                
+    //Load all challenges when the screen first show
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataByCategory("")
+    }
+    
+    //Load challenge based on the category the user selected
+    func loadDataByCategory(_ category: String){
+        if category == ""{
+            let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+            challengesRef.getDocuments { (querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                }else{
+                    self.challengeDict = querySnapshot!.documents
+                    self.challengeTableView.reloadData()
+                    
+                }
+            }
+        }else{
+            let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+            let query = challengesRef.whereField("Category", isEqualTo: category) // Load challenges with category in "Food" (Category filter)
+            query.getDocuments { (querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                }else{
+                    self.challengeDict = querySnapshot!.documents
+                    self.challengeTableView.reloadData()
+                    
+                }
             }
         }
     }

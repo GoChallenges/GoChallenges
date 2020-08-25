@@ -951,7 +951,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQf-bt-La4">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="115" width="414" height="693"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="challengeCell" textLabel="GH0-9X-t0Q" detailTextLabel="akS-vw-BA3" style="IBUITableViewCellStyleSubtitle" id="DFh-WU-KKw">
@@ -980,18 +980,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Select Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bcs-y6-TVc" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="0.0" y="56" width="414" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="3gP-Vx-q3B"/>
+                                    <constraint firstAttribute="height" constant="59" id="o2g-qP-d2e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="SQf-bt-La4" firstAttribute="top" secondItem="Bcs-y6-TVc" secondAttribute="bottom" id="ALa-eu-mNG"/>
+                            <constraint firstItem="Bcs-y6-TVc" firstAttribute="top" secondItem="tXz-gr-Msg" secondAttribute="top" id="QLA-me-nR9"/>
                             <constraint firstItem="tXz-gr-Msg" firstAttribute="bottom" secondItem="SQf-bt-La4" secondAttribute="bottom" id="VEV-TE-PsV"/>
+                            <constraint firstItem="SQf-bt-La4" firstAttribute="bottom" secondItem="tXz-gr-Msg" secondAttribute="bottom" id="Wcu-9d-Ovw"/>
+                            <constraint firstItem="Bcs-y6-TVc" firstAttribute="trailing" secondItem="tXz-gr-Msg" secondAttribute="trailing" id="f3j-1p-K0Y"/>
                             <constraint firstItem="tXz-gr-Msg" firstAttribute="trailing" secondItem="SQf-bt-La4" secondAttribute="trailing" id="kk4-qX-cki"/>
+                            <constraint firstItem="Bcs-y6-TVc" firstAttribute="leading" secondItem="tXz-gr-Msg" secondAttribute="leading" id="t02-Oo-lmN"/>
+                            <constraint firstItem="SQf-bt-La4" firstAttribute="top" secondItem="Bcs-y6-TVc" secondAttribute="bottom" id="vev-zO-uIG"/>
                             <constraint firstItem="SQf-bt-La4" firstAttribute="leading" secondItem="tXz-gr-Msg" secondAttribute="leading" id="xYT-mz-rbW"/>
-                            <constraint firstItem="SQf-bt-La4" firstAttribute="top" secondItem="tXz-gr-Msg" secondAttribute="top" id="zUH-ja-9Nk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tXz-gr-Msg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Challenges" id="yx3-Aq-nRS"/>
                     <connections>
+                        <outlet property="categoryMenu" destination="Bcs-y6-TVc" id="qfo-3Z-dIE"/>
                         <outlet property="challengeTableView" destination="SQf-bt-La4" id="1v0-gF-zEb"/>
                         <segue destination="MCI-cC-RiN" kind="show" identifier="feedToDetail" id="moj-q5-Yx9"/>
                     </connections>

@@ -12,6 +12,7 @@ target 'GoChallenges' do
   	pod 'Firebase/Storage'
   	pod "AlamofireImage"
   	pod 'CircleProgressView', '~> 1.0'
+	pod 'iOSDropDown'
 
   target 'GoChallengesTests' do
     inherit! :search_paths

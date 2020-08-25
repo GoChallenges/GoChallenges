@@ -32,15 +32,7 @@ class SigninViewController: UIViewController {
                
            }
        }
-    /*
-    func addLeftImage(txtField: UITextField, img: UIImage){
-        let leftImageView = UIImageView()
-        leftImageView.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
-        leftImageView.image = img
-        txtField.leftView = leftImageView
-        txtField.leftViewMode = .always
-    }
-    */
+    
     @IBAction func signIn(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text{
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
@@ -68,7 +60,6 @@ class SigninViewController: UIViewController {
 }
 
 //MARK: - UI Adjustment
-
 extension SigninViewController {
     func updateUI() {
         emailTextField.layer.cornerRadius = 10
