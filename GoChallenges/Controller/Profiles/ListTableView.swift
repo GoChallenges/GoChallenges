@@ -2,7 +2,6 @@
 //  ListTableView.swift
 //  GoChallenges
 //
-//  Created by nguyen thy on 8/2/20.
 //  Copyright © 2020 Han Nguyen. All rights reserved.
 //
 
