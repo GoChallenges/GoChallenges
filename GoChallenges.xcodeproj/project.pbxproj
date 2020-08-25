@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27558FACAF9511D6E3FBC341 /* Pods_GoChallengesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134C40480AD20AE8D429CEAB /* Pods_GoChallengesTests.framework */; };
+		2F053BC824F4AAD300315216 /* FinishedChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F053BC624F4AAD300315216 /* FinishedChallengeCell.swift */; };
+		2F053BC924F4AAD300315216 /* FinishedChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F053BC724F4AAD300315216 /* FinishedChallengeCell.xib */; };
 		2F17787024EB7986005D3D90 /* ProfileChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F17786E24EB7986005D3D90 /* ProfileChallengeCell.swift */; };
 		2F17787124EB7986005D3D90 /* ProfileChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F17786F24EB7986005D3D90 /* ProfileChallengeCell.xib */; };
 		2F1F82F124D6ED9300292AFE /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F82F024D6ED9300292AFE /* ListTableView.swift */; };
@@ -65,6 +67,8 @@
 /* Begin PBXFileReference section */
 		134C40480AD20AE8D429CEAB /* Pods_GoChallengesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoChallengesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2502029A70F163B5E012A551 /* Pods-GoChallenges-GoChallengesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoChallenges-GoChallengesUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoChallenges-GoChallengesUITests/Pods-GoChallenges-GoChallengesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F053BC624F4AAD300315216 /* FinishedChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedChallengeCell.swift; sourceTree = "<group>"; };
+		2F053BC724F4AAD300315216 /* FinishedChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishedChallengeCell.xib; sourceTree = "<group>"; };
 		2F17786E24EB7986005D3D90 /* ProfileChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChallengeCell.swift; sourceTree = "<group>"; };
 		2F17786F24EB7986005D3D90 /* ProfileChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileChallengeCell.xib; sourceTree = "<group>"; };
 		2F1F82F024D6ED9300292AFE /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				2F1F82F024D6ED9300292AFE /* ListTableView.swift */,
 				2F405E2424DAE84200A6B815 /* FriendCell.swift */,
 				2F17786E24EB7986005D3D90 /* ProfileChallengeCell.swift */,
+				2F053BC624F4AAD300315216 /* FinishedChallengeCell.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */,
 				2F405E2524DAE84200A6B815 /* FriendCell.xib */,
 				2F17786F24EB7986005D3D90 /* ProfileChallengeCell.xib */,
+				2F053BC724F4AAD300315216 /* FinishedChallengeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 			files = (
 				2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */,
 				374C12BF24EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */,
+				2F053BC924F4AAD300315216 /* FinishedChallengeCell.xib in Resources */,
 				2F405E2724DAE84200A6B815 /* FriendCell.xib in Resources */,
 				2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */,
 				2F17787124EB7986005D3D90 /* ProfileChallengeCell.xib in Resources */,
@@ -552,6 +559,7 @@
 				2FF8AA0824927F2C004E3AF8 /* CameraViewController.swift in Sources */,
 				2F62184A24EE339F005F2878 /* SessionData.swift in Sources */,
 				2FB91577248601130095627E /* ChallengesFeed.swift in Sources */,
+				2F053BC824F4AAD300315216 /* FinishedChallengeCell.swift in Sources */,
 				2FC3B0112485394E001FF13D /* SigninViewController.swift in Sources */,
 				2FB9157B248601570095627E /* NewChallenge.swift in Sources */,
 				2FF9753424849B1A0079ADE0 /* SceneDelegate.swift in Sources */,
