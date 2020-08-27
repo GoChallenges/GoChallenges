@@ -11,7 +11,7 @@ import Firebase
 class ListTableView: UIViewController, UITableViewDelegate{
     
     let segueDict = [K.friendCell : K.segue.TBToProfile,
-                     K.challengeCell: K.segue.TBToChallengeDetail
+                     K.createdCell: K.segue.TBToChallengeDetail
     ]
     
     var cellIdentifer : String!
@@ -21,7 +21,8 @@ class ListTableView: UIViewController, UITableViewDelegate{
     
     let db = Firestore.firestore()
     var myProfileID = sessionData.profileID! // Profile ID of selected friend
-    var challenges = [DocumentReference]() // Array of created/finished challenges
+    var createdChallenges = [DocumentReference]() // Array of created challenges
+    var finishedChallenges = [DocumentReference]() // Array of finished challenges
     var friends = [DocumentReference]() // Array of friends
     var emails = [String]() // Array of friends' emails
     
@@ -45,23 +46,28 @@ class ListTableView: UIViewController, UITableViewDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        
+        // Load arrays depending on Cell Identifer
         if cellIdentifer == K.friendCell {
             loadFriends()
-        } else if cellIdentifer == K.myChallengeCell {
-            loadChallenges()
+        } else if cellIdentifer == K.createdCell {
+            loadCreatedChallenges()
         }
-
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If the user is viewing friend list
+        let vc = segue.destination as! Profile
+        
+            // Get the email of the profile at selected cell
+            let email = emails[selectedRow]
+            vc.email = email
+        
+        // If the user chose to view challenges
+        
+        
+    }
     
     // Load friends array
     func loadFriends() {
@@ -78,24 +84,75 @@ class ListTableView: UIViewController, UITableViewDelegate{
         }
     }
     
-    // Load challenges array
-    
-    func loadChallenges() {
+    // Load created challenges array
+    func loadCreatedChallenges() {
+        let profileRef = db.collection("Profiles").document(myProfileID)
+        profileRef.getDocument { (documentSnapshots, error) in
+            if let documentSnapshots = documentSnapshots {
+                let data = documentSnapshots.data()
+                self.createdChallenges = data![K.profile.created] as! [DocumentReference]
+                self.listTableView.reloadData()
+                
+            } else {
+                self.displayErrorAlert(error: error!)
+            }
+        }
     }
     
+    // Load finised challenges array
+    func loadFinishedChallenges() {
+        let profileRef = db.collection("Profiles").document(myProfileID)
+        profileRef.getDocument { (documentSnapshots, error) in
+            if let documentSnapshots = documentSnapshots {
+                let data = documentSnapshots.data()
+                self.finishedChallenges = data![K.profile.finished] as! [DocumentReference]
+                self.listTableView.reloadData()
+                
+            } else {
+                self.displayErrorAlert(error: error!)
+            }
+        }
+    }
 }
 
 extension ListTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cellIdentifer == K.friendCell {
+        switch cellIdentifer {
+        case K.friendCell:
             return friends.count
-        } else {
-            return challenges.count
+        case K.createdCell:
+            return createdChallenges.count
+        default:
+            return finishedChallenges.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // FriendCell
+        getFriendCell(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch cellIdentifer{
+            // If the cell is ChallengeCell, go to Detail
+            case K.createdCell:
+                performSegue(withIdentifier: K.segue.TBToChallengeDetail, sender: self)
+            
+            // If the cell is FriendCell, go to Profile
+            case K.friendCell:
+                selectedRow = indexPath.row
+                performSegue(withIdentifier: K.segue.TBToProfile, sender: self)
+            
+            // If the cell is FinishedChallengeCell, return
+            default:
+                return
+            }
+        }
+}
+
+//MARK: - Create cell functions
+extension ListTableView {
+    func getFriendCell(indexPath: IndexPath) -> FriendCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as! FriendCell
         
         let friendRef = friends[indexPath.row] // Ref to friend's profile
@@ -118,19 +175,13 @@ extension ListTableView: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRow = indexPath.row
-        performSegue(withIdentifier: K.segue.TBToProfile, sender: self)
+    func getChallengeCell(indexPath: IndexPath) -> CreatedChallengeCell{
+        let cell = listTableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as! CreatedChallengeCell
+        return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! Profile
-        // Get the email of the profile at selected cell
-        
-        print(emails)
-        let email = emails[selectedRow]
-        print(email)
-        vc.email = email
-        
+    func getFinishedChallengeCell(indexPath: IndexPath) -> FinishedChallengeCell{
+        let cell = listTableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as! FinishedChallengeCell
+        return cell
     }
 }

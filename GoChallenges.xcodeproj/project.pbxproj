@@ -17,6 +17,8 @@
 		2F2C19ED24878B02005DA4F9 /* MyChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */; };
 		2F405E2624DAE84200A6B815 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F405E2424DAE84200A6B815 /* FriendCell.swift */; };
 		2F405E2724DAE84200A6B815 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F405E2524DAE84200A6B815 /* FriendCell.xib */; };
+		2F484D9824F7DC0000E463EF /* CreatedChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F484D9624F7DC0000E463EF /* CreatedChallengeCell.swift */; };
+		2F484D9924F7DC0000E463EF /* CreatedChallengeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F484D9724F7DC0000E463EF /* CreatedChallengeCell.xib */; };
 		2F52CBBC248FC68C00CAD438 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52CBBB248FC68C00CAD438 /* GeneralFunctions.swift */; };
 		2F62184A24EE339F005F2878 /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F62184924EE339E005F2878 /* SessionData.swift */; };
 		2F881D4A248BC60400B39C73 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F881D49248BC60400B39C73 /* ProfileData.swift */; };
@@ -77,6 +79,8 @@
 		2F2C19EB24878B02005DA4F9 /* MyChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyChallengeCell.xib; sourceTree = "<group>"; };
 		2F405E2424DAE84200A6B815 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		2F405E2524DAE84200A6B815 /* FriendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
+		2F484D9624F7DC0000E463EF /* CreatedChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedChallengeCell.swift; sourceTree = "<group>"; };
+		2F484D9724F7DC0000E463EF /* CreatedChallengeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatedChallengeCell.xib; sourceTree = "<group>"; };
 		2F52CBBB248FC68C00CAD438 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
 		2F62184924EE339E005F2878 /* SessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
 		2F881D49248BC60400B39C73 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				2F405E2424DAE84200A6B815 /* FriendCell.swift */,
 				2F17786E24EB7986005D3D90 /* ProfileChallengeCell.swift */,
 				2F053BC624F4AAD300315216 /* FinishedChallengeCell.swift */,
+				2F484D9624F7DC0000E463EF /* CreatedChallengeCell.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				2F405E2524DAE84200A6B815 /* FriendCell.xib */,
 				2F17786F24EB7986005D3D90 /* ProfileChallengeCell.xib */,
 				2F053BC724F4AAD300315216 /* FinishedChallengeCell.xib */,
+				2F484D9724F7DC0000E463EF /* CreatedChallengeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				374C12BF24EC528A00F73B5A /* ConcertOne-Regular.ttf in Resources */,
 				2F053BC924F4AAD300315216 /* FinishedChallengeCell.xib in Resources */,
 				2F405E2724DAE84200A6B815 /* FriendCell.xib in Resources */,
+				2F484D9924F7DC0000E463EF /* CreatedChallengeCell.xib in Resources */,
 				2FF9753E24849B1E0079ADE0 /* LaunchScreen.storyboard in Resources */,
 				2F17787124EB7986005D3D90 /* ProfileChallengeCell.xib in Resources */,
 				2FC3B009248534F9001FF13D /* GoogleService-Info.plist in Resources */,
@@ -557,6 +564,7 @@
 				2F1F82F124D6ED9300292AFE /* ListTableView.swift in Sources */,
 				2F17787024EB7986005D3D90 /* ProfileChallengeCell.swift in Sources */,
 				2FF8AA0824927F2C004E3AF8 /* CameraViewController.swift in Sources */,
+				2F484D9824F7DC0000E463EF /* CreatedChallengeCell.swift in Sources */,
 				2F62184A24EE339F005F2878 /* SessionData.swift in Sources */,
 				2FB91577248601130095627E /* ChallengesFeed.swift in Sources */,
 				2F053BC824F4AAD300315216 /* FinishedChallengeCell.swift in Sources */,

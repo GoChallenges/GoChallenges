@@ -38,7 +38,7 @@ class Profile: UIViewController, UITableViewDelegate {
     
     // Dictionary of button tags and according cell identifers for ListTableView (vc)
     let cellIdentifers : [Int:String] = [
-        0: K.challengeCell, 1: K.challengeCell, 2 : K.friendCell    ]
+        0: K.createdCell, 1: K.finishedCell, 2 : K.friendCell]
     
     override func viewDidLoad() {
         super.viewDidLoad()

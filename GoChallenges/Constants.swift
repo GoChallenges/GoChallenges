@@ -10,11 +10,15 @@ struct K {
     static let challengeCell = "challengeCell"
     static let friendCell = "friendCell"
     static let profileCell = "profileChallengeCell"
+    static let finishedCell = "finishedCell"
+    static let createdCell = "createdCell"
     
     // Cell nib names
     static let myChallengeCellNib = "MyChallengeCell"
     static let friendCellNib = "FriendCell"
     static let profileCellNib = "ProfileChallengeCell"
+    static let finishedCellNib = "FinishedChallengeCell"
+    static let createdCellNib = "CreatedChallengeCell"
     
     // Collection names
     static let profiles = "Profiles"
