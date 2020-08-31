@@ -36,7 +36,7 @@ class ListTableView: UIViewController, UITableViewDelegate{
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.register(UINib(nibName: K.friendCellNib, bundle: nil), forCellReuseIdentifier: cellIdentifer)
-        listTableView.rowHeight = 80
+        listTableView.rowHeight = 150
         
     }
     

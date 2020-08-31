@@ -120,10 +120,18 @@ class Profile: UIViewController, UITableViewDelegate {
         performSegue(withIdentifier: K.segue.profileToCamera, sender: sender)
     }
     
-    //MARK: - Segue
-    @IBAction func toTableView(_ sender: Any) {
-        performSegue(withIdentifier: K.segue.profileToTB, sender: sender)
+    //MARK: - Segues
+    @IBAction func toCreatedChallenges(_ sender: Any) {
+        let vc = CreatedChallenges(nibName: K.createdChallengesNib, bundle: nil)
+        self.present(vc, animated: true, completion: nil)
     }
+    
+    @IBAction func toFinishedChallenges(_ sender: Any) {
+    }
+    
+    @IBAction func toFriends(_ sender: Any) {
+    }
+    
 }
 
 // Display tableview of current challenges
@@ -219,15 +227,16 @@ extension Profile {
             vc.profileID = profileID
             
         // Going to ListTableView (vc)
-        } else if segue.identifier == K.segue.profileToTB {
-            let navigationVC = segue.destination as! UINavigationController
-            let vc = navigationVC.topViewController as! ListTableView
-            let button = sender as! UIButton
-            
-            // Send the appropriate cell indentifers depending on button pushed
-            vc.cellIdentifer = cellIdentifers[button.tag]!
-            
-            vc.myProfileID = profileID // Send the profile being used id
+        //} else if segue.identifier == K.segue.profileToTB {
+//            let navigationVC = segue.destination as! UINavigationController
+//            let vc = navigationVC.topViewController as! ListTableView
+//            let button = sender as! UIButton
+//
+//            // Send the appropriate cell indentifers depending on button pushed
+//            vc.cellIdentifer = cellIdentifers[button.tag]!
+//
+//            vc.myProfileID = profileID // Send the profile being used id
         }
     }
 }
+

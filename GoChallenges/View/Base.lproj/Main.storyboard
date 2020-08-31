@@ -293,7 +293,7 @@
             <objects>
                 <viewController id="aU0-eT-gJ8" customClass="Profile" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wzI-JU-SKu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-background" translatesAutoresizingMaskIntoConstraints="NO" id="f36-CC-Pnw">
@@ -337,7 +337,7 @@
                                                     <color key="titleColor" name="OrangeChallenge"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="toTableView:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="LZp-Kl-2Wk"/>
+                                                    <action selector="toCreatedChallenges:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="hfI-jg-I9V"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-cO-Zst">
@@ -358,7 +358,7 @@
                                                     <color key="titleColor" name="OrangeChallenge"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="toTableView:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="UiO-EP-mgf"/>
+                                                    <action selector="toFinishedChallenges:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="ckO-bY-aFR"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkZ-dK-bHn">
@@ -379,7 +379,7 @@
                                                     <color key="titleColor" name="OrangeChallenge"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="toTableView:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="4Ya-TZ-KAf"/>
+                                                    <action selector="toFriends:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="jfG-sm-KVe"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTk-Gi-djW">
@@ -399,7 +399,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0ex-oq-i0b">
-                                <rect key="frame" x="0.0" y="349.5" width="414" height="458.5"/>
+                                <rect key="frame" x="0.0" y="349.5" width="414" height="375.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <button hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HT1-fn-tq0">
@@ -458,50 +458,11 @@
                         <outlet property="profileImageView" destination="IrQ-04-rQg" id="g9R-hI-60F"/>
                         <outlet property="username" destination="7Xg-3u-5eM" id="fgN-qZ-GtT"/>
                         <segue destination="Ith-Qf-fYe" kind="presentation" identifier="profileToCamera" modalPresentationStyle="fullScreen" id="B4C-Hu-I5s"/>
-                        <segue destination="PbP-Si-KHQ" kind="presentation" identifier="profileToTableView" modalPresentationStyle="fullScreen" id="qMM-cY-jem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKN-IE-Mmw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4505.7971014492759" y="1320.5357142857142"/>
-        </scene>
-        <!--List Table View-->
-        <scene sceneID="qYO-63-1ph">
-            <objects>
-                <viewController id="UYG-mP-qYj" customClass="ListTableView" customModule="GoChallenges" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gUL-CI-grS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bed-UN-KYN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="uBm-Em-Aya" firstAttribute="trailing" secondItem="bed-UN-KYN" secondAttribute="trailing" id="8RO-Pg-Mj8"/>
-                            <constraint firstItem="bed-UN-KYN" firstAttribute="top" secondItem="uBm-Em-Aya" secondAttribute="top" id="Q5n-JD-oha"/>
-                            <constraint firstItem="bed-UN-KYN" firstAttribute="leading" secondItem="uBm-Em-Aya" secondAttribute="leading" id="RxZ-A6-Tvp"/>
-                            <constraint firstItem="uBm-Em-Aya" firstAttribute="bottom" secondItem="bed-UN-KYN" secondAttribute="bottom" id="StW-zR-qVY"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="uBm-Em-Aya"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Nxk-e2-Gaw">
-                        <barButtonItem key="leftBarButtonItem" image="return" catalog="system" id="Rfr-zg-Zck">
-                            <connections>
-                                <action selector="dismiss:" destination="UYG-mP-qYj" id="2jc-mq-NGB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="listTableView" destination="bed-UN-KYN" id="kFI-Mz-tIK"/>
-                        <segue destination="aU0-eT-gJ8" kind="presentation" identifier="tableViewToProfile" id="esO-ZU-BL3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Aly-sZ-Sg5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6508.6956521739139" y="1320.5357142857142"/>
+            <point key="canvasLocation" x="4506" y="1679"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="HrJ-U6-C6G">
@@ -578,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Oq-9d-DTK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6508.6956521739139" y="2013.6160714285713"/>
+            <point key="canvasLocation" x="6886" y="1679"/>
         </scene>
         <!--Signin View Controller-->
         <scene sceneID="6d7-n5-o2d">
@@ -1104,7 +1065,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJM-Vo-I5g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3596" y="1321"/>
+            <point key="canvasLocation" x="3596" y="1679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zj2-F4-gMr">
@@ -1122,32 +1083,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nF-ld-IsU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5598.5507246376819" y="2013.6160714285713"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="00e-ba-iv2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PbP-Si-KHQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ACQ-e6-xje">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UYG-mP-qYj" kind="relationship" relationship="rootViewController" id="yHj-Ce-jjA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OXt-Z6-evz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5538" y="1321"/>
+            <point key="canvasLocation" x="5809" y="1679"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mr6-ap-C3O"/>
         <segue reference="Kbv-Vv-dcT"/>
         <segue reference="oFt-ET-90Q"/>
-        <segue reference="esO-ZU-BL3"/>
+        <segue reference="3In-rY-c0M"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Profile" width="478" height="474"/>
@@ -1163,7 +1106,6 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="profile-background" width="750" height="534"/>
         <image name="profile-separator" width="630" height="2"/>
-        <image name="return" catalog="system" width="128" height="101"/>
         <namedColor name="OrangeChallenge">
             <color red="0.99099999666213989" green="0.35400000214576721" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

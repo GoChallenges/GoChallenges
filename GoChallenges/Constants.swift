@@ -20,6 +20,9 @@ struct K {
     static let finishedCellNib = "FinishedChallengeCell"
     static let createdCellNib = "CreatedChallengeCell"
     
+    // VC nib names
+    static let createdChallengesNib = "CreatedChallenges"
+    
     // Collection names
     static let profiles = "Profiles"
     

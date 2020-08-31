@@ -16,18 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sSu-5I-Aaj">
-                        <rect key="frame" x="9" y="9" width="60" height="60"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sSu-5I-Aaj">
+                        <rect key="frame" x="9" y="9.5" width="60" height="59"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="JD5-zV-fn1"/>
+                            <constraint firstAttribute="width" constant="60" id="l9u-uh-hza"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BI-TT-ABK">
-                        <rect key="frame" x="77" y="29" width="86" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BI-TT-ABK">
+                        <rect key="frame" x="78" y="29" width="86" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="7BI-TT-ABK" firstAttribute="leading" secondItem="sSu-5I-Aaj" secondAttribute="trailing" constant="9" id="2Yj-oB-585"/>
+                    <constraint firstItem="sSu-5I-Aaj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="P4w-VI-bYr"/>
+                    <constraint firstItem="sSu-5I-Aaj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="Vr9-Lm-ZtR"/>
+                    <constraint firstItem="7BI-TT-ABK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="29" id="y3z-1s-9cz"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
