@@ -55,6 +55,13 @@ class NewChallenge: UIViewController {
         loadProfile() // Load the current user's profile so we can add new challenges to created and current arráy
     }
     
+    // Dismiss the keyboard when tap anywhere on the screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+
+    }
+    
     @IBAction func createButton(_ sender: UIButton) {
         if let name = challengeNameTextField.text, let descriptionText = descriptionTextView.text, let userName = Auth.auth().currentUser?.email, let target = goalTextField.text, let firstDay = startTextField.text, let lastDay = endTextField.text, let goalUnit = unitTextField.text{
             

@@ -4,7 +4,7 @@
 import UIKit
 import Firebase
 
-class SigninViewController: UIViewController {
+class SigninViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -16,7 +16,6 @@ class SigninViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-
     }
     @IBOutlet var heightConstraint : NSLayoutConstraint!
        
@@ -56,7 +55,10 @@ class SigninViewController: UIViewController {
             }
         }
     }
-
+    
+    @objc func keyboardWillChange(notification: Notification){
+        print("Keyboard will show: \(notification.name.rawValue)")
+    }
 }
 
 //MARK: - UI Adjustment

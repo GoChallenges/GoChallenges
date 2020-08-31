@@ -13,6 +13,7 @@ target 'GoChallenges' do
   	pod "AlamofireImage"
   	pod 'CircleProgressView', '~> 1.0'
 	pod 'iOSDropDown'
+	pod 'IQKeyboardManagerSwift'
 
   target 'GoChallengesTests' do
     inherit! :search_paths
