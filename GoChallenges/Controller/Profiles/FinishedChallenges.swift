@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
-class FinishedChallenges: UIViewController {
-
+class FinishedChallenges: UIViewController, UITableViewDelegate {
+    @IBOutlet weak var challengesTableView: UITableView!
+    
+    var challenges = [DocumentReference]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        challengesTableView.delegate = self
+        challengesTableView.dataSource = self
+        
+        challengesTableView.register(UINib(nibName: K.finishedCellNib, bundle: nil), forCellReuseIdentifier: K.finishedCell)
+        challengesTableView.rowHeight = 150
     }
 
 
@@ -27,4 +35,17 @@ class FinishedChallenges: UIViewController {
     }
     */
 
+}
+
+extension FinishedChallenges: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return challenges.count
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = challengesTableView.dequeueReusableCell(withIdentifier: K.finishedCell, for: indexPath)
+        return cell
+    }
+    
 }

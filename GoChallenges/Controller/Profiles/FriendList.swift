@@ -7,13 +7,19 @@
 //
 
 import UIKit
-
+import Firebase
 class FriendList: UIViewController {
+    @IBOutlet weak var friendTableView: UITableView!
+    
+    var friends = [DocumentReference]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        friendTableView.delegate = self
+        friendTableView.dataSource = self
+        friendTableView.register(UINib(nibName: K.friendCellNib, bundle: nil), forCellReuseIdentifier: K.friendCell)
+        friendTableView.rowHeight = 100
     }
 
 
@@ -27,4 +33,18 @@ class FriendList: UIViewController {
     }
     */
 
+}
+
+extension FriendList: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return friends.count
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = friendTableView.dequeueReusableCell(withIdentifier: K.friendCell, for: indexPath)
+        return cell
+    }
+    
+    
 }

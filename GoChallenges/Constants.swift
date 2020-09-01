@@ -22,6 +22,8 @@ struct K {
     
     // VC nib names
     static let createdChallengesNib = "CreatedChallenges"
+    static let finishedChallengesNib = "FinishedChallenges"
+    static let friendListNib = "FriendList"
     
     // Collection names
     static let profiles = "Profiles"

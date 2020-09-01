@@ -123,13 +123,18 @@ class Profile: UIViewController, UITableViewDelegate {
     //MARK: - Segues
     @IBAction func toCreatedChallenges(_ sender: Any) {
         let vc = CreatedChallenges(nibName: K.createdChallengesNib, bundle: nil)
+        vc.profileID = profileID
         self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func toFinishedChallenges(_ sender: Any) {
+        let vc = FinishedChallenges(nibName: K.finishedChallengesNib, bundle: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func toFriends(_ sender: Any) {
+        let vc = FriendList(nibName: K.friendListNib, bundle: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

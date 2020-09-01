@@ -328,10 +328,10 @@
                                 <rect key="frame" x="30" y="269" width="354" height="51"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ps5-qC-iaj">
-                                        <rect key="frame" x="0.0" y="0.0" width="74.5" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="51.5" height="51"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ts1-jk-Q8i">
-                                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="51.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" name="OrangeChallenge"/>
@@ -340,8 +340,8 @@
                                                     <action selector="toCreatedChallenges:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="hfI-jg-I9V"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-cO-Zst">
-                                                <rect key="frame" x="0.0" y="34" width="74.5" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-cO-Zst">
+                                                <rect key="frame" x="0.0" y="34" width="51.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -349,10 +349,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WwO-FR-9dM">
-                                        <rect key="frame" x="148" y="0.0" width="71" height="51"/>
+                                        <rect key="frame" x="150.5" y="0.0" width="54.5" height="51"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xos-ar-HCe">
-                                                <rect key="frame" x="0.0" y="0.0" width="71" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" name="OrangeChallenge"/>
@@ -361,8 +361,8 @@
                                                     <action selector="toFinishedChallenges:" destination="aU0-eT-gJ8" eventType="touchUpInside" id="ckO-bY-aFR"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkZ-dK-bHn">
-                                                <rect key="frame" x="0.0" y="34" width="71" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkZ-dK-bHn">
+                                                <rect key="frame" x="0.0" y="34" width="54.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
