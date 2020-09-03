@@ -60,13 +60,17 @@ extension CreatedChallenges: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.createdCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.createdCell, for: indexPath) as! CreatedChallengeCell
         let challengeRef = challenges[indexPath.row]
         challengeRef.getDocument { (documentSnapshots, error) in
             if let challenge = documentSnapshots {
                 let name = challenge["Challenge Name"] as! String
                 let description = challenge["Challenge Description"] as! String
-                let number = (challenge["Participants"] as! NSArray).count
+                let participants = challenge["Participants"] as! [String]
+                
+                cell.nameLabel.text = name
+                cell.descriptionLabel.text = description
+                cell.participantLabel.text = "\(participants.count)"
             } else {
                 print("Error: \(String(describing: error?.localizedDescription))")
             }
