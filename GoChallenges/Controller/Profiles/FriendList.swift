@@ -21,7 +21,9 @@ class FriendList: UIViewController {
         friendTableView.delegate = self
         friendTableView.dataSource = self
         friendTableView.register(UINib(nibName: K.friendCellNib, bundle: nil), forCellReuseIdentifier: K.friendCell)
-        friendTableView.rowHeight = 100
+        //friendTableView.rowHeight = UITableView.automaticDimension
+        friendTableView.rowHeight = 80
+        friendTableView.estimatedRowHeight = 150
         loadFriends()
     }
     

@@ -9,32 +9,37 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="80" id="KGk-i7-Jjw" customClass="FriendCell" customModule="GoChallenges" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="100" id="KGk-i7-Jjw" customClass="FriendCell" customModule="GoChallenges" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="FriendCell" customModule="GoChallenges" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sSu-5I-Aaj">
-                        <rect key="frame" x="9" y="9.5" width="60" height="59"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="60" id="JD5-zV-fn1"/>
-                            <constraint firstAttribute="width" constant="60" id="l9u-uh-hza"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BI-TT-ABK">
-                        <rect key="frame" x="78" y="29" width="86" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2h-uP-WdA">
+                        <rect key="frame" x="20" y="10" width="280" height="60"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sSu-5I-Aaj">
+                                <rect key="frame" x="0.0" y="0.5" width="60" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="3ms-Yk-NVa"/>
+                                    <constraint firstAttribute="height" constant="60" id="ibq-tR-Slf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BI-TT-ABK">
+                                <rect key="frame" x="60" y="0.0" width="220" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7BI-TT-ABK" firstAttribute="leading" secondItem="sSu-5I-Aaj" secondAttribute="trailing" constant="9" id="2Yj-oB-585"/>
-                    <constraint firstItem="sSu-5I-Aaj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="P4w-VI-bYr"/>
-                    <constraint firstItem="sSu-5I-Aaj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="Vr9-Lm-ZtR"/>
-                    <constraint firstItem="7BI-TT-ABK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="29" id="y3z-1s-9cz"/>
+                    <constraint firstItem="I2h-uP-WdA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="0Df-mR-MkU"/>
+                    <constraint firstAttribute="trailing" secondItem="I2h-uP-WdA" secondAttribute="trailing" constant="20" id="AKW-rx-wxq"/>
+                    <constraint firstItem="I2h-uP-WdA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Wu7-gY-6NW"/>
+                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="I2h-uP-WdA" secondAttribute="bottom" constant="10" id="k8v-bO-ebq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

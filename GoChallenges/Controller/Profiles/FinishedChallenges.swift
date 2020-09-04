@@ -33,7 +33,7 @@ class FinishedChallenges: UIViewController, UITableViewDelegate {
         let profileRef = db.collection("Profiles").document(profileID)
         profileRef.getDocument { (documentSnapshots, error) in
             if let data = documentSnapshots?.data() {
-                self.challenges = data[K.profile.finished] as! [DocumentReference]
+                self.challenges = data[K.profile.created] as! [DocumentReference]
                 self.challengesTableView.reloadData()
             } else {
                 let error = error
