@@ -8,5 +8,5 @@
 - **Habit:** Daily
 - **Scope:** Young adults
 
-<img src="http://recordit.co/iml8bavkrq" width=250>
+<img src="http://g.recordit.co//iml8bavkrq.gif" width=250>
 <img src="http://g.recordit.co/40IoSO7UOo.gif" width=250>
