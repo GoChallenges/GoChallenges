@@ -27,7 +27,7 @@ class MyChallenges: UIViewController, UITableViewDataSource {
     var remainingDays : String = ""
     
     //let categoryArray = ["Lifestyle", "Food", "Sport", "Game", "Music", "Education", "Finance"]
-
+    
     @IBOutlet weak var challengesTableView: UITableView!
     @IBOutlet weak var categoryMenu: DropDown!
     
@@ -52,40 +52,47 @@ class MyChallenges: UIViewController, UITableViewDataSource {
         }
     }
     
-     //Load all challenges when the screen first show
-   override func viewWillAppear(_ animated: Bool) {
-       loadDataByCategory("")
-   }
-   
-   //Load challenge based on the category the user selected
-   func loadDataByCategory(_ category: String){
-       //load all challenges if no category selected
-       if category == ""{
-           let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
-           challengesRef.getDocuments { (querySnapshot, error) in
-               if error != nil{
-                   print(error?.localizedDescription as Any)
-               }else{
-                   self.challenges = querySnapshot!.documents
-                   self.challengesTableView.reloadData()
-                   
-               }
-           }
-       }else{
-           let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
-           let query = challengesRef.whereField("Category", isEqualTo: category) // Load challenges with category
-           query.getDocuments { (querySnapshot, error) in
-               if error != nil{
-                   print(error?.localizedDescription as Any)
-               }else{
-                   self.challenges = querySnapshot!.documents
-                   self.challengesTableView.reloadData()
-                   
-               }
-           }
-       }
-   }
-        
+    //Load all challenges when the screen first show
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataByCategory("")
+    }
+    
+    //Load challenge based on the category the user selected
+    func loadDataByCategory(_ category: String){
+        //load all challenges if no category selected
+        if category == ""{
+            let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+            
+            // Load challenges where current user is int
+            let query = challengesRef.whereField("Participants", arrayContains: currentUser.email!)
+            
+            query.getDocuments { [self] (querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                }else{
+                    self.challenges = querySnapshot!.documents
+                    self.challengesTableView.reloadData()
+                }
+            }
+        }else{
+            let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
+            
+            // Load challenges with category and current user is in
+            let query = challengesRef.whereField("Category", isEqualTo: category)
+                .whereField("Participants", arrayContains: currentUser.email!)
+            
+            query.getDocuments { [self] (querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                }else{
+                    self.challenges = querySnapshot!.documents
+                    self.challengesTableView.reloadData()
+                    
+                }
+            }
+        }
+    }
+    
 }
 
 //MARK: - DEQUEUE CELLS AND QUERY ATTENDED CHALLENGES
@@ -152,7 +159,7 @@ extension MyChallenges: UITableViewDelegate {
         //if statement to get the remaining days to complete the challenge
         if currentDay > startDay && currentDay < endDay{
             remainingDays = String(Calendar.current.dateComponents([.day], from: currentDay, to: endDay).day!)
-
+            
         }else if currentDay <= startDay{
             remainingDays = String(Calendar.current.dateComponents([.day], from: startDay, to: endDay).day!)
         }else if currentDay == endDay{

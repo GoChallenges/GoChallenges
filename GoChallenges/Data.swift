@@ -72,11 +72,6 @@ struct Data : Challenge {
     }
 }
 
-struct Participant {
-    var user: User
-    var progress: Float
-}
-
 /*
 extension Data : DocumentSerializsble{
     init?(dictionary: [String:Any]){

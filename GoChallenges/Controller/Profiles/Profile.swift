@@ -70,6 +70,20 @@ class Profile: UIViewController, UITableViewDelegate {
         loadProfile()
     }
     
+    @IBAction func signOut(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = main.instantiateViewController(identifier: "MainViewController")
+            let delegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+            delegate.window?.rootViewController = initialViewController
+            
+        } catch let signOutError as NSError {
+            displayErrorAlert(error: signOutError)
+        }
+    }
+    
     // Load the current user profile
     private func loadProfile() {
         let profileRef = db.collection(K.profiles)
@@ -232,17 +246,6 @@ extension Profile {
             
             // Send the userID of current user
             vc.profileID = profileID
-            
-        // Going to ListTableView (vc)
-        //} else if segue.identifier == K.segue.profileToTB {
-//            let navigationVC = segue.destination as! UINavigationController
-//            let vc = navigationVC.topViewController as! ListTableView
-//            let button = sender as! UIButton
-//
-//            // Send the appropriate cell indentifers depending on button pushed
-//            vc.cellIdentifer = cellIdentifers[button.tag]!
-//
-//            vc.myProfileID = profileID // Send the profile being used id
         }
     }
 }
