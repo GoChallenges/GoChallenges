@@ -44,7 +44,6 @@ class ChallengesFeed: UIViewController {
         categoryMenu.didSelect{(selectedText , index ,id) in
             self.loadDataByCategory(selectedText)
         }
-        //checkForUpdates()
     }
     
     //Load all challenges when the screen first show
@@ -67,7 +66,7 @@ class ChallengesFeed: UIViewController {
             }
         }else{
             let challengesRef  = db.collection("Challenges") // Reference to Challenges collection
-            let query = challengesRef.whereField("Category", isEqualTo: category) // Load challenges with category in "Food" (Category filter)
+            let query = challengesRef.whereField("Category", isEqualTo: category) // Load challenges with category
             query.getDocuments { (querySnapshot, error) in
                 if error != nil{
                     print(error?.localizedDescription as Any)
@@ -148,6 +147,7 @@ extension ChallengesFeed : UITableViewDelegate{
         detailVC.daysLeft = remainingDays
         detailVC.goal = passGoal
         detailVC.unit = passUnit
+        detailVC.docID = challenge.documentID //Pass documentID to update the data later
         
         //Send the creator email to challenge detail screen
         let creatorEmail = challenge["Creator"] as! String // Email (string) of the selected challenge

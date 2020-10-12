@@ -27,6 +27,7 @@ class ChallengeDetail: UIViewController {
     var daysLeft : String = ""
     var goal : Double = 0.0
     var unit : String = ""
+    var docID : String = ""
     
     var current :  Double = 0.0
     override func viewDidLoad() {
@@ -70,7 +71,21 @@ class ChallengeDetail: UIViewController {
             if let current = Double(currentStr){
                 //Calculate the progress
                 let remainVal = goal - current
+                goal = remainVal //Updated goal
                 progressLabel.text = "You need \(String(remainVal)) \(unit) to complete this challenge."
+                
+                //Update the "Goal" field in that specific document
+                let updateRef = db.collection("Challenges").document(docID)
+                updateRef.updateData([
+                    "Goal": goal
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+                
             }
         }
         currentProgress.resignFirstResponder()
